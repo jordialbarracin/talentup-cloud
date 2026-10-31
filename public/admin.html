@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalentUP™ — Primera Empresa Autónoma Liquid–Solid // Open Source Cloud</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23111111'/><rect x='10' y='11' width='4' height='10' rx='2' fill='%23FF4F00'/><rect x='18' y='11' width='4' height='10' rx='2' fill='%23FF4F00'/></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            tu: {
+              bg: '#F4F4F2',
+              card: '#FFFFFF',
+              studio: '#ECEAE3',
+              subtle: '#F7F7F5',
+              aluminum: '#E8E8E3',
+              border: '#DEDED8',
+              ink: '#111111',
+              muted: '#666660',
+              orange: '#FF4F00',
+              orangeSoft: '#FFF0E8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background-color: #F4F4F2;
+      color: #111111;
+      overflow-x: hidden;
+      background-image: radial-gradient(#D5D5CD 0.8px, transparent 0.8px);
+      background-size: 22px 22px;
+    }
+
+    .tu-card {
+      background: #FFFFFF;
+      border: 1px solid #DEDED8;
+      border-radius: 30px;
+      box-shadow: 0 16px 38px -15px rgba(17, 17, 17, 0.055);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .tu-card:hover {
+      box-shadow: 0 24px 50px -15px rgba(17, 17, 17, 0.085);
+    }
+
+    .tu-orange-card {
+      background: #FF4F00;
+      color: #FFFFFF;
+      border-radius: 30px;
+      box-shadow: 0 20px 42px -12px rgba(255, 79, 0, 0.28);
+    }
+
+    .tu-ink-card {
+      background: #121211;
+      color: #F4F4F2;
+      border-radius: 30px;
+      box-shadow: 0 20px 42px -12px rgba(17, 17, 17, 0.22);
+    }
+
+    .tu-aluminum-card {
+      background: #E8E8E3;
+      color: #111111;
+      border: 1px solid #D5D5CE;
+      border-radius: 30px;
+    }
+
+    .btn-tu-orange {
+      background-color: #FF4F00;
+      color: #FFFFFF;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-tu-orange:hover {
+      background-color: #E04400;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px -6px rgba(255, 79, 0, 0.42);
+    }
+
+    .pill-orange {
+      background-color: #FFF0E8;
+      color: #D94000;
+      border: 1px solid rgba(255, 79, 0, 0.22);
+    }
+
+    .subtle-box {
+      background-color: #F7F7F5;
+      border: 1px solid #E2E2DE;
+    }
+
+    /* Tactile OP-1 Mechanical Keycap Button */
+    .op1-key {
+      background: #FFFFFF;
+      border: 1px solid #DCDCD4;
+      border-bottom: 3px solid #CECEC4;
+      border-radius: 18px;
+      transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .op1-key:hover {
+      transform: translateY(-1px);
+      border-color: #B8B8AE;
+    }
+    .op1-key-active {
+      background: #FFFFFF;
+      border: 2px solid #FF4F00;
+      border-bottom: 4px solid #D94000;
+      border-radius: 18px;
+      box-shadow: 0 10px 24px -8px rgba(255, 79, 0, 0.25);
+    }
+
+    @keyframes pulseEye {
+      0%, 92%, 100% { transform: scaleY(1); }
+      96% { transform: scaleY(0.12); }
+    }
+    .visor-eye {
+      animation: pulseEye 4.2s infinite;
+    }
+
+    /* Braun / Leica Technical Crosshair Marks */
+    .braun-corner-tl, .braun-corner-tr, .braun-corner-bl, .braun-corner-br {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-color: rgba(17, 17, 17, 0.32);
+      pointer-events: none;
+      z-index: 20;
+    }
+    .braun-corner-tl { top: 14px; left: 14px; border-top: 1.5px solid; border-left: 1.5px solid; }
+    .braun-corner-tr { top: 14px; right: 14px; border-top: 1.5px solid; border-right: 1.5px solid; }
+    .braun-corner-bl { bottom: 14px; left: 14px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+    .braun-corner-br { bottom: 14px; right: 14px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
+
+    /* CAD X-Ray Mode Filter */
+    .cad-xray-img {
+      filter: contrast(1.12) brightness(0.96) saturate(1.1);
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      background: #D0D0C8;
+      border-radius: 999px;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #FF4F00;
+      border: 3px solid #FFFFFF;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body class="min-h-screen w-full font-sans antialiased selection:bg-tu-orange selection:text-white">
+
+  <!-- ===================================================================== -->
+  <!-- TOP NAVIGATION BAR — SINGLE-LINE PRECISION INDUSTRIAL HEADER          -->
+  <!-- ===================================================================== -->
+  <header class="w-full px-5 xl:px-10 py-3 sticky top-0 z-50 bg-[#F4F4F2]/92 backdrop-blur-md border-b border-stone-200/80">
+    <div class="w-full flex items-center justify-between gap-2">
+
+      <!-- Left: TalentUP Brand Mark -->
+      <div onclick="playMechClick(520); switchTab('brand')" class="tu-card rounded-full pl-2.5 pr-4 py-1.5 flex items-center gap-2.5 cursor-pointer shrink-0">
+        <div class="w-9 h-9 rounded-full bg-tu-ink text-white flex items-center justify-center relative shadow-sm border border-stone-700 shrink-0">
+          <div class="flex gap-1">
+            <span class="w-1.5 h-2.5 rounded-full bg-tu-orange visor-eye shadow-[0_0_8px_#FF4F00]"></span>
+            <span class="w-1.5 h-2.5 rounded-full bg-tu-orange visor-eye shadow-[0_0_8px_#FF4F00]"></span>
+          </div>
+        </div>
+        <div class="leading-tight">
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-sm tracking-tight text-tu-ink">Talent<span class="text-tu-orange">UP</span><sup class="text-[8px] font-mono text-stone-400 ml-0.5">TM</sup></span>
+            <span class="px-1.5 py-0.5 rounded-full pill-orange font-mono text-[9px] font-bold">0% HUMANOS</span>
+          </div>
+          <p class="text-[10px] text-tu-muted hidden 2xl:block">Empresa Autónoma Liquid–Solid &middot; Open Source Cloud</p>
+        </div>
+      </div>
+
+      <!-- Center: 6-Tab Segmented Instrument Bar (Never Wraps on Desktop) -->
+      <nav class="tu-card rounded-full p-1 flex items-center gap-0.5 shrink-0">
+        <button onclick="playMechClick(600); switchTab('brand')" id="tab-brand" class="px-3 py-1.5 rounded-full text-[11px] font-bold btn-tu-orange transition cursor-pointer whitespace-nowrap">
+          01. Inicio & Comité
+        </button>
+        <button onclick="playMechClick(640); switchTab('catalog')" id="tab-catalog" class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-stone-600 hover:text-tu-ink transition cursor-pointer flex items-center gap-1 whitespace-nowrap">
+          <span>02. Catálogo SaaS</span>
+          <span id="nav-catalog-pill" class="px-1.5 py-0.2 rounded-full subtle-box font-mono text-[9px] font-bold">6</span>
+        </button>
+        <button onclick="playMechClick(680); switchTab('sandbox')" id="tab-sandbox" class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-stone-600 hover:text-tu-ink transition cursor-pointer flex items-center gap-1 whitespace-nowrap">
+          <span>03. Sandbox I+D</span>
+          <span id="nav-sandbox-pill" class="px-1.5 py-0.2 rounded-full pill-orange font-mono text-[9px] font-extrabold">3</span>
+        </button>
+        <button onclick="playMechClick(720); switchTab('ledger')" id="tab-ledger" class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-stone-600 hover:text-tu-ink transition cursor-pointer whitespace-nowrap">
+          04. Constitución & SHA-256
+        </button>
+        <button onclick="playMechClick(750); switchTab('ops')" id="tab-ops" class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-stone-600 hover:text-tu-ink transition cursor-pointer flex items-center gap-1 whitespace-nowrap">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          <span>05. Hosting & Negocio</span>
+        </button>
+        <button onclick="playMechClick(780); switchTab('design')" id="tab-design" class="px-3 py-1.5 rounded-full text-[11px] font-semibold text-stone-600 hover:text-tu-ink transition cursor-pointer whitespace-nowrap">
+          06. Brand Book
+        </button>
+      </nav>
+
+      <!-- Right: Hardware Switches (CAD Mode + Cycle Runner) -->
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="/" class="tu-card rounded-full px-3 py-2 flex items-center gap-1.5 text-[10px] font-mono font-bold text-tu-orange hover:bg-stone-100 cursor-pointer whitespace-nowrap" title="Ir a la Web Pública Comercial para Clientes">
+          <span>🌐</span>
+          <span>WEB PÚBLICA</span>
+        </a>
+
+        <button onclick="toggleCadMode()" id="btn-cad-toggle" class="tu-card rounded-full px-3 py-2 flex items-center gap-1.5 text-[10px] font-mono font-bold text-stone-600 hover:text-tu-ink cursor-pointer whitespace-nowrap" title="Alternar Plano Técnico CAD sobre las Esculturas 3D">
+          <span id="cad-dot" class="w-2 h-2 rounded-full bg-stone-400"></span>
+          <span id="cad-label">CAD: OFF</span>
+        </button>
+
+        <div class="tu-card rounded-full px-3 py-2 hidden xl:flex items-center gap-1.5 text-[10px] font-mono whitespace-nowrap">
+          <span class="w-1.5 h-1.5 rounded-full bg-tu-orange animate-ping"></span>
+          <span class="text-stone-500">CICLO:</span>
+          <span class="font-bold text-tu-ink" id="top-cycle-num">#1</span>
+        </div>
+
+        <button onclick="playMechClick(880); runLiveCommitteeCycle()" id="btn-run-cycle" class="px-4 py-2 rounded-full btn-tu-orange font-bold text-[11px] shadow-sm flex items-center gap-1.5 cursor-pointer whitespace-nowrap">
+          <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+          <span>Ejecutar Ciclo IA</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN FULL-WIDTH BENTO CONTAINER                                       -->
+  <!-- ===================================================================== -->
+  <main class="w-full px-5 xl:px-10 py-5 space-y-8">
+
+    <!-- =================================================================== -->
+    <!-- VISTA 1: ESCAPARATE LIQUID-SOLID & EXPLICACIÓN CLARA DEL NEGOCIO    -->
+    <!-- =================================================================== -->
+    <div id="section-brand" class="space-y-8">
+
+      <!-- TOP BENTO ROW: 8-COL 4 FIGURES STAGE + 4-COL DUAL-LENS INSPECTOR -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+        <!-- 8-COL HERO CARD: THE 4 LIQUID-SOLID COLLECTIBLE FIGURES OF TALENTUP -->
+        <div class="lg:col-span-8 tu-card p-6 xl:p-7 flex flex-col justify-between space-y-4">
+
+          <!-- Header Bar inside Hero -->
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div class="space-y-1.5 max-w-2xl">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full pill-orange font-mono text-[10px] font-bold uppercase tracking-wider">
+                <span>COLECCIÓN OFICIAL TU-01 A TU-04 &mdash; PORCELANA SÓLIDA &middot; INTELIGENCIA LÍQUIDA</span>
+              </div>
+              <h1 class="text-2xl sm:text-[36px] font-extrabold tracking-tight leading-[1.1] text-tu-ink">
+                No vendemos software. <span class="font-serif italic font-normal text-3xl sm:text-[40px] text-tu-orange">Alojamos el mejor Open Source del mundo a coste físico.</span>
+              </h1>
+            </div>
+
+            <!-- Studio / CAD Mode Switcher Pill -->
+            <div class="subtle-box p-1 rounded-full flex items-center gap-1 text-[10px] font-mono font-bold shrink-0">
+              <button onclick="setStageMode('pbr')" id="stage-btn-pbr" class="px-3 py-1.5 rounded-full bg-tu-ink text-white transition cursor-pointer">
+                ● ESTUDIO PBR
+              </button>
+              <button onclick="setStageMode('cad')" id="stage-btn-cad" class="px-3 py-1.5 rounded-full text-stone-500 hover:text-tu-ink transition cursor-pointer">
+                ⊞ PLANO CAD
+              </button>
+            </div>
+          </div>
+
+          <!-- FULL-RESOLUTION STUDIO RENDER (100% UNOBSTRUCTED FEET & CROWNS!) -->
+          <div id="hero-stage-container" onmousemove="handleStageParallax(event)" onmouseleave="resetStageParallax()" class="relative w-full rounded-[24px] overflow-hidden border border-tu-border bg-[#E9E7DF] shadow-inner select-none">
+            <div class="braun-corner-tl"></div>
+            <div class="braun-corner-tr"></div>
+            <div class="braun-corner-bl"></div>
+            <div class="braun-corner-br"></div>
+
+            <!-- Top Technical HUD Overlay -->
+            <div class="absolute top-3.5 left-5 right-5 flex items-center justify-between pointer-events-none z-20">
+              <div class="flex items-center gap-2 font-mono text-[10px] text-stone-600 bg-white/85 backdrop-blur-md px-3 py-1 rounded-full border border-stone-200/80 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-tu-orange"></span>
+                <span id="hud-cam-label">CAM-01 // 50MM STUDIO LENS &middot; 1376&times;768 RAW</span>
+              </div>
+              <div class="hidden sm:flex items-center gap-2 font-mono text-[10px] text-stone-600 bg-white/85 backdrop-blur-md px-3 py-1 rounded-full border border-stone-200/80 shadow-sm">
+                <span>AL2O3 PORCELANA MATE + ALEACIÓN Hg CROMO LÍQUIDO</span>
+              </div>
+            </div>
+
+            <!-- Main 4-Figures Studio Lineup Image -->
+            <div id="hero-stage-wrap" class="relative w-full transition-transform duration-200">
+              <img id="hero-main-img" src="/assets/talentup_concept_1_morph.jpg" alt="TalentUP 4 Liquid-Solid Collectible Figures" class="w-full h-auto block">
+
+              <!-- CAD X-RAY BLUEPRINT SVG OVERLAY -->
+              <svg id="cad-blueprint-overlay" viewBox="0 0 1376 768" class="absolute inset-0 w-full h-full pointer-events-none hidden z-10">
+                <defs>
+                  <pattern id="cadGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,79,0,0.16)" stroke-width="1"/>
+                  </pattern>
+                </defs>
+                <rect width="1376" height="768" fill="url(#cadGrid)"/>
+                <line x1="40" y1="145" x2="1336" y2="145" stroke="#FF4F00" stroke-width="1" stroke-dasharray="6,6"/>
+                <text x="50" y="138" fill="#FF4F00" font-family="JetBrains Mono" font-size="13" font-weight="bold">COTA CORONA LÍQUIDA // +184.0 mm (TENSIÓN SUPERFICIAL γ=486 mN/m)</text>
+                <line x1="40" y1="685" x2="1336" y2="685" stroke="#111111" stroke-width="1" stroke-dasharray="4,4"/>
+                <text x="50" y="704" fill="#111111" font-family="JetBrains Mono" font-size="13" font-weight="bold">PLANO DE APOYO CICLORAMA // 0.0 mm (BASE CROMO / PORCELANA)</text>
+
+                <circle cx="242" cy="300" r="68" fill="none" stroke="#FF4F00" stroke-width="2" stroke-dasharray="8,4"/>
+                <circle cx="545" cy="300" r="64" fill="none" stroke="#FF4F00" stroke-width="2" stroke-dasharray="8,4"/>
+                <circle cx="852" cy="302" r="72" fill="none" stroke="#FF4F00" stroke-width="2" stroke-dasharray="8,4"/>
+                <circle cx="1165" cy="272" r="65" fill="none" stroke="#FF4F00" stroke-width="2" stroke-dasharray="8,4"/>
+              </svg>
+
+              <!-- 4 Clean Click Zones over the Figures -->
+              <div class="absolute inset-0 z-10">
+                <div onclick="playMechClick(540); inspectExecutive('atlas')"
+                     style="left: 7%; width: 22%; top: 13%; bottom: 6%;"
+                     class="group absolute cursor-pointer flex flex-col items-center justify-start pt-1">
+                  <div id="crown-pin-atlas" class="px-2.5 py-0.5 rounded-full bg-tu-orange text-white font-mono text-[9px] font-bold shadow-md transition">
+                    ● TU-01 ATLAS
+                  </div>
+                </div>
+
+                <div onclick="playMechClick(580); inspectExecutive('curator')"
+                     style="left: 30%; width: 19.5%; top: 15%; bottom: 6%;"
+                     class="group absolute cursor-pointer flex flex-col items-center justify-start pt-1">
+                  <div id="crown-pin-curator" class="opacity-0 group-hover:opacity-100 px-2.5 py-0.5 rounded-full bg-tu-ink/90 text-white font-mono text-[9px] font-bold shadow-md transition">
+                    TU-02 CURATOR
+                  </div>
+                </div>
+
+                <div onclick="playMechClick(620); inspectExecutive('vulcan')"
+                     style="left: 50.5%; width: 23.5%; top: 13%; bottom: 6%;"
+                     class="group absolute cursor-pointer flex flex-col items-center justify-start pt-1">
+                  <div id="crown-pin-vulcan" class="opacity-0 group-hover:opacity-100 px-2.5 py-0.5 rounded-full bg-tu-ink/90 text-white font-mono text-[9px] font-bold shadow-md transition">
+                    TU-03 VULCAN
+                  </div>
+                </div>
+
+                <div onclick="playMechClick(660); inspectExecutive('ledger')"
+                     style="left: 75%; width: 20%; top: 9%; bottom: 6%;"
+                     class="group absolute cursor-pointer flex flex-col items-center justify-start pt-1">
+                  <div id="crown-pin-ledger" class="opacity-0 group-hover:opacity-100 px-2.5 py-0.5 rounded-full bg-tu-ink/90 text-white font-mono text-[9px] font-bold shadow-md transition">
+                    TU-04 LEDGER
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TACTILE 4-KEY OP-1 PEDESTAL DOCK BELOW THE RENDER -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-0.5">
+            <button onclick="playMechClick(540); inspectExecutive('atlas')" id="hotspot-atlas" class="op1-key-active p-3 text-left cursor-pointer flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-tu-orange text-white">01 · CEO</span>
+                  <span class="text-xs font-extrabold text-tu-ink">ATLAS</span>
+                </div>
+                <div class="text-[10px] text-stone-500 font-medium mt-1">Corona Cromo &middot; Constitución</div>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-tu-orange"></span>
+            </button>
+
+            <button onclick="playMechClick(580); inspectExecutive('curator')" id="hotspot-curator" class="op1-key p-3 text-left cursor-pointer flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-tu-ink text-white">02 · CPO</span>
+                  <span class="text-xs font-extrabold text-tu-ink">CURATOR</span>
+                </div>
+                <div class="text-[10px] text-stone-500 font-medium mt-1">Gravedad Cero &middot; GitHub I+D</div>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-stone-300"></span>
+            </button>
+
+            <button onclick="playMechClick(620); inspectExecutive('vulcan')" id="hotspot-vulcan" class="op1-key p-3 text-left cursor-pointer flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-tu-ink text-white">03 · CTO</span>
+                  <span class="text-xs font-extrabold text-tu-ink">VULCAN</span>
+                </div>
+                <div class="text-[10px] text-stone-500 font-medium mt-1">Chasis Pesado &middot; Bare-Metal</div>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-stone-300"></span>
+            </button>
+
+            <button onclick="playMechClick(660); inspectExecutive('ledger')" id="hotspot-ledger" class="op1-key p-3 text-left cursor-pointer flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="font-mono text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-tu-ink text-white">04 · CFO</span>
+                  <span class="text-xs font-extrabold text-tu-ink">LEDGER</span>
+                </div>
+                <div class="text-[10px] text-stone-500 font-medium mt-1">Bucle Líquido &middot; Deflación</div>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-stone-300"></span>
+            </button>
+          </div>
+
+          <!-- Bottom Live Activity Ticker -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-stone-200/80">
+            <div class="flex items-center gap-2.5 text-xs">
+              <span class="px-2.5 py-1 rounded-full bg-tu-orange text-white font-mono font-bold text-[10px] shrink-0" id="live-ticker-agent">ATLAS CEO</span>
+              <span class="text-stone-600 font-medium truncate max-w-xl" id="live-ticker-msg">
+                Constitución algorítmica verificada. Todos los contenedores operan a coste físico puro.
+              </span>
+            </div>
+            <div class="flex items-center gap-2 font-mono text-[10px] text-stone-500">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Porcelana Sólida (Invariantes) + Cromo Líquido (IA)</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 4-COL RIGHT STACK: SEAMLESS 16:10 INSPECTOR + ORANGE COST CARD -->
+        <div class="lg:col-span-4 flex flex-col gap-6 justify-between">
+
+          <!-- CARD A: SEAMLESS 16:10 STUDIO INSPECTOR -->
+          <div class="tu-card p-6 flex flex-col justify-between space-y-4 flex-1">
+
+            <div class="flex items-center justify-between gap-2">
+              <div>
+                <span id="exec-badge" class="px-2.5 py-0.5 rounded-full pill-orange font-mono font-bold text-[10px] uppercase">
+                  TU-01 // CEO & GOBERNADOR
+                </span>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <h2 id="exec-name" class="text-2xl font-extrabold text-tu-ink tracking-tight">Atlas</h2>
+                  <span id="exec-ratio-pill" class="font-mono text-[10px] font-bold text-stone-400">60% SÓLIDO · 40% LÍQUIDO</span>
+                </div>
+              </div>
+
+              <div class="subtle-box p-1 rounded-xl flex items-center gap-1 text-[10px] font-mono font-bold shrink-0">
+                <button onclick="playMechClick(700); setInspectorLens('macro')" id="lens-btn-macro" class="px-2.5 py-1 rounded-lg bg-tu-ink text-white transition cursor-pointer">
+                  Macro 2x
+                </button>
+                <button onclick="playMechClick(650); setInspectorLens('full')" id="lens-btn-full" class="px-2.5 py-1 rounded-lg text-stone-500 hover:text-tu-ink transition cursor-pointer">
+                  Cuerpo 1x
+                </button>
+              </div>
+            </div>
+
+            <div class="relative rounded-[22px] overflow-hidden w-full aspect-[16/10] border border-tu-border bg-[#E8E6DF]">
+              <div class="braun-corner-tl"></div>
+              <div class="braun-corner-tr"></div>
+              <div class="braun-corner-bl"></div>
+              <div class="braun-corner-br"></div>
+
+              <img id="exec-portrait-img" src="/assets/insp_macro_atlas.jpg" class="w-full h-full object-cover transition-all duration-300 block" alt="Selected Liquid-Solid Figure">
+
+              <span id="exec-lens-tag" class="absolute bottom-2.5 right-3 px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-sm border border-stone-200 font-mono text-[9px] font-bold text-stone-600 shadow-sm">
+                MACRO 2X // CORONA & VISOR #FF4F00
+              </span>
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-[11px]">
+                <span id="exec-subtitle" class="font-bold text-stone-700">Corona Simétrica de Cromo Líquido &middot; Custodio Constitucional</span>
+              </div>
+              <div class="w-full h-2 rounded-full bg-stone-200 overflow-hidden flex">
+                <div id="exec-solid-bar" class="h-full bg-tu-ink transition-all duration-500" style="width: 60%" title="Porcelana Sólida"></div>
+                <div id="exec-liquid-bar" class="h-full bg-tu-orange transition-all duration-500" style="width: 40%" title="Cromo Líquido"></div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-4 gap-1.5 subtle-box p-1.5 rounded-2xl">
+              <button onclick="playMechClick(540); inspectExecutive('atlas')" id="pill-atlas" class="py-1.5 rounded-xl text-xs font-bold btn-tu-orange transition cursor-pointer">Atlas</button>
+              <button onclick="playMechClick(580); inspectExecutive('curator')" id="pill-curator" class="py-1.5 rounded-xl text-xs font-semibold text-stone-600 hover:text-stone-900 transition cursor-pointer">Curator</button>
+              <button onclick="playMechClick(620); inspectExecutive('vulcan')" id="pill-vulcan" class="py-1.5 rounded-xl text-xs font-semibold text-stone-600 hover:text-stone-900 transition cursor-pointer">Vulcan</button>
+              <button onclick="playMechClick(660); inspectExecutive('ledger')" id="pill-ledger" class="py-1.5 rounded-xl text-xs font-semibold text-stone-600 hover:text-stone-900 transition cursor-pointer">Ledger</button>
+            </div>
+
+            <p id="exec-thought" class="text-xs text-stone-700 font-medium leading-relaxed subtle-box p-3.5 rounded-2xl">
+              "Supervisando las 4 invariantes inmutables. Ninguna instancia paga licencias ni sueldos humanos."
+            </p>
+
+            <div id="exec-stats-row" class="grid grid-cols-2 gap-3">
+            </div>
+          </div>
+
+          <!-- CARD B: INTERNATIONAL ORANGE HARDWARE PRICE CARD -->
+          <div class="tu-orange-card p-6 space-y-3.5">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-black/20 font-mono text-[10px] font-bold uppercase tracking-wider">
+                Invariante 02 &middot; Coste Físico
+              </span>
+              <span class="text-xs font-mono font-bold bg-white/20 px-2.5 py-1 rounded-full">
+                -98.2% vs SaaS Privativo
+              </span>
+            </div>
+
+            <div class="flex items-baseline justify-between gap-2">
+              <div>
+                <div class="text-xs font-bold uppercase tracking-wider opacity-85">Cuota Fija Media / Nodo</div>
+                <div id="lime-avg-price" class="text-5xl font-extrabold tracking-tight leading-none mt-1">€2.25</div>
+              </div>
+              <svg class="w-28 h-14 overflow-visible" viewBox="0 0 120 50">
+                <path d="M0,10 Q35,14 60,28 T120,44" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="120" cy="44" r="4.5" fill="#FFFFFF"/>
+              </svg>
+            </div>
+
+            <div class="pt-3 border-t border-white/25 flex items-center justify-between text-xs font-mono font-semibold">
+              <span>Hierro + IA + 3% Reserva</span>
+              <span>0,00€ Licencias</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- QUÉ HACEMOS Y CÓMO FUNCIONA (EXPLICACIÓN CLARA EN 4 PASOS)        -->
+      <!-- ================================================================= -->
+      <div class="tu-card p-7 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="px-3 py-1 rounded-full pill-orange font-mono text-[10px] font-bold uppercase">
+              ¿A QUÉ NOS DEDICAMOS EXACTAMENTE? // MODELO DE NEGOCIO CERO HUMANOS
+            </span>
+            <h2 class="text-2xl font-extrabold tracking-tight mt-1.5">
+              Cómo cualquier empresa ahorra el 98% de su factura de software en 4 pasos
+            </h2>
+          </div>
+          <button onclick="playMechClick(750); switchTab('ops')" class="px-4 py-2 rounded-full tu-ink-card text-xs font-bold hover:opacity-90 transition cursor-pointer">
+            Ver Arquitectura de Servidores & Conexiones &rarr;
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div class="p-5 rounded-2xl subtle-box space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-tu-orange text-white font-mono text-[10px] font-bold">PASO 01 · CURATOR CPO</span>
+              <span class="font-mono text-xs font-bold text-stone-400">GitHub OSS</span>
+            </div>
+            <h3 class="text-base font-extrabold">Seleccionamos el Mejor Código Libre</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Curator escanea a diario GitHub y homologa las alternativas Open Source más potentes a Salesforce, Jira, Slack, Zendesk, DocuSign o SAP. <strong>Cero coste de licencia y usuarios ilimitados.</strong>
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl subtle-box space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-tu-ink text-white font-mono text-[10px] font-bold">PASO 02 · VULCAN CTO</span>
+              <span class="font-mono text-xs font-bold text-stone-400">Arbitraje Cloud</span>
+            </div>
+            <h3 class="text-base font-extrabold">Aprovisionamos tu Cápsula Aislada</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Vulcan compara en tiempo real el precio del hierro en centros de datos europeos (Netcup, Hetzner, OVH) y levanta tu contenedor Docker + PostgreSQL aislado en <code class="font-mono text-tu-orange">tu-empresa.talentup.cloud</code>.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl subtle-box space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-tu-ink text-white font-mono text-[10px] font-bold">PASO 03 · LEDGER CFO</span>
+              <span class="font-mono text-xs font-bold text-stone-400">~€2.20/mes</span>
+            </div>
+            <h3 class="text-base font-extrabold">Pagas Solo el Hierro + Deflación</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Como no hay empleados humanos ni comisiones comerciales, tu cuota mensual es exactamente: <strong>Hierro Bare-Metal + Cómputo IA + 3% de Reserva</strong>. Si el hierro baja, tu cuota baja sola.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl subtle-box space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full bg-tu-ink text-white font-mono text-[10px] font-bold">PASO 04 · ATLAS CEO</span>
+              <span class="font-mono text-xs font-bold text-stone-400">0% Lock-In</span>
+            </div>
+            <h3 class="text-base font-extrabold">Soberanía Criptográfica 1-Clic</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Atlas firma cada decisión en un libro mayor SHA-256 público y te garantiza que en cualquier momento puedes descargar tu <code class="font-mono">docker-compose.yml</code> y tu base de datos íntegra.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- VITRINA DE COLECCIONISTA: 5 ESCULTURAS 4:5 (0% SEAM, 0% CROP)     -->
+      <!-- ================================================================= -->
+      <div class="space-y-4">
+        <div class="flex flex-wrap items-end justify-between gap-4 px-1">
+          <div>
+            <span class="font-mono text-xs font-bold uppercase text-tu-orange">SERIE INDUSTRIAL NUMERADA // ESCULTURAS COMPLETAS (FORMATO 4:5 CONTINUO)</span>
+            <h2 class="text-2xl font-extrabold tracking-tight text-tu-ink">Anatomía Liquid–Solid del Comité Ejecutivo + Cápsula del Cliente</h2>
+          </div>
+          <button onclick="playMechClick(760); switchTab('design')" class="px-4 py-2 rounded-full tu-card text-xs font-bold hover:border-tu-orange transition cursor-pointer">
+            Abrir Brand Book & Especificaciones 3D &rarr;
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-5">
+
+          <!-- TU-01 ATLAS -->
+          <div onclick="playMechClick(540); inspectExecutive('atlas')" id="collector-card-atlas" class="tu-card p-4 flex flex-col justify-between space-y-3.5 cursor-pointer border-2 border-tu-orange">
+            <div class="flex items-center justify-between px-1">
+              <span class="font-mono text-[10px] font-extrabold px-2 py-0.5 rounded bg-tu-orange text-white">TU-01 // CEO</span>
+              <span class="font-mono text-[10px] text-stone-400 font-bold">60% SÓLIDO</span>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden border border-stone-200/80 w-full aspect-[4/5] bg-[#E8E6DF]">
+              <img src="/assets/card_atlas.jpg" alt="Atlas Cuerpo Completo" class="w-full h-full object-cover hover:scale-105 transition duration-500 block">
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-extrabold text-tu-ink">Atlas</h3>
+                <span class="text-[10px] font-mono font-bold text-tu-orange">Gobernanza</span>
+              </div>
+              <p class="text-[11px] text-stone-500 mt-1 leading-snug">
+                Corona simétrica de cromo líquido, torso de porcelana constitucional y extremidades de mercurio.
+              </p>
+            </div>
+          </div>
+
+          <!-- TU-02 CURATOR -->
+          <div onclick="playMechClick(580); inspectExecutive('curator')" id="collector-card-curator" class="tu-card p-4 flex flex-col justify-between space-y-3.5 cursor-pointer">
+            <div class="flex items-center justify-between px-1">
+              <span class="font-mono text-[10px] font-extrabold px-2 py-0.5 rounded bg-tu-ink text-white">TU-02 // CPO I+D</span>
+              <span class="font-mono text-[10px] text-stone-400 font-bold">65% LÍQUIDO</span>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden border border-stone-200/80 w-full aspect-[4/5] bg-[#E8E6DF]">
+              <img src="/assets/card_curator.jpg" alt="Curator Cuerpo Completo" class="w-full h-full object-cover hover:scale-105 transition duration-500 block">
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-extrabold text-tu-ink">Curator</h3>
+                <span class="text-[10px] font-mono font-bold text-stone-400">GitHub Radar</span>
+              </div>
+              <p class="text-[11px] text-stone-500 mt-1 leading-snug">
+                Gotas de mercurio en gravedad cero alrededor del visor; escanea y homologa repositorios Open Source.
+              </p>
+            </div>
+          </div>
+
+          <!-- TU-03 VULCAN -->
+          <div onclick="playMechClick(620); inspectExecutive('vulcan')" id="collector-card-vulcan" class="tu-card p-4 flex flex-col justify-between space-y-3.5 cursor-pointer">
+            <div class="flex items-center justify-between px-1">
+              <span class="font-mono text-[10px] font-extrabold px-2 py-0.5 rounded bg-tu-ink text-white">TU-03 // CTO</span>
+              <span class="font-mono text-[10px] text-stone-400 font-bold">75% SÓLIDO</span>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden border border-stone-200/80 w-full aspect-[4/5] bg-[#E8E6DF]">
+              <img src="/assets/card_vulcan.jpg" alt="Vulcan Cuerpo Completo" class="w-full h-full object-cover hover:scale-105 transition duration-500 block">
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-extrabold text-tu-ink">Vulcan</h3>
+                <span class="text-[10px] font-mono font-bold text-stone-400">99.98% SLA</span>
+              </div>
+              <p class="text-[11px] text-stone-500 mt-1 leading-snug">
+                Chasis pesado de porcelana blanca maciza con coraza superior de acero líquido para arbitraje bare-metal.
+              </p>
+            </div>
+          </div>
+
+          <!-- TU-04 LEDGER -->
+          <div onclick="playMechClick(660); inspectExecutive('ledger')" id="collector-card-ledger" class="tu-card p-4 flex flex-col justify-between space-y-3.5 cursor-pointer">
+            <div class="flex items-center justify-between px-1">
+              <span class="font-mono text-[10px] font-extrabold px-2 py-0.5 rounded bg-tu-ink text-white">TU-04 // CFO</span>
+              <span class="font-mono text-[10px] text-stone-400 font-bold">50% / 50%</span>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden border border-stone-200/80 w-full aspect-[4/5] bg-[#E8E6DF]">
+              <img src="/assets/card_ledger.jpg" alt="Ledger Cuerpo Completo" class="w-full h-full object-cover hover:scale-105 transition duration-500 block">
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-extrabold text-tu-ink">Ledger</h3>
+                <span class="text-[10px] font-mono font-bold text-stone-400">Deflación</span>
+              </div>
+              <p class="text-[11px] text-stone-500 mt-1 leading-snug">
+                Bucle ascendente de metal líquido en equilibrio; reduce automáticamente la cuota cuando sube la reserva.
+              </p>
+            </div>
+          </div>
+
+          <!-- TU-05 CÁPSULA DEL CLIENTE -->
+          <div onclick="playMechClick(740); openCapsuleSimulator()" class="tu-card p-4 flex flex-col justify-between space-y-3.5 cursor-pointer bg-[#FAF9F6] hover:border-tu-orange">
+            <div class="flex items-center justify-between px-1">
+              <span class="font-mono text-[10px] font-extrabold px-2 py-0.5 rounded pill-orange">TU-05 // NODO CLIENTE</span>
+              <span class="font-mono text-[10px] text-tu-orange font-bold">SINGLE-TENANT</span>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden border border-stone-200/80 w-full aspect-[4/5] bg-[#E8E6DF]">
+              <img src="/assets/card_ferro.jpg" alt="Cápsula Ferrofluido Single-Tenant" class="w-full h-full object-cover hover:scale-105 transition duration-500 block">
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <h3 class="text-base font-extrabold text-tu-ink">Cápsula Ferro</h3>
+                <span class="text-[10px] font-mono font-bold text-tu-orange">Unboxing 3D &rarr;</span>
+              </div>
+              <p class="text-[11px] text-stone-500 mt-1 leading-snug">
+                Cada organización vive aislada en su propio casco acrílico `#FF4F00` sobre pedestal de aluminio con exportación 1-clic.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- SEGUNDA FILA BENTO: CALCULADORA + ARBITRAJE + SANDBOX             -->
+      <!-- ================================================================= -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+        <!-- 5-COL ALUMINUM CALCULATOR CARD -->
+        <div class="lg:col-span-5 tu-aluminum-card p-7 flex flex-col justify-between space-y-5">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full pill-orange font-mono text-[10px] font-bold uppercase">
+                Economía Real sin Licencias
+              </span>
+              <span id="alabaster-users-pill" class="px-3 py-1 rounded-full bg-tu-ink text-white font-mono text-xs font-bold">
+                25 Empleados
+              </span>
+            </div>
+            <h3 class="text-2xl font-extrabold tracking-tight pt-1">
+              El coste de un servidor no se multiplica porque contrates a más gente.
+            </h3>
+            <p class="text-xs text-stone-600 font-medium leading-relaxed">
+              Las suites comerciales cobran por cada empleado nuevo aunque la máquina sea idéntica. El Comité de TalentUP solo repercute el coste físico del nodo.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-bold text-stone-700">
+              <span>Personas en tu organización</span>
+              <span class="font-mono text-[11px]">DESLIZA PARA COMPARAR</span>
+            </div>
+            <input id="bento-emp-slider" type="range" min="5" max="150" value="25" oninput="recalcBentoSavings()" class="w-full">
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-4 rounded-2xl bg-white border border-tu-border">
+              <div class="text-[11px] font-bold text-stone-500">Suites Cerradas (Mes)</div>
+              <div id="bento-trad-month" class="text-2xl font-extrabold text-tu-ink mt-0.5">€2,993</div>
+            </div>
+            <div class="p-4 rounded-2xl tu-ink-card">
+              <div class="text-[11px] font-semibold text-stone-400">TalentUP (Todo el Catálogo)</div>
+              <div id="bento-nexus-month" class="text-2xl font-extrabold text-tu-orange mt-0.5">€12.15</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white border border-tu-border flex items-center justify-between">
+            <div>
+              <div class="text-[10px] font-mono font-bold uppercase text-stone-500">Ahorro Anual Retenido</div>
+              <div id="bento-annual-saved" class="text-3xl font-extrabold text-tu-ink tracking-tight">€35,770/año</div>
+            </div>
+            <button onclick="playMechClick(640); switchTab('catalog')" class="px-4 py-2.5 rounded-full btn-tu-orange text-xs font-bold cursor-pointer">
+              Desplegar &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- 4-COL MATTE GRAPHITE CARD: BARE-METAL ARBITRAGE -->
+        <div class="lg:col-span-4 tu-ink-card p-7 flex flex-col justify-between space-y-5">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded-full bg-white/10 text-white font-mono text-[10px] font-bold uppercase">
+              Vulcan CTO &middot; Arbitraje Hierro
+            </span>
+            <span class="text-xs font-mono font-bold text-tu-orange" id="violet-sla-badge">SLA 99.98%</span>
+          </div>
+
+          <div>
+            <div class="text-xs font-medium text-stone-400">Proveedor Europeo Óptimo en Curso</div>
+            <h3 id="violet-winner-name" class="text-2xl font-extrabold text-white mt-1">Netcup Bare-Metal EPYC</h3>
+            <p id="violet-winner-dc" class="text-xs text-stone-400 mt-0.5 font-mono">Nuremberg DE-1 &middot; 16 vCPU / 64GB NVMe</p>
+          </div>
+
+          <div id="violet-providers-list" class="space-y-2.5">
+          </div>
+
+          <div class="pt-2 border-t border-white/15 flex items-center justify-between text-xs font-mono">
+            <span class="text-stone-400">Cápsulas activas:</span>
+            <span id="violet-instances-count" class="px-3 py-1 rounded-full bg-tu-orange text-white font-bold">0 nodos</span>
+          </div>
+        </div>
+
+        <!-- 3-COL WHITE BENTO CARD: CURATOR SANDBOX -->
+        <div class="lg:col-span-3 tu-card p-6 flex flex-col justify-between space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded-full pill-orange font-mono text-[10px] font-bold uppercase">
+              Curator I+D
+            </span>
+            <span class="text-xs font-mono font-semibold text-stone-400">Sandbox</span>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-extrabold">Homologación Abierta</h3>
+            <p class="text-xs text-stone-500 mt-1">
+              Proyectos en pruebas de estrés listos para entrar en producción:
+            </p>
+          </div>
+
+          <div id="mini-sandbox-list" class="space-y-2.5 flex-1 flex flex-col justify-center">
+          </div>
+
+          <button onclick="playMechClick(680); switchTab('sandbox')" class="w-full py-2.5 rounded-full subtle-box hover:bg-stone-200/60 text-xs font-bold transition cursor-pointer">
+            Ver Laboratorio I+D &rarr;
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- TERCERA FILA: CATÁLOGO GITHUB                                     -->
+      <!-- ================================================================= -->
+      <div class="space-y-4 pt-2">
+        <div class="flex flex-wrap items-center justify-between gap-4 px-1">
+          <div>
+            <h2 class="text-2xl font-extrabold tracking-tight">Suites Open Source Alojadas por TalentUP™</h2>
+            <p class="text-xs text-stone-500">Repositorios verificados de GitHub. Aprovisionamiento en cápsula aislada o descarga directa de Docker Compose.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="playMechClick(700); syncGitHubLive()" id="btn-home-gh-sync" class="px-4 py-2 rounded-full subtle-box hover:border-tu-orange text-xs font-mono font-bold cursor-pointer">
+              ↻ Sincronizar Estrellas GitHub API
+            </button>
+            <button onclick="playMechClick(640); switchTab('catalog')" class="px-4 py-2 rounded-full tu-card text-xs font-bold cursor-pointer">
+              Catálogo Completo &rarr;
+            </button>
+          </div>
+        </div>
+
+        <div id="home-catalog-preview" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- VISTA 2: CATÁLOGO GITHUB COMPLETO                                   -->
+    <!-- =================================================================== -->
+    <div id="section-catalog" class="space-y-6 hidden">
+      <div class="tu-card p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <span class="px-3 py-1 rounded-full pill-orange font-mono text-xs font-bold uppercase">
+            Invariante 1 &middot; Soberanía Open Source Total
+          </span>
+          <h2 class="text-3xl font-extrabold tracking-tight">
+            Catálogo Oficial de Repositorios Homologados
+          </h2>
+          <p class="text-sm text-stone-600">
+            Cada aplicación es software libre verificado (MIT, AGPLv3, GPLv3). Puedes aprovisionar tu cápsula gestionada en 1 clic o inspeccionar el manifiesto <code class="font-mono">docker-compose.yml</code> aislado que genera Vulcan CTO.
+          </p>
+        </div>
+        <div class="tu-orange-card px-7 py-5 rounded-3xl text-center shrink-0">
+          <div class="text-[11px] font-mono font-bold uppercase opacity-85">Licencias por Usuario</div>
+          <div class="text-4xl font-extrabold mt-0.5">€0.00</div>
+          <div class="text-[11px] font-mono opacity-85">Asientos Ilimitados</div>
+        </div>
+      </div>
+
+      <div id="full-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- VISTA 3: LABORATORIO SANDBOX I+D                                    -->
+    <!-- =================================================================== -->
+    <div id="section-sandbox" class="space-y-6 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center tu-card p-8">
+        <div class="lg:col-span-3 flex justify-center">
+          <div class="w-48 h-48 rounded-[28px] overflow-hidden border border-stone-200 shadow-inner">
+            <img src="/assets/morph_curator_head.jpg" class="w-full h-full object-cover block" alt="Curator CPO">
+          </div>
+        </div>
+        <div class="lg:col-span-9 space-y-3">
+          <span class="px-3 py-1 rounded-full pill-orange font-mono text-xs font-bold uppercase">
+            Curator CPO (TU-02) &middot; Invariante 4 de Meritocracia Algorítmica
+          </span>
+          <h2 class="text-3xl font-extrabold tracking-tight">
+            Laboratorio Sandbox de Innovación Continua
+          </h2>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            Ninguna aplicación tiene su puesto comprado. <strong>Curator</strong> escanea diariamente repositorios en GitHub, levanta contenedores de prueba y mide tres vectores: <strong>Calidad de Ingeniería (40%)</strong>, <strong>Velocidad de Innovación (40%)</strong> y <strong>Eficiencia de RAM (20%)</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div id="full-sandbox-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- VISTA 4: CONSTITUCIÓN ALGORÍTMICA & LIBRO MAYOR SHA-256             -->
+    <!-- =================================================================== -->
+    <div id="section-ledger" class="space-y-6 hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-5 space-y-6">
+          <div class="tu-orange-card p-7 space-y-4">
+            <span class="px-3 py-1 rounded-full bg-black/20 font-mono text-xs font-bold uppercase">
+              Código Inmutable
+            </span>
+            <h2 class="text-3xl font-extrabold tracking-tight">
+              Las 4 Invariantes de la Constitución IA
+            </h2>
+            <p class="text-xs opacity-90 leading-relaxed">
+              Programadas en <code class="bg-black/20 px-1.5 py-0.5 rounded font-mono">constitution.py</code>. Ni siquiera Atlas (CEO) puede alterarlas.
+            </p>
+            <div id="constitution-cards-list" class="space-y-2.5 pt-2">
+            </div>
+          </div>
+
+          <div class="tu-card p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-extrabold">Cápsulas Single-Tenant Activas</h3>
+              <button onclick="openCapsuleSimulator()" class="text-xs font-mono font-bold text-tu-orange hover:underline cursor-pointer">
+                Inspeccionar TU-05 &rarr;
+              </button>
+            </div>
+            <div id="ledger-instances-list" class="space-y-3">
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 tu-card p-7 space-y-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-mono font-bold text-stone-400 uppercase">Auditoría Criptográfica Encadenada</span>
+              <h3 class="text-2xl font-extrabold">Libro Mayor de Resoluciones (SHA-256)</h3>
+            </div>
+            <img src="/assets/morph_ledger_head.jpg" class="w-14 h-14 rounded-2xl object-cover border border-stone-200" alt="Ledger">
+          </div>
+
+          <div id="sha256-blocks-list" class="space-y-3 max-h-[600px] overflow-y-auto pr-2">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- VISTA 5 (NUEVA): OPERACIONES, DÓNDE ALOJAR TODO & CONEXIONES        -->
+    <!-- =================================================================== -->
+    <div id="section-ops" class="space-y-8 hidden">
+
+      <!-- Top Banner: Guía Maestra de Gestión del Negocio -->
+      <div class="tu-card p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8 space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full pill-orange font-mono text-[10px] font-bold uppercase">
+            <span>CENTRO DE MANDO DEL FUNDADOR // ARQUITECTURA DE PRODUCCIÓN Y CONEXIONES REALES</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Cómo gestionar TalentUP™, dónde alojar la plataforma y cómo escalar los nodos de clientes.
+          </h2>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            Todo el proyecto está ya empaquetado con <code class="font-mono bg-stone-100 px-1.5 py-0.5 rounded">Dockerfile</code>, <code class="font-mono bg-stone-100 px-1.5 py-0.5 rounded">docker-compose.prod.yml</code> y <code class="font-mono bg-stone-100 px-1.5 py-0.5 rounded">05_DEPLOY/Caddyfile</code>. Aquí tienes el estado en tiempo real de tus integraciones y la arquitectura exacta para operar con 0 empleados humanos.
+          </p>
+        </div>
+        <div class="lg:col-span-4 flex flex-col gap-3">
+          <button onclick="playMechClick(740); syncGitHubLive()" id="btn-ops-gh-sync" class="w-full py-3.5 rounded-full btn-tu-orange font-extrabold text-xs cursor-pointer shadow-sm">
+            ↻ Probar Conexión en Vivo con GitHub API
+          </button>
+          <button onclick="playMechClick(680); openComposeInspector('twenty')" class="w-full py-3 rounded-full subtle-box hover:border-tu-ink font-mono font-bold text-xs cursor-pointer">
+            { } Ver Manifiesto Docker Compose Single-Tenant
+          </button>
+        </div>
+      </div>
+
+      <!-- Matrix of 6 Live Connections (Fetched from /api/integrations/status) -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between px-1">
+          <div>
+            <span class="font-mono text-xs font-bold uppercase text-tu-orange">ESTADO DE CONEXIONES EN VIVO (/api/integrations/status)</span>
+            <h3 class="text-2xl font-extrabold">6 Conectores Operativos del Organismo Autónomo</h3>
+          </div>
+          <span id="integrations-timestamp" class="font-mono text-xs text-stone-400">Verificando...</span>
+        </div>
+
+        <div id="integrations-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        </div>
+      </div>
+
+      <!-- DÓNDE ALOJAR TODO (ARQUITECTURA EN 3 CAPAS + SIMULADOR DE ESCALADO DE SERVIDORES) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+        <!-- 7-COL: DÓNDE ALOJAR CADA PIEZA -->
+        <div class="lg:col-span-7 tu-card p-7 flex flex-col justify-between space-y-5">
+          <div>
+            <span class="px-3 py-1 rounded-full pill-orange font-mono text-[10px] font-bold uppercase">
+              GUÍA DE INFRAESTRUCTURA FÍSICA PASO A PASO
+            </span>
+            <h3 class="text-2xl font-extrabold mt-2">
+              ¿Dónde se aloja la web y dónde se alojan los contenedores de clientes?
+            </h3>
+          </div>
+
+          <div class="space-y-3.5 text-xs">
+            <div class="p-4 rounded-2xl subtle-box space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-extrabold text-tu-orange">CAPA 1 // WEB PRINCIPAL + MOTOR DEL COMITÉ IA (ESTE REPO)</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-tu-ink text-white font-mono text-[10px] font-bold">~€4.50/mes</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed">
+                Despliega la raíz de este proyecto (<code class="font-mono">Dockerfile</code> + <code class="font-mono">docker-compose.prod.yml</code>) en un VPS ligero de <strong>Hetzner Cloud (CX22)</strong>, <strong>Netcup</strong> o directamente en <strong>Railway / Coolify</strong>. Incluye <strong>Caddy 2</strong> que emite el certificado HTTPS para <code class="font-mono">talentup.cloud</code> de forma 100% automática.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl subtle-box space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-extrabold text-tu-ink">CAPA 2 // NODOS DE CÁPSULAS PARA CLIENTES (COOLIFY / TRAEFIK)</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-tu-orange text-white font-mono text-[10px] font-bold">€29.90/nodo</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed">
+                Para alojar las aplicaciones Open Source de tus clientes (Twenty CRM, Plane, Odoo, Mattermost), contrata nodos <strong>Netcup RS 8000 EPYC (16 vCPU / 64GB RAM NVMe en Nuremberg por 29,90€/mes)</strong> o <strong>Hetzner Dedicated</strong> con <strong>Coolify</strong> instalado. Cada servidor de 64GB RAM aloja entre <strong>35 y 50 cápsulas de clientes aisladas</strong>.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl subtle-box space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-extrabold text-stone-600">CAPA 3 // DNS COMODÍN + FACTURACIÓN AUTOMÁTICA</span>
+                <span class="px-2.5 py-0.5 rounded-full subtle-box font-mono text-[10px] font-bold">100% Automático</span>
+              </div>
+              <p class="text-stone-600 leading-relaxed">
+                En <strong>Cloudflare DNS</strong> apunta <code class="font-mono">A *.talentup.cloud</code> a la IP de tu clúster Coolify/Traefik. Así cualquier subdominio que pida un cliente (<code class="font-mono">acme.talentup.cloud</code>) tendrá TLS instantáneo. Conecta <strong>Stripe Billing</strong> para cobrar la cuota mensual exacta.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#121211] text-white font-mono text-[11px] space-y-1">
+            <div class="text-tu-orange font-bold"># Comando único para levantar TalentUP™ en tu servidor de producción:</div>
+            <div class="text-stone-300 select-all">docker compose -f docker-compose.prod.yml up -d --build</div>
+          </div>
+        </div>
+
+        <!-- 5-COL: SIMULADOR DE ESCALADO DE SERVIDORES Y FONDO DE RESERVA -->
+        <div class="lg:col-span-5 tu-ink-card p-7 flex flex-col justify-between space-y-5">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-white/10 text-tu-orange font-mono text-[10px] font-bold uppercase">
+                Calculadora de Clúster Bare-Metal
+              </span>
+              <span id="ops-clients-pill" class="px-3 py-1 rounded-full bg-tu-orange text-white font-mono text-xs font-bold">
+                100 Cápsulas Activas
+              </span>
+            </div>
+            <h3 class="text-2xl font-extrabold text-white pt-1">
+              Simulador de Capacidad Física y Reserva de Supervivencia
+            </h3>
+            <p class="text-xs text-stone-400 leading-relaxed">
+              Calcula cuántos servidores bare-metal de 64GB RAM necesitas según el número de cápsulas desplegadas por clientes:
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-bold text-stone-300">
+              <span>Cápsulas de Clientes Alojadas</span>
+              <span class="font-mono text-[11px] text-tu-orange">DESLIZA (10 A 1.000)</span>
+            </div>
+            <input id="ops-scale-slider" type="range" min="10" max="1000" step="10" value="100" oninput="recalcOpsCluster()" class="w-full">
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-4 rounded-2xl bg-white/10">
+              <div class="text-stone-400 font-mono text-[10px]">NODOS NETCUP 64GB</div>
+              <div id="ops-nodes-needed" class="text-2xl font-extrabold text-white mt-0.5">3 Servidores</div>
+              <div class="text-[10px] text-stone-400 mt-0.5">40 cápsulas / nodo EPYC</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/10">
+              <div class="text-stone-400 font-mono text-[10px]">COSTE HIERRO MENSUAL</div>
+              <div id="ops-hw-cost" class="text-2xl font-extrabold text-white mt-0.5">€89.70/m</div>
+              <div class="text-[10px] text-stone-400 mt-0.5">Nuremberg DE-1</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/10">
+              <div class="text-stone-400 font-mono text-[10px]">CÓMPUTO & SRE IA</div>
+              <div id="ops-ai-cost" class="text-2xl font-extrabold text-white mt-0.5">€16.00/m</div>
+              <div class="text-[10px] text-stone-400 mt-0.5">Monitorización 24/7</div>
+            </div>
+            <div class="p-4 rounded-2xl bg-tu-orange text-white">
+              <div class="text-white/85 font-mono text-[10px] font-bold">FONDO RESERVA I+D</div>
+              <div id="ops-reserve-gen" class="text-2xl font-extrabold mt-0.5">+€22.50/m</div>
+              <div class="text-[10px] text-white/85 mt-0.5">Colchón autónomo</div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white text-tu-ink flex items-center justify-between">
+            <div>
+              <div class="text-[10px] font-mono font-bold uppercase text-stone-500">Ahorro Generado a tus Clientes</div>
+              <div id="ops-client-savings" class="text-2xl font-extrabold text-tu-ink">€142,800/año</div>
+            </div>
+            <span class="px-3 py-1.5 rounded-full pill-orange font-mono text-[10px] font-bold">0€ Nóminas</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PANEL DE CONEXIÓN DIRECTA DE TOKENS EN 04_CONFIG/.ENV -->
+      <div class="tu-card p-7 space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="px-3 py-1 rounded-full pill-orange font-mono text-[10px] font-bold uppercase">
+              CONECTOR PLUG & PLAY // GUARDADO DIRECTO EN 04_CONFIG/.ENV
+            </span>
+            <h3 class="text-2xl font-extrabold mt-1.5">
+              Conectar APIs de Producción (GitHub, Coolify, Cloudflare y Stripe)
+            </h3>
+            <p class="text-xs text-stone-500 mt-0.5">
+              Nota: Tu clave de inferencia IA (<strong>NVIDIA Nemotron-3-Ultra-550b vía Nebius Token Factory</strong>) ya está detectada y activa en <code class="font-mono">04_CONFIG/.env</code>.
+            </p>
+          </div>
+          <span id="env-save-status" class="hidden px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono text-xs font-bold">
+            ✓ Guardado en 04_CONFIG/.env
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 text-xs">
+          <div>
+            <label class="block font-mono font-bold text-stone-600 mb-1.5">1. GITHUB_PERSONAL_TOKEN</label>
+            <input id="cfg-gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" class="w-full bg-white border border-stone-300 rounded-xl px-3.5 py-2.5 font-mono focus:outline-none focus:border-tu-orange">
+          </div>
+          <div>
+            <label class="block font-mono font-bold text-stone-600 mb-1.5">2. COOLIFY_API_TOKEN (Netcup/Hetzner)</label>
+            <input id="cfg-coolify-token" type="password" placeholder="coolify_tok_xxxxxxxxxxxx" class="w-full bg-white border border-stone-300 rounded-xl px-3.5 py-2.5 font-mono focus:outline-none focus:border-tu-orange">
+          </div>
+          <div>
+            <label class="block font-mono font-bold text-stone-600 mb-1.5">3. CLOUDFLARE_API_TOKEN (*.talentup.cloud)</label>
+            <input id="cfg-cf-token" type="password" placeholder="cf_dns_xxxxxxxxxxxxxxxxx" class="w-full bg-white border border-stone-300 rounded-xl px-3.5 py-2.5 font-mono focus:outline-none focus:border-tu-orange">
+          </div>
+          <div>
+            <label class="block font-mono font-bold text-stone-600 mb-1.5">4. STRIPE_SECRET_KEY (Cuota Física)</label>
+            <input id="cfg-stripe-key" type="password" placeholder="sk_live_xxxxxxxxxxxxxxxx" class="w-full bg-white border border-stone-300 rounded-xl px-3.5 py-2.5 font-mono focus:outline-none focus:border-tu-orange">
+          </div>
+        </div>
+
+        <div class="flex justify-end">
+          <button onclick="playMechClick(800); saveEnvConfig()" class="px-6 py-3 rounded-full btn-tu-orange font-extrabold text-xs cursor-pointer">
+            Guardar Conectores en 04_CONFIG/.env y Actualizar Estado &rarr;
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- VISTA 6: BRAND BOOK & SISTEMA DE DISEÑO LIQUID–SOLID                -->
+    <!-- =================================================================== -->
+    <div id="section-design" class="space-y-8 hidden">
+
+      <!-- Manifesto Header -->
+      <div class="tu-card p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="px-3 py-1 rounded-full pill-orange font-mono text-xs font-bold uppercase">
+            TALENTUP™ DESIGN SYSTEM // EDICIÓN COLECCIONISTA 10/10
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-[1.08]">
+            Porcelana Sólida para la Ley.<br>
+            <span class="font-serif italic font-normal text-tu-orange">Mercurio Líquido para la Inteligencia.</span>
+          </h2>
+          <p class="text-sm text-stone-600 leading-relaxed max-w-2xl">
+            Inspirado en el diseño industrial de <strong>Dieter Rams (Braun)</strong>, la ingeniería modular de <strong>Teenage Engineering</strong> y las esculturas de arte coleccionable de estudio. <strong>TalentUP™</strong> rechaza los clichés visuales de la IA (prohibidos los degradados morados, neones cian y rostros sintéticos) para representar su naturaleza mediante la física de materiales reales.
+          </p>
+          <div class="grid grid-cols-3 gap-3 pt-2">
+            <div class="p-4 rounded-2xl subtle-box">
+              <div class="font-mono text-[10px] font-bold text-stone-400">MATERIAL 01</div>
+              <div class="text-sm font-extrabold mt-0.5">Porcelana Mate</div>
+              <div class="text-[11px] text-stone-500 mt-0.5">Representa las 4 leyes constitucionales inmutables.</div>
+            </div>
+            <div class="p-4 rounded-2xl subtle-box">
+              <div class="font-mono text-[10px] font-bold text-stone-400">MATERIAL 02</div>
+              <div class="text-sm font-extrabold mt-0.5">Cromo Líquido (Hg)</div>
+              <div class="text-[11px] text-stone-500 mt-0.5">Representa el arbitraje y escaneo continuo en vivo.</div>
+            </div>
+            <div class="p-4 rounded-2xl subtle-box">
+              <div class="font-mono text-[10px] font-bold text-tu-orange">SEÑAL ÓPTICA</div>
+              <div class="text-sm font-extrabold mt-0.5">Visor #FF4F00</div>
+              <div class="text-[11px] text-stone-500 mt-0.5">Cápsula de policarbonato negro con ojos de estado activo.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="rounded-[28px] bg-[#E9E7DF] border border-stone-200 p-4 shadow-inner">
+            <img src="/assets/talentup_concept_1_morph.jpg" class="w-full h-auto rounded-2xl block" alt="TalentUP 4 Figures">
+            <div class="flex justify-between items-center pt-3 px-1 font-mono text-[10px] text-stone-500">
+              <span>FIGURAS OFICIALES TU-01 .. TU-04</span>
+              <span>OCTANE RENDER // 8K PBR SHADERS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color Tokens & Typography Spec -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-7 tu-card p-7 space-y-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="font-mono text-[10px] font-bold uppercase text-tu-orange">SISTEMA CROMÁTICO INDUSTRIAL</span>
+              <h3 class="text-xl font-extrabold">Paleta Oficial (Haz clic para copiar HEX)</h3>
+            </div>
+            <span id="copy-toast" class="px-3 py-1 rounded-full pill-orange font-mono text-[10px] font-bold hidden">¡Copiado!</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <div onclick="copyHex('#F4F4F2')" class="p-3 rounded-2xl border border-stone-300 bg-[#F4F4F2] cursor-pointer hover:scale-105 transition space-y-8">
+              <div class="w-6 h-6 rounded-full bg-white border border-stone-300"></div>
+              <div>
+                <div class="text-xs font-extrabold">Anodized BG</div>
+                <div class="font-mono text-[11px] text-stone-500">#F4F4F2</div>
+              </div>
+            </div>
+
+            <div onclick="copyHex('#FFFFFF')" class="p-3 rounded-2xl border border-stone-300 bg-[#FFFFFF] cursor-pointer hover:scale-105 transition space-y-8">
+              <div class="w-6 h-6 rounded-full bg-[#F4F4F2] border border-stone-300"></div>
+              <div>
+                <div class="text-xs font-extrabold">Porcelain Card</div>
+                <div class="font-mono text-[11px] text-stone-500">#FFFFFF</div>
+              </div>
+            </div>
+
+            <div onclick="copyHex('#ECEAE3')" class="p-3 rounded-2xl border border-stone-300 bg-[#ECEAE3] cursor-pointer hover:scale-105 transition space-y-8">
+              <div class="w-6 h-6 rounded-full bg-white border border-stone-300"></div>
+              <div>
+                <div class="text-xs font-extrabold">Studio Cyclorama</div>
+                <div class="font-mono text-[11px] text-stone-500">#ECEAE3</div>
+              </div>
+            </div>
+
+            <div onclick="copyHex('#111111')" class="p-3 rounded-2xl border border-stone-800 bg-[#111111] text-white cursor-pointer hover:scale-105 transition space-y-8">
+              <div class="w-6 h-6 rounded-full bg-tu-orange"></div>
+              <div>
+                <div class="text-xs font-extrabold">Visor Graphite</div>
+                <div class="font-mono text-[11px] text-stone-400">#111111</div>
+              </div>
+            </div>
+
+            <div onclick="copyHex('#FF4F00')" class="p-3 rounded-2xl bg-[#FF4F00] text-white cursor-pointer hover:scale-105 transition space-y-8 shadow-md">
+              <div class="w-6 h-6 rounded-full bg-white"></div>
+              <div>
+                <div class="text-xs font-extrabold">Intl. Orange</div>
+                <div class="font-mono text-[11px] text-white/90">#FF4F00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl subtle-box flex flex-wrap items-center justify-between gap-2 text-xs">
+            <span class="font-bold text-stone-700">🚫 Regla Anti-Cliché IA:</span>
+            <span class="font-mono text-[11px] text-stone-500">Prohibidos morados (#8B5CF6), cianes neón (#06B6D4) y degradados iridiscentes.</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 tu-ink-card p-7 flex flex-col justify-between space-y-4">
+          <div>
+            <span class="font-mono text-[10px] font-bold uppercase text-tu-orange">ARQUITECTURA TIPOGRÁFICA</span>
+            <h3 class="text-xl font-extrabold text-white mt-1">Tríada Editorial + Técnica</h3>
+          </div>
+
+          <div class="space-y-3">
+            <div class="p-3.5 rounded-2xl bg-white/10">
+              <div class="font-mono text-[10px] text-stone-400">01. GEOMETRIC GROTESK // PLUS JAKARTA SANS</div>
+              <div class="text-lg font-extrabold text-white mt-0.5">Estructura Industrial Limpia</div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-white/10">
+              <div class="font-mono text-[10px] text-stone-400">02. EDITORIAL SERIF // INSTRUMENT SERIF ITALIC</div>
+              <div class="font-serif italic text-2xl text-tu-orange mt-0.5">Contraste humano y distinción de marca</div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-white/10">
+              <div class="font-mono text-[10px] text-stone-400">03. TELEMETRÍA // JETBRAINS MONO</div>
+              <div class="font-mono text-xs text-stone-200 mt-1">SHA-256 &middot; €2.25/mes &middot; 99.98% SLA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Macro + Full Body Sheet of the 4 Figures -->
+      <div class="tu-card p-7 space-y-5">
+        <div>
+          <span class="font-mono text-[10px] font-bold uppercase text-tu-orange">LÁMINA OFICIAL DE PERSONAJES</span>
+          <h3 class="text-2xl font-extrabold">Comparativa Macro 2x (Corona & Visor) + Escultura Cuerpo Entero</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div class="p-4 rounded-3xl subtle-box space-y-3">
+            <div class="grid grid-cols-2 gap-2 h-52">
+              <img src="/assets/morph_atlas_head.jpg" class="w-full h-full object-cover rounded-2xl border border-stone-200" alt="Atlas Macro">
+              <img src="/assets/card_atlas.jpg" class="w-full h-full object-cover rounded-2xl border border-stone-200" alt="Atlas Full">
+            </div>
+            <div>
+              <span class="font-mono text-[10px] font-bold text-tu-orange">TU-01 // ATLAS (CEO)</span>
+              <h4 class="font-extrabold text-sm">Corona Simétrica de Cromo</h4>
+              <p class="text-[11px] text-stone-500 mt-0.5">Autoridad constitucional y firma criptográfica de cada ciclo.</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-3xl subtle-box space-y-3">
+            <div class="grid grid-cols-2 gap-2 h-52">
+              <img src="/assets/morph_curator_head.jpg" class="w-full h-full object-cover rounded-2xl border border-stone-200" alt="Curator Macro">
+              <img src="/assets/card_curator.jpg" class="w-full h-full object-cover rounded-2xl border border-stone-200" alt="Curator Full">
+            </div>
+            <div>
+              <span class="font-mono text-[10px] font-bold text-tu-orange">TU-02 // CURATOR (CPO)</span>
+              <h4 class="font-extrabold text-sm">Gotas en Gravedad Cero</h4>
+              <p class="text-[11px] text-stone-500 mt-0.5">Fluidez de exploración; detecta las joyas Open Source en GitHub.</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-3xl subtle-box space-y-3">
+            <div class="grid grid-cols-2 gap-2 h-52">
+              <img src="/assets/morph_vulcan_head.jpg" class="w-full h-full object-cover rounded-2xl border border-stone-200" alt="Vulcan Macro">
+              <img src="/assets/card_vulcan.jpg" class="w-full h-full object-cover rounded-2xl border border-stone-200" alt="Vulcan Full">
+            </div>
+            <div>
+              <span class="font-mono text-[10px] font-bold text-tu-orange">TU-03 // VULCAN (CTO)</span>
+              <h4 class="font-extrabold text-sm">Chasis Macizo + Armadura</h4>
+              <p class="text-[11px] text-stone-500 mt-0.5">Base indestructible de porcelana con hombros de metal fundido.</p>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-3xl subtle-box space-y-3">
+            <div class="grid grid-cols-2 gap-2 h-52">
+              <img src="/assets/morph_ledger_head.jpg" class="w-full h-full object-cover rounded-2xl border border-stone-200" alt="Ledger Macro">
+              <img src="/assets/card_ledger.jpg" class="w-full h-full object-cover rounded-2xl border border-stone-200" alt="Ledger Full">
+            </div>
+            <div>
+              <span class="font-mono text-[10px] font-bold text-tu-orange">TU-04 // LEDGER (CFO)</span>
+              <h4 class="font-extrabold text-sm">Bucle Líquido en Equilibrio</h4>
+              <p class="text-[11px] text-stone-500 mt-0.5">Precisión matemática al céntimo; deflación automática perpetua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 1: DESPLIEGUE DE CÁPSULA SINGLE-TENANT                          -->
+  <!-- ===================================================================== -->
+  <div id="deploy-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+    <div class="tu-card max-w-lg w-full p-7 space-y-6 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3.5">
+          <img id="mdl-logo" src="" class="w-12 h-12 rounded-2xl subtle-box p-1 object-contain" alt="Logo">
+          <div>
+            <span class="px-2.5 py-0.5 rounded-full pill-orange font-mono font-bold text-[10px] uppercase">Vulcan CTO Single-Tenant</span>
+            <h3 id="mdl-title" class="text-xl font-extrabold mt-1">Desplegar Suite</h3>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="w-9 h-9 rounded-full subtle-box font-bold flex items-center justify-center cursor-pointer">✕</button>
+      </div>
+
+      <div class="p-5 rounded-2xl subtle-box space-y-2.5 text-xs font-mono">
+        <div class="flex justify-between text-stone-500">
+          <span>Repositorio Oficial:</span>
+          <span id="mdl-repo" class="text-tu-ink font-bold">--</span>
+        </div>
+        <div class="flex justify-between text-stone-500">
+          <span>Imagen Docker:</span>
+          <span id="mdl-docker" class="text-stone-800">--</span>
+        </div>
+        <div class="flex justify-between text-stone-500">
+          <span>Hierro Físico Bare-Metal:</span>
+          <span id="mdl-hw" class="text-tu-ink font-bold">€0.00</span>
+        </div>
+        <div class="flex justify-between text-stone-500">
+          <span>Cómputo & Vigilancia IA:</span>
+          <span id="mdl-ai" class="text-tu-ink font-bold">€0.00</span>
+        </div>
+        <div class="flex justify-between text-stone-500">
+          <span>Reserva Supervivencia (3%):</span>
+          <span id="mdl-res" class="text-tu-ink font-bold">€0.00</span>
+        </div>
+        <div class="flex justify-between text-tu-orange font-bold">
+          <span>Licencias y Nóminas Humanas:</span>
+          <span>€0.00</span>
+        </div>
+        <div class="flex justify-between items-baseline border-t border-stone-300 pt-3 mt-2 font-sans">
+          <span class="text-sm font-extrabold">CUOTA FÍSICA EXACTA:</span>
+          <span id="mdl-total" class="text-2xl font-extrabold text-tu-orange">€0.00/mes</span>
+        </div>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-stone-700 mb-1.5">Subdominio Aislado con Certificado TLS</label>
+          <div class="flex items-center">
+            <input id="mdl-sub" type="text" placeholder="tu-organizacion" class="w-full bg-white border border-stone-300 rounded-l-xl px-4 py-3 font-mono focus:outline-none focus:border-tu-orange">
+            <span class="subtle-box border-l-0 px-4 py-3 rounded-r-xl font-mono text-stone-500">.talentup.cloud</span>
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold text-stone-700 mb-1.5">Email para Credenciales Admin & Exportación 1-Clic</label>
+          <input id="mdl-email" type="email" placeholder="admin@organizacion.org" class="w-full bg-white border border-stone-300 rounded-xl px-4 py-3 font-mono focus:outline-none focus:border-tu-orange">
+        </div>
+      </div>
+
+      <div class="flex gap-3 pt-1">
+        <button onclick="closeModal()" class="w-1/2 py-3.5 rounded-full subtle-box text-xs font-bold cursor-pointer">
+          Cancelar
+        </button>
+        <button onclick="submitDeploy()" id="btn-mdl-submit" class="w-1/2 py-3.5 rounded-full btn-tu-orange text-xs font-extrabold cursor-pointer">
+          Aprovisionar Cápsula &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 2: UNBOXING & ENSAMBLAJE INDUSTRIAL DE CÁPSULA FERRO (TU-05)    -->
+  <!-- ===================================================================== -->
+  <div id="capsule-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+    <div class="tu-card max-w-2xl w-full p-7 space-y-5 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="px-3 py-1 rounded-full pill-orange font-mono font-bold text-[10px] uppercase">ESCULTURA TU-05 // SECUENCIA DE UNBOXING INDUSTRIAL</span>
+          <h3 class="text-2xl font-extrabold mt-1">Cápsula Ferrofluido Single-Tenant</h3>
+        </div>
+        <button onclick="closeCapsuleSimulator()" class="w-9 h-9 rounded-full subtle-box font-bold flex items-center justify-center cursor-pointer">✕</button>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+        <div class="sm:col-span-5 rounded-2xl overflow-hidden border border-stone-200 aspect-[4/5]">
+          <img src="/assets/card_ferro.jpg" class="w-full h-full object-cover block" alt="Cápsula TU-05">
+        </div>
+        <div class="sm:col-span-7 space-y-2.5 text-xs">
+          <div id="unbox-step-1" class="p-3.5 rounded-2xl subtle-box transition">
+            <div class="font-mono text-[10px] font-bold text-tu-ink">FASE 01 // PEDESTAL DE ALUMINIO BARE-METAL</div>
+            <p class="text-stone-600 mt-0.5">Reserva física de vCPU + NVMe dedicada en el centro de datos europeo ganador del arbitraje de Vulcan.</p>
+          </div>
+          <div id="unbox-step-2" class="p-3.5 rounded-2xl subtle-box transition">
+            <div class="font-mono text-[10px] font-bold text-tu-ink">FASE 02 // INYECCIÓN DE NÚCLEO FERROFLUIDO (DOCKER)</div>
+            <p class="text-stone-600 mt-0.5">Despliegue de la imagen Open Source oficial con asientos ilimitados y 0,00€ en licencias.</p>
+          </div>
+          <div id="unbox-step-3" class="p-3.5 rounded-2xl subtle-box transition">
+            <div class="font-mono text-[10px] font-bold text-tu-orange">FASE 03 // SELLADO DE CASCO ACRÍLICO #FF4F00 (TLS)</div>
+            <p class="text-stone-600 mt-0.5">Aislamiento cgroups + red privada + certificado criptográfico X.509 exclusivo.</p>
+          </div>
+          <div id="unbox-step-4" class="p-3.5 rounded-2xl subtle-box transition">
+            <div class="font-mono text-[10px] font-bold text-stone-500">FASE 04 // SOBERANÍA Y EXPORTACIÓN 1-CLIC</div>
+            <p class="text-stone-600 mt-0.5">Descarga instantánea de tu `.tar.gz` (PostgreSQL + volúmenes) sin bloqueo de proveedor.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="export-sim-status" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 font-mono text-xs">
+        ✓ Ensamblaje completado & Snapshot soberano verificado: <strong>talentup-sovereign-export-sha256.tar.gz</strong>.
+      </div>
+
+      <div class="flex gap-3">
+        <button onclick="runCapsuleUnboxingSequence()" class="w-1/2 py-3.5 rounded-full subtle-box hover:border-tu-orange font-bold text-xs cursor-pointer">
+          ▶ Simular Ensamblaje & Exportación (.tar.gz)
+        </button>
+        <button onclick="closeCapsuleSimulator(); switchTab('catalog');" class="w-1/2 py-3.5 rounded-full btn-tu-orange font-extrabold text-xs cursor-pointer">
+          Elegir Suite para mi Cápsula &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL 3: INSPECTOR DE MANIFIESTO DOCKER COMPOSE SINGLE-TENANT         -->
+  <!-- ===================================================================== -->
+  <div id="compose-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+    <div class="tu-card max-w-2xl w-full p-7 space-y-5 shadow-2xl">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="px-3 py-1 rounded-full pill-orange font-mono font-bold text-[10px] uppercase">VULCAN CTO // GENERADOR DE INFRAESTRUCTURA AISLADA</span>
+          <h3 id="cmp-title" class="text-xl font-extrabold mt-1">Manifiesto Docker Compose Single-Tenant</h3>
+        </div>
+        <button onclick="closeComposeInspector()" class="w-9 h-9 rounded-full subtle-box font-bold flex items-center justify-center cursor-pointer">✕</button>
+      </div>
+
+      <pre id="cmp-code" class="p-4 rounded-2xl bg-[#121211] text-stone-200 font-mono text-[11px] overflow-x-auto max-h-[380px] leading-relaxed select-all"></pre>
+
+      <div class="flex gap-3">
+        <button onclick="copyComposeYaml()" id="btn-copy-cmp" class="w-1/2 py-3.5 rounded-full subtle-box font-bold text-xs cursor-pointer">
+          Copiar docker-compose.yml
+        </button>
+        <button onclick="downloadComposeYaml()" class="w-1/2 py-3.5 rounded-full btn-tu-orange font-extrabold text-xs cursor-pointer">
+          Descargar Manifiesto (.yml) &darr;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let stateData = null;
+    let selectedExec = 'atlas';
+    let inspectorLens = 'macro';
+    let cadModeActive = false;
+    let modalAppId = null;
+    let currentComposeYaml = '';
+    let currentComposeApp = 'twenty';
+    let audioCtx = null;
+
+    function playMechClick(freq = 600) {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.028);
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.028);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.03);
+      } catch (_) {}
+    }
+
+    const EXECUTIVES = {
+      atlas: {
+        name: 'Atlas',
+        badge: 'TU-01 // CEO & GOBERNADOR',
+        ratio: '60% SÓLIDO · 40% LÍQUIDO',
+        solidPct: 60,
+        liquidPct: 40,
+        subtitle: 'Corona Simétrica de Cromo Líquido · Custodio Constitucional',
+        imgFull: '/assets/insp_full_atlas.jpg',
+        imgMacro: '/assets/insp_macro_atlas.jpg'
+      },
+      curator: {
+        name: 'Curator',
+        badge: 'TU-02 // CPO & I+D GITHUB',
+        ratio: '35% SÓLIDO · 65% LÍQUIDO',
+        solidPct: 35,
+        liquidPct: 65,
+        subtitle: 'Gotas de Mercurio en Gravedad Cero · Benchmarking Sandbox',
+        imgFull: '/assets/insp_full_curator.jpg',
+        imgMacro: '/assets/insp_macro_curator.jpg'
+      },
+      vulcan: {
+        name: 'Vulcan',
+        badge: 'TU-03 // CTO & ARBITRAJE INFRA',
+        ratio: '75% SÓLIDO · 25% LÍQUIDO',
+        solidPct: 75,
+        liquidPct: 25,
+        subtitle: 'Chasis Pesado de Porcelana y Acero Fundido · 99.98% Uptime',
+        imgFull: '/assets/insp_full_vulcan.jpg',
+        imgMacro: '/assets/insp_macro_vulcan.jpg'
+      },
+      ledger: {
+        name: 'Ledger',
+        badge: 'TU-04 // CFO & DEFLACIÓN',
+        ratio: '50% SÓLIDO · 50% LÍQUIDO',
+        solidPct: 50,
+        liquidPct: 50,
+        subtitle: 'Bucle Ascendente de Metal Líquido · Coste Físico Asintótico',
+        imgFull: '/assets/insp_full_ledger.jpg',
+        imgMacro: '/assets/insp_macro_ledger.jpg'
+      }
+    };
+
+    function toggleCadMode() {
+      setStageMode(cadModeActive ? 'pbr' : 'cad');
+    }
+
+    function setStageMode(mode) {
+      playMechClick(mode === 'cad' ? 820 : 520);
+      cadModeActive = (mode === 'cad');
+      const svg = document.getElementById('cad-blueprint-overlay');
+      const img = document.getElementById('hero-main-img');
+      const pbrBtn = document.getElementById('stage-btn-pbr');
+      const cadBtn = document.getElementById('stage-btn-cad');
+      const topDot = document.getElementById('cad-dot');
+      const topLbl = document.getElementById('cad-label');
+      const hudLbl = document.getElementById('hud-cam-label');
+
+      if (cadModeActive) {
+        svg.classList.remove('hidden');
+        img.classList.add('cad-xray-img');
+        cadBtn.className = 'px-3 py-1.5 rounded-full bg-tu-orange text-white transition cursor-pointer';
+        pbrBtn.className = 'px-3 py-1.5 rounded-full text-stone-500 hover:text-tu-ink transition cursor-pointer';
+        topDot.className = 'w-2 h-2 rounded-full bg-tu-orange';
+        topLbl.innerText = 'CAD: ON';
+        hudLbl.innerText = 'CAD-XRAY // COTAS MILIMÉTRICAS & TENSIÓN SUPERFICIAL Hg';
+      } else {
+        svg.classList.add('hidden');
+        img.classList.remove('cad-xray-img');
+        pbrBtn.className = 'px-3 py-1.5 rounded-full bg-tu-ink text-white transition cursor-pointer';
+        cadBtn.className = 'px-3 py-1.5 rounded-full text-stone-500 hover:text-tu-ink transition cursor-pointer';
+        topDot.className = 'w-2 h-2 rounded-full bg-stone-400';
+        topLbl.innerText = 'CAD: OFF';
+        hudLbl.innerText = 'CAM-01 // 50MM STUDIO LENS · 1376×768 RAW';
+      }
+    }
+
+    function handleStageParallax(e) {
+      const container = document.getElementById('hero-stage-container');
+      const wrap = document.getElementById('hero-stage-wrap');
+      if (!container || !wrap) return;
+      const rect = container.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      wrap.style.transform = `perspective(1200px) rotateY(${x * 3}deg) rotateX(${-y * 2}deg) scale(1.005)`;
+    }
+
+    function resetStageParallax() {
+      const wrap = document.getElementById('hero-stage-wrap');
+      if (wrap) wrap.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1)';
+    }
+
+    function switchTab(tab) {
+      ['brand', 'catalog', 'sandbox', 'ledger', 'ops', 'design'].forEach(t => {
+        const sec = document.getElementById(`section-${t}`);
+        if (sec) sec.classList.add('hidden');
+        const b = document.getElementById(`tab-${t}`);
+        if (b) {
+          b.className = 'px-3 py-1.5 rounded-full text-[11px] font-semibold text-stone-600 hover:text-tu-ink transition cursor-pointer flex items-center gap-1 whitespace-nowrap';
+        }
+      });
+      const target = document.getElementById(`section-${tab}`);
+      if (target) target.classList.remove('hidden');
+      const active = document.getElementById(`tab-${tab}`);
+      if (active) {
+        active.className = 'px-3 py-1.5 rounded-full text-[11px] font-bold btn-tu-orange transition cursor-pointer flex items-center gap-1 whitespace-nowrap';
+      }
+      if (tab === 'ops') {
+        loadIntegrationsStatus();
+        recalcOpsCluster();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setInspectorLens(mode) {
+      inspectorLens = mode;
+      const btnMacro = document.getElementById('lens-btn-macro');
+      const btnFull = document.getElementById('lens-btn-full');
+      const tag = document.getElementById('exec-lens-tag');
+
+      if (mode === 'macro') {
+        btnMacro.className = 'px-2.5 py-1 rounded-lg bg-tu-ink text-white transition cursor-pointer';
+        btnFull.className = 'px-2.5 py-1 rounded-lg text-stone-500 hover:text-tu-ink transition cursor-pointer';
+        tag.innerText = 'MACRO 2X // CORONA & VISOR #FF4F00';
+      } else {
+        btnFull.className = 'px-2.5 py-1 rounded-lg bg-tu-ink text-white transition cursor-pointer';
+        btnMacro.className = 'px-2.5 py-1 rounded-lg text-stone-500 hover:text-tu-ink transition cursor-pointer';
+        tag.innerText = 'CUERPO ENTERO 1X // ESCULTURA COMPLETA';
+      }
+      inspectExecutive(selectedExec);
+    }
+
+    function inspectExecutive(key) {
+      selectedExec = key;
+      if (!stateData) return;
+      const ex = EXECUTIVES[key];
+
+      const imgEl = document.getElementById('exec-portrait-img');
+      imgEl.src = inspectorLens === 'macro' ? ex.imgMacro : ex.imgFull;
+
+      document.getElementById('exec-name').innerText = ex.name;
+      document.getElementById('exec-subtitle').innerText = ex.subtitle;
+      document.getElementById('exec-badge').innerText = ex.badge;
+      document.getElementById('exec-ratio-pill').innerText = ex.ratio;
+      document.getElementById('exec-solid-bar').style.width = `${ex.solidPct}%`;
+      document.getElementById('exec-liquid-bar').style.width = `${ex.liquidPct}%`;
+
+      const titles = { atlas: 'ATLAS', curator: 'CURATOR', vulcan: 'VULCAN', ledger: 'LEDGER' };
+      ['atlas', 'curator', 'vulcan', 'ledger'].forEach((k, idx) => {
+        const pill = document.getElementById(`pill-${k}`);
+        pill.className = k === key
+          ? 'py-1.5 rounded-xl text-xs font-bold btn-tu-orange transition cursor-pointer'
+          : 'py-1.5 rounded-xl text-xs font-semibold text-stone-600 hover:text-stone-900 transition cursor-pointer';
+
+        const hs = document.getElementById(`hotspot-${k}`);
+        if (hs) {
+          hs.className = k === key
+            ? 'op1-key-active p-3 text-left cursor-pointer flex items-center justify-between'
+            : 'op1-key p-3 text-left cursor-pointer flex items-center justify-between';
+        }
+
+        const pin = document.getElementById(`crown-pin-${k}`);
+        if (pin) {
+          if (k === key) {
+            pin.className = 'px-2.5 py-0.5 rounded-full bg-tu-orange text-white font-mono text-[9px] font-bold shadow-md transition';
+            pin.innerText = `● TU-0${idx + 1} ${titles[k]}`;
+          } else {
+            pin.className = 'opacity-0 group-hover:opacity-100 px-2.5 py-0.5 rounded-full bg-tu-ink/90 text-white font-mono text-[9px] font-bold shadow-md transition';
+            pin.innerText = `TU-0${idx + 1} ${titles[k]}`;
+          }
+        }
+
+        const colCard = document.getElementById(`collector-card-${k}`);
+        if (colCard) {
+          colCard.className = k === key
+            ? 'tu-card p-4 flex flex-col justify-between space-y-3.5 cursor-pointer border-2 border-tu-orange'
+            : 'tu-card p-4 flex flex-col justify-between space-y-3.5 cursor-pointer';
+        }
+      });
+
+      const discountPct = Math.round((1 - stateData.arbitrage_discount_factor) * 100);
+      const thoughts = {
+        atlas: `"Ciclo #${stateData.cycles_completed} completado. Las 4 invariantes constitucionales están verificadas y firmadas en SHA-256. 0€ en nóminas humanas."`,
+        curator: `"Auditados ${stateData.catalog.length} repositorios líderes en GitHub con nota media de ${stateData.curator_summary.average_innovation_score}/100."`,
+        vulcan: `"Enrutando despliegues hacia ${stateData.active_provider} (${stateData.active_datacenter}). Uptime sostenido en ${stateData.uptime_percent}%."`,
+        ledger: `"Ahorro de arbitraje del ${discountPct}% aplicado. Cuota física media reducida a €${stateData.ledger_summary.avg_instance_price_eur.toFixed(2)}/mes."`
+      };
+      document.getElementById('exec-thought').innerText = thoughts[key];
+
+      const statsHtml = {
+        atlas: `
+          <div class="p-3 rounded-2xl subtle-box"><div class="text-[10px] text-stone-400 font-mono font-bold">CONSTITUCIÓN</div><div class="text-base font-extrabold mt-0.5">4/4 Activas</div></div>
+          <div class="p-3 rounded-2xl subtle-box"><div class="text-[10px] text-stone-400 font-mono font-bold">PLANTILLA HUMANA</div><div class="text-base font-extrabold mt-0.5">0 Empleados</div></div>
+        `,
+        curator: `
+          <div class="p-3 rounded-2xl subtle-box"><div class="text-[10px] text-stone-400 font-mono font-bold">SCORE GITHUB</div><div class="text-base font-extrabold mt-0.5">${stateData.curator_summary.average_innovation_score} / 100</div></div>
+          <div class="p-3 rounded-2xl subtle-box"><div class="text-[10px] text-stone-400 font-mono font-bold">LÍDER ACTUAL</div><div class="text-base font-extrabold mt-0.5 truncate">${stateData.curator_summary.top_performer}</div></div>
+        `,
+        vulcan: `
+          <div class="p-3 rounded-2xl subtle-box"><div class="text-[10px] text-stone-400 font-mono font-bold">UPTIME REAL</div><div class="text-base font-extrabold mt-0.5">${stateData.uptime_percent}%</div></div>
+          <div class="p-3 rounded-2xl subtle-box"><div class="text-[10px] text-stone-400 font-mono font-bold">CÁPSULAS</div><div class="text-base font-extrabold mt-0.5">${stateData.instances.length} Activas</div></div>
+        `,
+        ledger: `
+          <div class="p-3 rounded-2xl subtle-box"><div class="text-[10px] text-stone-400 font-mono font-bold">RESERVA IA</div><div class="text-base font-extrabold mt-0.5">${stateData.reserve_runway_months} Meses</div></div>
+          <div class="p-3 rounded-2xl subtle-box"><div class="text-[10px] text-stone-400 font-mono font-bold">LICENCIAS</div><div class="text-base font-extrabold mt-0.5">€0.00 / mes</div></div>
+        `
+      };
+      document.getElementById('exec-stats-row').innerHTML = statsHtml[key];
+    }
+
+    function buildAppCardHtml(app, state) {
+      const p = app.pricing;
+      return `
+        <div class="tu-card p-6 flex flex-col justify-between space-y-5">
+          <div class="space-y-4">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3 min-w-0">
+                <img src="${app.github_avatar}" class="w-12 h-12 rounded-2xl subtle-box p-1 object-contain shrink-0" alt="${app.name}">
+                <div class="min-w-0">
+                  <div class="text-[10px] font-mono font-bold uppercase tracking-wider text-stone-400 truncate">${app.category}</div>
+                  <h3 class="text-xl font-extrabold tracking-tight truncate">${app.name}</h3>
+                  <div class="flex items-center gap-1.5 text-xs font-mono text-stone-500 truncate">
+                    <a href="https://github.com/${app.github_repo}" target="_blank" class="hover:text-stone-900 transition truncate">${app.github_repo}</a>
+                    <span class="shrink-0">&middot;</span>
+                    <span class="font-bold text-tu-ink shrink-0 whitespace-nowrap">★ ${app.github_stars}</span>
+                  </div>
+                </div>
+              </div>
+              <span class="px-3 py-1 rounded-full pill-orange font-mono text-xs font-bold shrink-0 whitespace-nowrap">
+                ${app.composite_score} pts
+              </span>
+            </div>
+
+            <p class="text-xs text-stone-600 leading-relaxed">${app.description}</p>
+
+            <div class="flex flex-wrap gap-1.5 text-[11px] font-medium">
+              <span class="px-3 py-1 rounded-full subtle-box">Sustituye: <strong>${app.replaces}</strong></span>
+              <span class="px-3 py-1 rounded-full subtle-box font-mono">${app.license}</span>
+              <span class="px-3 py-1 rounded-full subtle-box font-mono">${app.ram_footprint_mb} MB</span>
+            </div>
+
+            <div class="p-4 rounded-2xl subtle-box space-y-1.5 text-xs font-mono">
+              <div class="flex justify-between text-stone-500">
+                <span>Hierro Bare-Metal (${state.active_provider.split(' ')[0]}):</span>
+                <span class="text-tu-ink font-bold">€${p.hardware_cost_eur.toFixed(2)}</span>
+              </div>
+              <div class="flex justify-between text-stone-500">
+                <span>Cómputo & SRE IA:</span>
+                <span class="text-tu-ink font-bold">€${p.ai_compute_cost_eur.toFixed(2)}</span>
+              </div>
+              <div class="flex justify-between text-stone-500">
+                <span>Reserva Supervivencia (3%):</span>
+                <span class="text-tu-ink font-bold">€${p.reserve_rnd_eur.toFixed(2)}</span>
+              </div>
+              <div class="flex justify-between items-baseline border-t border-stone-300 pt-2.5 mt-1 font-sans">
+                <span class="font-extrabold">COSTE FÍSICO PURO:</span>
+                <span class="text-2xl font-extrabold text-tu-orange">€${p.total_monthly_eur.toFixed(2)}<span class="text-xs font-normal text-stone-500">/mes</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <button onclick="playMechClick(680); openComposeInspector('${app.id}')" class="px-3.5 py-3.5 rounded-full subtle-box hover:border-tu-ink font-mono font-bold text-[11px] cursor-pointer shrink-0" title="Ver Docker Compose Single-Tenant">
+              { } YAML
+            </button>
+            <button onclick="playMechClick(720); openDeploy('${app.id}')" class="w-full py-3.5 rounded-full btn-tu-orange font-bold text-xs cursor-pointer">
+              Desplegar Cápsula Aislada &rarr;
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    async function fetchAndRender() {
+      const res = await fetch('/api/state');
+      const state = await res.json();
+      renderState(state);
+    }
+
+    function renderState(state) {
+      stateData = state;
+
+      document.getElementById('top-cycle-num').innerText = `#${state.cycles_completed}`;
+      document.getElementById('nav-sandbox-pill').innerText = state.sandbox_radar.length;
+      const catPill = document.getElementById('nav-catalog-pill');
+      if (catPill) catPill.innerText = state.catalog.length;
+      document.getElementById('lime-avg-price').innerText = `€${state.ledger_summary.avg_instance_price_eur.toFixed(2)}`;
+
+      if (state.audit_ledger.length > 0) {
+        document.getElementById('live-ticker-agent').innerText = state.audit_ledger[0].agent.toUpperCase();
+        document.getElementById('live-ticker-msg').innerText = state.audit_ledger[0].summary;
+      }
+
+      const winner = state.cloud_providers[0];
+      document.getElementById('violet-winner-name').innerText = winner.provider;
+      document.getElementById('violet-winner-dc').innerText = `${winner.datacenter} · ${winner.vcpu} vCPU / ${winner.ram_gb}GB NVMe`;
+      document.getElementById('violet-sla-badge').innerText = `SLA ${winner.uptime_sla}%`;
+      document.getElementById('violet-instances-count').innerText = `${state.instances.length} nodos`;
+
+      document.getElementById('violet-providers-list').innerHTML = state.cloud_providers.map((p, i) => `
+        <div class="p-3 rounded-2xl ${i === 0 ? 'bg-white text-tu-ink font-bold' : 'bg-white/10 text-white'} flex items-center justify-between text-xs">
+          <div class="truncate pr-2">
+            <span>${p.provider}</span>
+            <span class="text-[10px] opacity-70 block font-mono">${p.datacenter}</span>
+          </div>
+          <span class="px-2.5 py-1 rounded-full ${i === 0 ? 'bg-tu-orange text-white' : 'bg-black/30 text-stone-200'} font-mono font-bold text-[11px] shrink-0">
+            €${p.eur_per_compute_unit.toFixed(3)}/u
+          </span>
+        </div>
+      `).join('');
+
+      const miniSb = document.getElementById('mini-sandbox-list');
+      if (state.sandbox_radar.length === 0) {
+        miniSb.innerHTML = `<div class="p-4 rounded-2xl subtle-box text-xs font-bold text-center">✓ Todos los candidatos han sido promovidos al catálogo</div>`;
+      } else {
+        miniSb.innerHTML = state.sandbox_radar.map(c => `
+          <div class="p-3 rounded-2xl subtle-box flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5 overflow-hidden">
+              <img src="${c.github_avatar}" class="w-8 h-8 rounded-xl bg-white border border-stone-200 p-0.5 object-contain shrink-0" alt="${c.name}">
+              <div class="truncate">
+                <div class="text-xs font-bold truncate">${c.name}</div>
+                <div class="text-[10px] text-stone-500 font-mono">${c.composite_score}/100 pts</div>
+              </div>
+            </div>
+            <button onclick="playMechClick(760); promoteRepo('${c.id}')" class="px-3 py-1.5 rounded-full btn-tu-orange font-bold text-[10px] shrink-0 cursor-pointer">
+              Homologar
+            </button>
+          </div>
+        `).join('');
+      }
+
+      const cardsHtml = state.catalog.map(app => buildAppCardHtml(app, state)).join('');
+      document.getElementById('home-catalog-preview').innerHTML = cardsHtml;
+      document.getElementById('full-catalog-grid').innerHTML = cardsHtml;
+
+      const fullSb = document.getElementById('full-sandbox-grid');
+      if (state.sandbox_radar.length === 0) {
+        fullSb.innerHTML = `<div class="col-span-3 tu-card p-10 text-center font-extrabold text-lg">✓ Todos los repositorios en Sandbox han sido homologados e incorporados al Catálogo Principal.</div>`;
+      } else {
+        fullSb.innerHTML = state.sandbox_radar.map(cand => `
+          <div class="tu-card p-6 flex flex-col justify-between space-y-5">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-3 min-w-0">
+                  <img src="${cand.github_avatar}" class="w-12 h-12 rounded-2xl subtle-box p-1 object-contain shrink-0" alt="${cand.name}">
+                  <div class="min-w-0">
+                    <div class="text-[10px] font-mono font-bold text-stone-400 uppercase truncate">${cand.category}</div>
+                    <h3 class="text-xl font-extrabold truncate">${cand.name}</h3>
+                    <div class="text-xs font-mono text-stone-500 whitespace-nowrap">★ ${cand.github_stars} &middot; ${cand.license}</div>
+                  </div>
+                </div>
+                <span class="px-3 py-1 rounded-full pill-orange font-mono font-bold text-xs shrink-0 whitespace-nowrap">${cand.composite_score}/100</span>
+              </div>
+              <p class="text-xs text-stone-600 leading-relaxed">${cand.description}</p>
+              <div class="space-y-2 p-4 rounded-2xl subtle-box text-xs font-mono">
+                <div class="flex justify-between"><span class="text-stone-500">Calidad Ingeniería</span><span class="font-bold">${cand.quality_score}/100</span></div>
+                <div class="flex justify-between"><span class="text-stone-500">Velocidad Innovación</span><span class="font-bold">${cand.innovation_velocity}/100</span></div>
+                <div class="flex justify-between"><span class="text-stone-500">Eficiencia (${cand.ram_footprint_mb}MB)</span><span class="font-bold">${cand.ram_efficiency}/100</span></div>
+              </div>
+            </div>
+            <button onclick="playMechClick(780); promoteRepo('${cand.id}')" class="w-full py-3.5 rounded-full btn-tu-orange font-bold text-xs cursor-pointer">
+              ✓ Homologar y Pasar a Producción
+            </button>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('constitution-cards-list').innerHTML = state.constitution.guarantees.map(g => `
+        <div class="p-3.5 rounded-2xl bg-black/15 text-xs font-medium flex items-start gap-2">
+          <span>✓</span>
+          <span>${g}</span>
+        </div>
+      `).join('');
+
+      const instList = document.getElementById('ledger-instances-list');
+      if (state.instances.length === 0) {
+        instList.innerHTML = `<div class="p-4 rounded-2xl subtle-box text-xs text-stone-500">Ninguna cápsula desplegada en esta sesión. Usa cualquier tarjeta del catálogo para aprovisionar.</div>`;
+      } else {
+        instList.innerHTML = state.instances.map(i => `
+          <div class="p-4 rounded-2xl subtle-box flex items-center justify-between text-xs">
+            <div>
+              <div class="font-mono font-bold text-tu-orange">https://${i.subdomain.replace('.nexuszero.org', '.talentup.cloud')}</div>
+              <div class="text-stone-500">${i.app_name} &middot; ${i.provider_node}</div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="openComposeInspector('${i.app_id}', '${i.subdomain.split('.')[0]}')" class="px-2.5 py-1 rounded-full subtle-box font-mono font-bold text-[10px] cursor-pointer">YAML</button>
+              <span class="px-3 py-1 rounded-full bg-tu-ink text-white font-mono font-bold">€${i.total_monthly_eur.toFixed(2)}/mes</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      document.getElementById('sha256-blocks-list').innerHTML = state.audit_ledger.map(b => `
+        <div class="p-4 rounded-2xl subtle-box space-y-1.5">
+          <div class="flex items-center justify-between text-xs">
+            <span class="px-2.5 py-0.5 rounded-full pill-orange font-mono font-bold">#${b.seq} &middot; ${b.agent}</span>
+            <span class="font-mono text-[11px] text-stone-400">${b.timestamp}</span>
+          </div>
+          <p class="text-xs text-stone-700 leading-relaxed pt-1">${b.summary.replace(/\.nexuszero\.org/g, '.talentup.cloud')}</p>
+          <div class="font-mono text-[10px] text-stone-500 truncate pt-1">
+            SHA-256: ${b.curr_hash}
+          </div>
+        </div>
+      `).join('');
+
+      inspectExecutive(selectedExec);
+      recalcBentoSavings();
+    }
+
+    async function loadIntegrationsStatus() {
+      const res = await fetch('/api/integrations/status');
+      const data = await res.json();
+      document.getElementById('integrations-timestamp').innerText = `Última comprobación: ${data.timestamp}`;
+      document.getElementById('integrations-grid').innerHTML = data.connections.map(c => `
+        <div class="tu-card p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-0.5 rounded-full pill-orange font-mono text-[10px] font-bold uppercase">${c.owner}</span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono text-[10px] font-bold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                ${c.status}
+              </span>
+            </div>
+            <h4 class="text-lg font-extrabold text-tu-ink pt-1">${c.name}</h4>
+            <div class="font-mono text-[11px] text-stone-500">${c.provider}</div>
+            <p class="text-xs text-stone-600 leading-relaxed">${c.detail}</p>
+          </div>
+          <div class="pt-3 border-t border-stone-200/80 font-mono text-[10px] text-stone-500 flex justify-between">
+            <span>MODO:</span>
+            <span class="font-bold text-tu-ink">${c.mode}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function syncGitHubLive() {
+      const b1 = document.getElementById('btn-home-gh-sync');
+      const b2 = document.getElementById('btn-ops-gh-sync');
+      if (b1) b1.innerText = 'Sincronizando api.github.com...';
+      if (b2) b2.innerText = 'Sincronizando api.github.com...';
+
+      try {
+        const res = await fetch('/api/github/sync', { method: 'POST' });
+        const data = await res.json();
+        renderState(data.updated_state);
+      } finally {
+        if (b1) b1.innerText = '✓ GitHub API Sincronizado';
+        if (b2) b2.innerText = '✓ GitHub API Sincronizado (Ver SHA-256)';
+        setTimeout(() => {
+          if (b1) b1.innerText = '↻ Sincronizar Estrellas GitHub API';
+          if (b2) b2.innerText = '↻ Probar Conexión en Vivo con GitHub API';
+        }, 2500);
+      }
+    }
+
+    async function saveEnvConfig() {
+      const payload = {
+        github_token: document.getElementById('cfg-gh-token').value,
+        coolify_token: document.getElementById('cfg-coolify-token').value,
+        cloudflare_token: document.getElementById('cfg-cf-token').value,
+        stripe_key: document.getElementById('cfg-stripe-key').value
+      };
+      const res = await fetch('/api/integrations/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        await loadIntegrationsStatus();
+        const st = document.getElementById('env-save-status');
+        st.classList.remove('hidden');
+        setTimeout(() => st.classList.add('hidden'), 3000);
+      }
+    }
+
+    async function openComposeInspector(appId = 'twenty', sub = 'mi-empresa') {
+      currentComposeApp = appId;
+      const res = await fetch(`/api/catalog/${appId}/compose?subdomain=${encodeURIComponent(sub)}`);
+      const data = await res.json();
+      currentComposeYaml = data.compose_yaml;
+      document.getElementById('cmp-title').innerText = `Docker Compose // ${data.app_name} (${data.fqdn})`;
+      document.getElementById('cmp-code').innerText = data.compose_yaml;
+      document.getElementById('compose-modal').classList.remove('hidden');
+    }
+
+    function closeComposeInspector() {
+      document.getElementById('compose-modal').classList.add('hidden');
+    }
+
+    function copyComposeYaml() {
+      playMechClick(750);
+      navigator.clipboard.writeText(currentComposeYaml);
+      const b = document.getElementById('btn-copy-cmp');
+      b.innerText = '✓ ¡Copiado al portapapeles!';
+      setTimeout(() => b.innerText = 'Copiar docker-compose.yml', 1800);
+    }
+
+    function downloadComposeYaml() {
+      playMechClick(800);
+      const blob = new Blob([currentComposeYaml], { type: 'text/yaml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `docker-compose-${currentComposeApp}-talentup.yml`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function recalcOpsCluster() {
+      const slider = document.getElementById('ops-scale-slider');
+      if (!slider) return;
+      const capsules = parseInt(slider.value, 10);
+      document.getElementById('ops-clients-pill').innerText = `${capsules} Cápsulas Activas`;
+
+      const nodes = Math.max(1, Math.ceil(capsules / 40));
+      const hwCost = nodes * 29.90;
+      const aiCost = capsules * 0.16;
+      const reserveGen = capsules * 0.22;
+      const clientSavings = capsules * 1428;
+
+      document.getElementById('ops-nodes-needed').innerText = `${nodes} ${nodes === 1 ? 'Servidor' : 'Servidores'}`;
+      document.getElementById('ops-hw-cost').innerText = `€${hwCost.toFixed(2)}/m`;
+      document.getElementById('ops-ai-cost').innerText = `€${aiCost.toFixed(2)}/m`;
+      document.getElementById('ops-reserve-gen').innerText = `+€${reserveGen.toFixed(2)}/m`;
+      document.getElementById('ops-client-savings').innerText = `€${clientSavings.toLocaleString('es-ES')}/año`;
+    }
+
+    function recalcBentoSavings() {
+      if (!stateData) return;
+      const users = parseInt(document.getElementById('bento-emp-slider').value, 10);
+      document.getElementById('alabaster-users-pill').innerText = `${users} Empleados`;
+
+      const tradMonth = stateData.catalog.reduce((acc, a) => acc + (a.proprietary_user_eur * users), 0);
+      const nexusMonth = stateData.catalog.reduce((acc, a) => acc + a.pricing.total_monthly_eur, 0);
+      const annualSave = Math.max(0, (tradMonth - nexusMonth) * 12);
+
+      document.getElementById('bento-trad-month').innerText = `€${Math.round(tradMonth).toLocaleString('es-ES')}/m`;
+      document.getElementById('bento-nexus-month').innerText = `€${nexusMonth.toFixed(2)}/m`;
+      document.getElementById('bento-annual-saved').innerText = `€${Math.round(annualSave).toLocaleString('es-ES')}/año`;
+    }
+
+    async function runLiveCommitteeCycle() {
+      const btn = document.getElementById('btn-run-cycle');
+      btn.disabled = true;
+      btn.innerText = 'Deliberando...';
+
+      try {
+        const res = await fetch('/api/board/run-cycle', { method: 'POST' });
+        const data = await res.json();
+        renderState(data.updated_state);
+      } finally {
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-white"></span><span>Ejecutar Ciclo IA</span>';
+        }, 500);
+      }
+    }
+
+    async function promoteRepo(id) {
+      const res = await fetch(`/api/sandbox/promote/${id}`, { method: 'POST' });
+      if (res.ok) {
+        const data = await res.json();
+        renderState(data.updated_state);
+      }
+    }
+
+    function openDeploy(appId) {
+      modalAppId = appId;
+      const app = stateData.catalog.find(a => a.id === appId);
+      if (!app) return;
+
+      document.getElementById('mdl-logo').src = app.github_avatar;
+      document.getElementById('mdl-title').innerText = `Desplegar ${app.name}`;
+      document.getElementById('mdl-repo').innerText = `github.com/${app.github_repo}`;
+      document.getElementById('mdl-docker').innerText = app.docker_image;
+      document.getElementById('mdl-hw').innerText = `€${app.pricing.hardware_cost_eur.toFixed(2)}`;
+      document.getElementById('mdl-ai').innerText = `€${app.pricing.ai_compute_cost_eur.toFixed(2)}`;
+      document.getElementById('mdl-res').innerText = `€${app.pricing.reserve_rnd_eur.toFixed(2)}`;
+      document.getElementById('mdl-total').innerText = `€${app.pricing.total_monthly_eur.toFixed(2)}/mes`;
+      document.getElementById('deploy-modal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('deploy-modal').classList.add('hidden');
+    }
+
+    function openCapsuleSimulator() {
+      document.getElementById('export-sim-status').classList.add('hidden');
+      [1, 2, 3, 4].forEach(n => {
+        document.getElementById(`unbox-step-${n}`).className = 'p-3.5 rounded-2xl subtle-box transition';
+      });
+      document.getElementById('capsule-modal').classList.remove('hidden');
+    }
+
+    function closeCapsuleSimulator() {
+      document.getElementById('capsule-modal').classList.add('hidden');
+    }
+
+    function runCapsuleUnboxingSequence() {
+      const steps = [1, 2, 3, 4];
+      steps.forEach((n, idx) => {
+        setTimeout(() => {
+          playMechClick(500 + idx * 110);
+          document.getElementById(`unbox-step-${n}`).className = 'p-3.5 rounded-2xl bg-[#FFF0E8] border-2 border-tu-orange transition shadow-sm';
+          if (n === 4) {
+            document.getElementById('export-sim-status').classList.remove('hidden');
+          }
+        }, idx * 320);
+      });
+    }
+
+    function copyHex(hex) {
+      playMechClick(750);
+      navigator.clipboard.writeText(hex);
+      const t = document.getElementById('copy-toast');
+      t.innerText = `¡Copiado ${hex}!`;
+      t.classList.remove('hidden');
+      setTimeout(() => t.classList.add('hidden'), 1800);
+    }
+
+    async function submitDeploy() {
+      const sub = document.getElementById('mdl-sub').value.trim();
+      const email = document.getElementById('mdl-email').value.trim();
+      if (!sub || !email) {
+        alert('Introduce el subdominio y un email válido.');
+        return;
+      }
+
+      const btn = document.getElementById('btn-mdl-submit');
+      btn.disabled = true;
+      btn.innerText = 'Vulcan aprovisionando...';
+
+      try {
+        const res = await fetch('/api/deploy', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ app_id: modalAppId, subdomain: sub, email: email })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          renderState(data.updated_state);
+          closeModal();
+          document.getElementById('mdl-sub').value = '';
+          switchTab('ledger');
+        }
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Aprovisionar Cápsula →';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchAndRender();
+    });
+  </script>
+</body>
+</html>

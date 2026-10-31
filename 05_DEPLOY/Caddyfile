@@ -1,0 +1,9 @@
+# Caddyfile Oficial de TalentUP™ — HTTPS Automático (Let's Encrypt / ZeroSSL)
+{
+    email ops@talentup.cloud
+}
+
+talentup.cloud, www.talentup.cloud {
+    encode zstd gzip
+    reverse_proxy talentup-core:8088
+}
