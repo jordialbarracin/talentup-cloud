@@ -2,164 +2,158 @@
 <html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TalentUP™ — Private Cloud Foundry</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>TalentUP® — Escala tu empresa. Jamás tu factura.</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['"Space Grotesk"', 'sans-serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #F4F3EF;
-      --surface: #FFFFFF;
-      --studio: #ECEAE3;
-      --ink: #0F0F0F;
-      --orange: #FF4F00;
-      --border: #E2E0D8;
+      --bg-canvas: #F4F3EF;
+      --bg-card: #FFFFFF;
+      --ink-black: #0F0F0F;
+      --accent-orange: #FF4F00;
+      --border-hairline: #E2E0D8;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--ink);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
+    html, body {
+      background-color: var(--bg-canvas);
+      color: var(--ink-black);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
     }
 
-    /* Giant Editorial Display Typography */
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
     .display-mega {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
       letter-spacing: -0.045em;
-      line-height: 0.94;
+      line-height: 0.96;
     }
 
     .display-title {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
       letter-spacing: -0.035em;
-      line-height: 1.02;
+      line-height: 1.04;
     }
 
-    /* Glass & Surface Cards */
+    /* Floating Glass Pill Bar */
     .glass-pill {
-      background: rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.86);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(15, 15, 15, 0.08);
     }
 
+    /* Sculptural Bento Surfaces */
     .bento-white {
       background: #FFFFFF;
       border: 1px solid #E2E0D8;
-      border-radius: 32px;
-      box-shadow: 0 24px 60px -20px rgba(15, 15, 15, 0.05);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px -20px rgba(15, 15, 15, 0.06);
+    }
+    @media (min-width: 640px) {
+      .bento-white {
+        border-radius: 36px;
+      }
     }
 
     .bento-obsidian {
       background: #0F0F0F;
-      color: #F4F3EF;
-      border-radius: 36px;
-      border: 1px solid #242424;
-      box-shadow: 0 32px 80px -24px rgba(0, 0, 0, 0.45);
-    }
-
-    .cyclorama-box {
-      background: #ECEAE3;
-      border: 1px solid #DFDDD4;
+      color: #FFFFFF;
       border-radius: 28px;
-      overflow: hidden;
-      position: relative;
+      box-shadow: 0 32px 80px -24px rgba(15, 15, 15, 0.35);
+    }
+    @media (min-width: 640px) {
+      .bento-obsidian {
+        border-radius: 36px;
+      }
     }
 
-    /* Scrollytelling Crossfade Images */
+    /* Studio Cyclorama Frame for 3D Liquid-Solid Sculptures */
+    .cyclorama-box {
+      background: radial-gradient(circle at 50% 35%, #FFFFFF 0%, #ECEAE4 100%);
+      border-radius: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .cyclorama-box {
+        border-radius: 28px;
+      }
+    }
+
+    /* Scrollytelling 3D Image Crossfade & Scale */
     .scroll-sculpture-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 20%;
       opacity: 0;
-      transform: scale(1.06);
-      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
+      transform: scale(1.05);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
     }
+
     .scroll-sculpture-img.active {
       opacity: 1;
       transform: scale(1);
     }
 
-    /* Scrollytelling Step Text */
-    .scroll-step-panel {
-      opacity: 0.22;
-      transform: translateY(8px);
-      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .scroll-step-panel.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Suite Dock Button */
+    /* Interactive App Dock Icon */
     .dock-item {
       background: #FFFFFF;
       border: 1px solid #E2E0D8;
-      border-radius: 22px;
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 20px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .dock-item:hover {
-      border-color: #0F0F0F;
       transform: translateY(-3px);
+      border-color: #0F0F0F;
     }
+
     .dock-item.active {
       background: #0F0F0F;
       color: #FFFFFF;
       border-color: #0F0F0F;
       transform: translateY(-4px);
-      box-shadow: 0 16px 32px -10px rgba(15, 15, 15, 0.25);
+      box-shadow: 0 14px 28px -8px rgba(15, 15, 15, 0.28);
     }
 
-    /* Custom Precision Slider */
+    /* Custom Range Slider */
     input[type=range].mega-slider {
       -webkit-appearance: none;
       appearance: none;
       width: 100%;
-      height: 8px;
-      background: #DFDDD4;
+      height: 12px;
+      background: #E2E0D8;
       border-radius: 999px;
       outline: none;
     }
     input[type=range].mega-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       background: #FF4F00;
-      border: 5px solid #0F0F0F;
+      border: 4px solid #0F0F0F;
       box-shadow: 0 6px 18px rgba(255, 79, 0, 0.4);
       cursor: pointer;
       transition: transform 0.15s ease;
-    }
-    input[type=range].mega-slider::-webkit-slider-thumb:hover {
-      transform: scale(1.12);
     }
 
     /* Progress Bar on Scroll */
@@ -181,15 +175,14 @@
   <div id="scroll-progress"></div>
 
   <!-- ===================================================================== -->
-  <!-- FLOATING ARCHITECTURAL HEADER (PURE INDUSTRIAL WORDMARK, ZERO CLUTTER) -->
+  <!-- FLOATING ARCHITECTURAL HEADER (MOBILE + DESKTOP OPTIMIZED)            -->
   <!-- ===================================================================== -->
-  <header class="fixed top-5 left-0 right-0 z-50 px-5 sm:px-8 pointer-events-none">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
+  <header class="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3.5 sm:px-8 pointer-events-none">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
       
       <!-- Bespoke Industrial Wordmark + Precision Optical Emblem -->
-      <a href="#" class="pointer-events-auto glass-pill px-5 py-3 rounded-full flex items-center gap-3 shadow-xs group">
-        <!-- Precision Machined Aperture Mark -->
-        <svg class="w-6 h-6 transition-transform duration-500 group-hover:rotate-90" viewBox="0 0 32 32" fill="none">
+      <a href="#" class="pointer-events-auto glass-pill px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-full flex items-center gap-2.5 sm:gap-3 shadow-xs group shrink-0">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-500 group-hover:rotate-90" viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="14" stroke="#0F0F0F" stroke-width="2.5"/>
           <circle cx="16" cy="16" r="6" fill="#FF4F00"/>
           <line x1="16" y1="2" x2="16" y2="8" stroke="#0F0F0F" stroke-width="2.5"/>
@@ -197,12 +190,12 @@
           <line x1="2" y1="16" x2="8" y2="16" stroke="#0F0F0F" stroke-width="2.5"/>
           <line x1="24" y1="16" x2="30" y2="16" stroke="#0F0F0F" stroke-width="2.5"/>
         </svg>
-        <span class="font-display font-bold text-lg tracking-[-0.04em] text-[#0F0F0F]">
+        <span class="font-display font-bold text-base sm:text-lg tracking-[-0.04em] text-[#0F0F0F]">
           TALENT<span class="text-[#FF4F00]">UP</span><sup class="font-mono text-[9px] text-stone-400 ml-0.5">®</sup>
         </span>
       </a>
 
-      <!-- Center Floating Pill Nav -->
+      <!-- Center Floating Pill Nav (Desktop) -->
       <nav class="hidden md:flex items-center gap-1 pointer-events-auto glass-pill px-2 py-1.5 rounded-full shadow-xs">
         <a href="#scrolly-board" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition">El Comité 3D</a>
         <a href="#suite-stage" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition">Las 9 Suites</a>
@@ -212,13 +205,13 @@
       </nav>
 
       <!-- Right Actions -->
-      <div class="flex items-center gap-2.5 pointer-events-auto">
-        <button onclick="openCustomerPortal()" class="glass-pill px-4 py-3 rounded-full text-xs font-semibold text-[#0F0F0F] hover:bg-white flex items-center gap-2 cursor-pointer transition">
+      <div class="flex items-center gap-2 pointer-events-auto shrink-0">
+        <button onclick="openCustomerPortal()" class="glass-pill px-3 py-2.5 sm:px-4 sm:py-3 rounded-full text-xs font-semibold text-[#0F0F0F] hover:bg-white flex items-center gap-1.5 sm:gap-2 cursor-pointer transition">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
           <span class="hidden sm:inline">Clientes</span>
           <span class="font-mono text-[11px] text-stone-500" id="nav-active-tenants">4</span>
         </button>
-        <a href="#desplegar" class="px-5 py-3 rounded-full bg-[#0F0F0F] hover:bg-[#FF4F00] text-white text-xs font-display font-bold tracking-tight transition">
+        <a href="#desplegar" class="px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#0F0F0F] hover:bg-[#FF4F00] text-white text-xs font-display font-bold tracking-tight transition whitespace-nowrap">
           Crear Nube →
         </a>
       </div>
@@ -227,57 +220,63 @@
   </header>
 
   <!-- ===================================================================== -->
-  <!-- CHAPTER 1: MONUMENTAL HERO + SCROLL-ZOOM 3D SCULPTURE STAGE           -->
+  <!-- CHAPTER 1: MONUMENTAL HERO (ZERO PILL CLICHÉS, PURE IMPACT)           -->
   <!-- ===================================================================== -->
-  <section class="pt-32 pb-16 px-5 sm:px-8 max-w-7xl mx-auto">
+  <section class="pt-24 sm:pt-32 pb-10 sm:pb-16 px-4 sm:px-8 max-w-7xl mx-auto">
     
-    <!-- Minimalist Monumental Headline -->
-    <div class="max-w-5xl space-y-6 mb-12">
-      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-[#E2E0D8]">
-        <span class="w-2 h-2 rounded-full bg-[#FF4F00]"></span>
-        <span class="font-mono text-[11px] font-semibold uppercase tracking-widest text-[#0F0F0F]">
-          Nube Privada Europea · 0 € por Empleado
-        </span>
-      </div>
-
-      <h1 class="display-mega text-5xl sm:text-7xl lg:text-[92px] text-[#0F0F0F]">
+    <!-- Direct Monumental Headline (No Pill Above) -->
+    <div class="max-w-5xl space-y-5 sm:space-y-6 mb-8 sm:mb-12">
+      <h1 class="display-mega text-[42px] sm:text-7xl lg:text-[92px] text-[#0F0F0F]">
         Escala tu empresa.<br/>
         <span class="text-stone-400">Jamás tu factura.</span>
       </h1>
 
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-2">
-        <p class="text-lg sm:text-xl text-stone-600 max-w-xl font-normal leading-snug">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-6 pt-1">
+        <p class="text-base sm:text-xl text-stone-600 max-w-xl font-normal leading-snug">
           Las 9 aplicaciones esenciales de tu negocio instaladas en tu propio servidor privado en Alemania. <strong class="text-[#0F0F0F]">Usuarios ilimitados para siempre.</strong>
         </p>
-        <div class="flex items-center gap-3 shrink-0">
-          <a href="#desplegar" class="px-7 py-4 rounded-full bg-[#FF4F00] hover:bg-[#0F0F0F] text-white font-display font-bold text-sm transition shadow-lg shadow-orange-500/20">
+        <div class="grid grid-cols-2 sm:flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <a href="#desplegar" class="px-5 sm:px-7 py-3.5 sm:py-4 rounded-full bg-[#FF4F00] hover:bg-[#0F0F0F] text-white font-display font-bold text-xs sm:text-sm text-center transition shadow-lg shadow-orange-500/20 whitespace-nowrap">
             Desplegar en 45s →
           </a>
-          <a href="#scrolly-board" class="px-6 py-4 rounded-full bg-white border border-[#E2E0D8] hover:border-[#0F0F0F] font-display font-bold text-sm text-[#0F0F0F] transition">
+          <a href="#scrolly-board" class="px-5 sm:px-6 py-3.5 sm:py-4 rounded-full bg-white border border-[#E2E0D8] hover:border-[#0F0F0F] font-display font-bold text-xs sm:text-sm text-[#0F0F0F] text-center transition whitespace-nowrap">
             Descubrir ↓
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Full-Bleed 3D Hero Stage (Scales smoothly on scroll) -->
-    <div id="hero-visual-wrapper" class="bento-white p-3 sm:p-4 transition-transform duration-300 ease-out">
-      <div class="cyclorama-box aspect-16/9 w-full">
-        <img src="assets/talentup_concept_1_morph.jpg" alt="TalentUP 3D Liquid-Solid Executive Committee" class="w-full h-full object-cover object-center" />
+    <!-- Full-Bleed 3D Hero Stage (Unobstructed on Mobile & Desktop) -->
+    <div id="hero-visual-wrapper" class="bento-white p-2 sm:p-4 transition-transform duration-300 ease-out">
+      <div class="cyclorama-box aspect-16/10 sm:aspect-16/9 w-full">
+        <img src="assets/talentup_concept_1_morph.jpg" alt="TalentUP 3D Liquid-Solid Executive Committee" class="w-full h-full object-contain sm:object-cover object-center" />
         
-        <!-- Minimal Floating Telemetry Strip at Bottom -->
-        <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex flex-wrap items-center justify-between gap-4 glass-pill px-6 py-4 rounded-2xl">
-          <div class="flex items-center gap-3">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#FF4F00]"></span>
-            <span class="font-mono text-xs font-bold uppercase tracking-wider text-[#0F0F0F]">
-              COMITÉ EJECUTIVO AUTÓNOMO · 4 AGENTES IA OPERANDO TU INFRAESTRUCTURA 24/7
-            </span>
-          </div>
+        <!-- Desktop Floating Telemetry Strip -->
+        <div class="hidden sm:flex absolute bottom-6 left-6 right-6 items-center justify-between gap-4 glass-pill px-6 py-4 rounded-2xl">
+          <span class="font-display font-bold text-xs text-[#0F0F0F]">
+            Comité Ejecutivo Autónomo · 4 sistemas IA operando tu servidor 24/7
+          </span>
           <div class="flex items-center gap-6 font-mono text-xs">
-            <span><strong class="text-[#0F0F0F]">∞</strong> Asientos</span>
-            <span><strong class="text-[#0F0F0F]">45s</strong> Despliegue</span>
+            <span><strong class="text-[#0F0F0F]">0 €</strong> / empleado</span>
+            <span><strong class="text-[#0F0F0F]">45s</strong> despliegue</span>
             <span><strong class="text-[#FF4F00]">99,98%</strong> SLA</span>
           </div>
+        </div>
+      </div>
+
+      <!-- Mobile Clean Stat Strip Below Image (Never covers the 3D art on phone) -->
+      <div class="grid grid-cols-3 sm:hidden gap-2 pt-2.5 px-1 text-center">
+        <div class="p-2.5 rounded-2xl bg-[#F4F3EF]">
+          <div class="font-display font-bold text-sm text-[#0F0F0F]">0 €</div>
+          <div class="font-mono text-[10px] text-stone-500">Por empleado</div>
+        </div>
+        <div class="p-2.5 rounded-2xl bg-[#F4F3EF]">
+          <div class="font-display font-bold text-sm text-[#0F0F0F]">45 seg</div>
+          <div class="font-mono text-[10px] text-stone-500">Despliegue</div>
+        </div>
+        <div class="p-2.5 rounded-2xl bg-[#F4F3EF]">
+          <div class="font-display font-bold text-sm text-[#FF4F00]">Alemania</div>
+          <div class="font-mono text-[10px] text-stone-500">100% Aislado</div>
         </div>
       </div>
     </div>
@@ -286,28 +285,23 @@
 
   <!-- ===================================================================== -->
   <!-- CHAPTER 2: STICKY SCROLLYTELLING — THE 4 LIQUID-SOLID EXECUTIVES      -->
-  <!-- As the user scrolls down, the 3D Sculpture morphs & kinetic KPIs lock -->
+  <!-- Carefullyproportioned for both Mobile viewports & Desktop             -->
   <!-- ===================================================================== -->
-  <section id="scrolly-board" class="relative h-[320vh] px-5 sm:px-8 max-w-7xl mx-auto">
+  <section id="scrolly-board" class="relative h-[280vh] sm:h-[320vh] px-4 sm:px-8 max-w-7xl mx-auto">
     
     <!-- Sticky Viewport Stage -->
-    <div class="sticky top-24 h-[calc(100vh-7rem)] flex flex-col justify-center">
-      <div class="bento-white p-4 sm:p-8 h-full max-h-[760px] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div class="sticky top-16 sm:top-24 h-[calc(100vh-4.5rem)] sm:h-[calc(100vh-7rem)] flex flex-col justify-center">
+      <div class="bento-white p-3.5 sm:p-8 h-full max-h-[660px] sm:max-h-[760px] flex flex-col lg:grid lg:grid-cols-12 gap-3.5 sm:gap-6 lg:gap-8 justify-between lg:items-center overflow-hidden">
         
-        <!-- Left 6 Cols: Cross-Fading 3D Studio Sculptures -->
-        <div class="lg:col-span-6 h-72 sm:h-full cyclorama-box">
+        <!-- 3D Studio Sculptures (42% height on mobile, full height on desktop) -->
+        <div class="lg:col-span-6 h-[42%] sm:h-64 lg:h-full w-full cyclorama-box shrink-0">
           <img id="scrolly-img-0" src="assets/card_atlas.jpg" alt="Atlas CEO" class="scroll-sculpture-img active" />
           <img id="scrolly-img-1" src="assets/card_curator.jpg" alt="Curator CPO" class="scroll-sculpture-img" />
           <img id="scrolly-img-2" src="assets/card_vulcan.jpg" alt="Vulcan CTO" class="scroll-sculpture-img" />
           <img id="scrolly-img-3" src="assets/card_ledger.jpg" alt="Ledger CFO" class="scroll-sculpture-img" />
 
-          <!-- Step Counter Pill inside Studio Frame -->
-          <div class="absolute top-4 left-4 glass-pill px-3.5 py-1.5 rounded-full font-mono text-xs font-bold text-[#0F0F0F]">
-            <span id="scrolly-counter" class="text-[#FF4F00]">01</span> / 04 · <span id="scrolly-unit-code">UNIDAD TU-01</span>
-          </div>
-
           <!-- Manual Quick-Jump Dots at Bottom of Image -->
-          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 glass-pill px-3 py-2 rounded-full flex items-center gap-2">
+          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 glass-pill px-3 py-1.5 rounded-full flex items-center gap-2">
             <button onclick="activateScrollyStep(0)" id="scrolly-dot-0" class="w-6 h-2 rounded-full bg-[#FF4F00] transition-all cursor-pointer"></button>
             <button onclick="activateScrollyStep(1)" id="scrolly-dot-1" class="w-2 h-2 rounded-full bg-stone-400 transition-all cursor-pointer"></button>
             <button onclick="activateScrollyStep(2)" id="scrolly-dot-2" class="w-2 h-2 rounded-full bg-stone-400 transition-all cursor-pointer"></button>
@@ -315,46 +309,46 @@
           </div>
         </div>
 
-        <!-- Right 6 Cols: Monumental Kinetic Typography (Minimal Words, Maximum Impact) -->
-        <div class="lg:col-span-6 flex flex-col justify-between h-full py-2 sm:py-6 px-2 sm:px-4">
+        <!-- Right 6 Cols: Monumental Kinetic Typography -->
+        <div class="lg:col-span-6 flex flex-col justify-between flex-1 lg:h-full py-1 sm:py-4 px-1.5 sm:px-4 min-h-0">
           
-          <div class="font-mono text-xs uppercase tracking-widest text-stone-400">
-            HAZ SCROLL PARA INSPECCIONAR CADA SISTEMA ↓
+          <div class="hidden lg:block font-mono text-xs uppercase tracking-widest text-stone-400">
+            01 — 04 · COMITÉ AUTÓNOMO
           </div>
 
           <!-- Dynamic Display Content -->
-          <div class="space-y-4 my-auto">
-            <div id="scrolly-role-badge" class="inline-block font-mono text-xs font-bold uppercase tracking-widest text-[#FF4F00]">
+          <div class="space-y-1.5 sm:space-y-4 my-auto">
+            <div id="scrolly-role-badge" class="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#FF4F00]">
               ATLAS · DIRECCIÓN EJECUTIVA IA
             </div>
-            <div id="scrolly-mega-stat" class="display-mega text-6xl sm:text-8xl text-[#0F0F0F]">
+            <div id="scrolly-mega-stat" class="display-mega text-4xl sm:text-6xl lg:text-8xl text-[#0F0F0F]">
               0 € / asiento.
             </div>
-            <h2 id="scrolly-headline" class="display-title text-2xl sm:text-4xl text-[#0F0F0F] pt-1">
+            <h2 id="scrolly-headline" class="display-title text-lg sm:text-3xl lg:text-4xl text-[#0F0F0F] pt-0.5">
               Invita a 10 o a 500 empleados. Tu cuota mensual nunca sube.
             </h2>
-            <p id="scrolly-sub" class="text-base text-stone-500 max-w-md leading-relaxed">
+            <p id="scrolly-sub" class="text-xs sm:text-base text-stone-500 max-w-md leading-relaxed">
               Atlas supervisa por contrato que jamás pagues licencias por usuario ni recargos por crecer.
             </p>
           </div>
 
           <!-- Bottom 4-Tab Selector Strip -->
-          <div class="grid grid-cols-4 gap-2 pt-4 border-t border-[#E2E0D8]">
-            <button onclick="activateScrollyStep(0)" id="scrolly-tab-0" class="text-left p-2.5 rounded-xl bg-[#0F0F0F] text-white transition cursor-pointer">
-              <div class="font-mono text-[10px] text-[#FF4F00]">01</div>
-              <div class="font-display font-bold text-xs">Atlas</div>
+          <div class="grid grid-cols-4 gap-1.5 sm:gap-2 pt-2.5 sm:pt-4 border-t border-[#E2E0D8] shrink-0">
+            <button onclick="activateScrollyStep(0)" id="scrolly-tab-0" class="text-left p-2 sm:p-2.5 rounded-xl bg-[#0F0F0F] text-white transition cursor-pointer">
+              <div class="font-mono text-[9px] sm:text-[10px] text-[#FF4F00]">01</div>
+              <div class="font-display font-bold text-[11px] sm:text-xs truncate">Atlas</div>
             </button>
-            <button onclick="activateScrollyStep(1)" id="scrolly-tab-1" class="text-left p-2.5 rounded-xl bg-[#F4F3EF] text-stone-600 hover:text-[#0F0F0F] transition cursor-pointer">
-              <div class="font-mono text-[10px]">02</div>
-              <div class="font-display font-bold text-xs">Curator</div>
+            <button onclick="activateScrollyStep(1)" id="scrolly-tab-1" class="text-left p-2 sm:p-2.5 rounded-xl bg-[#F4F3EF] text-stone-600 hover:text-[#0F0F0F] transition cursor-pointer">
+              <div class="font-mono text-[9px] sm:text-[10px]">02</div>
+              <div class="font-display font-bold text-[11px] sm:text-xs truncate">Curator</div>
             </button>
-            <button onclick="activateScrollyStep(2)" id="scrolly-tab-2" class="text-left p-2.5 rounded-xl bg-[#F4F3EF] text-stone-600 hover:text-[#0F0F0F] transition cursor-pointer">
-              <div class="font-mono text-[10px]">03</div>
-              <div class="font-display font-bold text-xs">Vulcan</div>
+            <button onclick="activateScrollyStep(2)" id="scrolly-tab-2" class="text-left p-2 sm:p-2.5 rounded-xl bg-[#F4F3EF] text-stone-600 hover:text-[#0F0F0F] transition cursor-pointer">
+              <div class="font-mono text-[9px] sm:text-[10px]">03</div>
+              <div class="font-display font-bold text-[11px] sm:text-xs truncate">Vulcan</div>
             </button>
-            <button onclick="activateScrollyStep(3)" id="scrolly-tab-3" class="text-left p-2.5 rounded-xl bg-[#F4F3EF] text-stone-600 hover:text-[#0F0F0F] transition cursor-pointer">
-              <div class="font-mono text-[10px]">04</div>
-              <div class="font-display font-bold text-xs">Ledger</div>
+            <button onclick="activateScrollyStep(3)" id="scrolly-tab-3" class="text-left p-2 sm:p-2.5 rounded-xl bg-[#F4F3EF] text-stone-600 hover:text-[#0F0F0F] transition cursor-pointer">
+              <div class="font-mono text-[9px] sm:text-[10px]">04</div>
+              <div class="font-display font-bold text-[11px] sm:text-xs truncate">Ledger</div>
             </button>
           </div>
 
@@ -367,74 +361,70 @@
 
   <!-- ===================================================================== -->
   <!-- CHAPTER 3: INTERACTIVE VISUAL DOCK OF THE 9 SUITES                    -->
-  <!-- Zero walls of text: Click any icon in the dock to see its visual UI   -->
   <!-- ===================================================================== -->
-  <section id="suite-stage" class="scroll-mt-24 py-24 px-5 sm:px-8 max-w-7xl mx-auto space-y-10">
+  <section id="suite-stage" class="scroll-mt-20 py-14 sm:py-24 px-4 sm:px-8 max-w-7xl mx-auto space-y-6 sm:space-y-10">
     
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-      <div>
-        <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#FF4F00]">ECOSISTEMA COMPLETO</span>
-        <h2 class="display-title text-4xl sm:text-6xl text-[#0F0F0F] mt-2">
-          Nueve suites. Un solo servidor.
-        </h2>
-      </div>
-      <div class="font-mono text-xs text-stone-500">
-        SELECCIONA UN ICONO PARA VER SU INTERFAZ EN VIVO
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 sm:gap-6">
+      <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]">
+        Nueve suites. Un solo servidor.
+      </h2>
+      <div class="font-mono text-[11px] sm:text-xs text-stone-500">
+        TOCA CUALQUIER ICONO PARA INSPECCIONAR SU INTERFAZ
       </div>
     </div>
 
-    <!-- 9-Icon Hardware Dock (High-Craft Multi-Layer Brand Logos) -->
-    <div id="suites-dock" class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3">
+    <!-- 9-Icon Hardware Dock (Compact 3x3 on Mobile, 9-col on Desktop) -->
+    <div id="suites-dock" class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2 sm:gap-3">
       <!-- Populated dynamically with high-craft multi-layer SVG brand emblems -->
     </div>
 
     <!-- Giant Visual Stage for the Selected Suite -->
-    <div class="bento-obsidian p-6 sm:p-10 lg:p-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <div class="bento-obsidian p-5 sm:p-10 lg:p-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-10 items-center">
         
         <!-- Left 5 Cols: Clean Monumental Info of Selected App -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="flex items-center gap-4">
-            <div id="stage-app-logo" class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-lg"></div>
-            <div>
-              <div class="font-mono text-xs text-[#FF4F00] uppercase font-bold" id="stage-app-replaces">REEMPLAZA A SALESFORCE & HUBSPOT</div>
-              <h3 class="display-title text-3xl sm:text-4xl text-white" id="stage-app-name">Twenty CRM</h3>
+        <div class="lg:col-span-5 space-y-5 sm:space-y-6">
+          <div class="flex items-center gap-3.5 sm:gap-4">
+            <div id="stage-app-logo" class="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-white flex items-center justify-center shadow-lg shrink-0"></div>
+            <div class="min-w-0">
+              <div class="font-mono text-[10px] sm:text-xs text-[#FF4F00] uppercase font-bold truncate" id="stage-app-replaces">REEMPLAZA A SALESFORCE & HUBSPOT</div>
+              <h3 class="display-title text-2xl sm:text-4xl text-white truncate" id="stage-app-name">Twenty CRM</h3>
             </div>
           </div>
 
-          <p class="text-base text-stone-300 leading-relaxed" id="stage-app-tagline">
+          <p class="text-sm sm:text-base text-stone-300 leading-relaxed" id="stage-app-tagline">
             Pipeline comercial visual, historial automático de correos y WhatsApp, y API completa sin pagar licencias por cada vendedor.
           </p>
 
-          <!-- 3 Giant Metric Pills instead of bullet paragraphs -->
-          <div class="grid grid-cols-3 gap-3 pt-2" id="stage-app-metrics">
+          <!-- 3 Giant Metric Pills -->
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-1" id="stage-app-metrics">
             <!-- Populated dynamically -->
           </div>
 
-          <div class="flex items-center gap-3 pt-2">
-            <button id="stage-app-deploy-btn" onclick="selectPlanAndScroll('operaciones', 'twenty', '29 €/mes')" class="px-6 py-3.5 rounded-full bg-[#FF4F00] hover:bg-white hover:text-[#0F0F0F] text-white font-display font-bold text-xs transition cursor-pointer">
+          <div class="flex flex-wrap items-center gap-3 pt-1">
+            <button id="stage-app-deploy-btn" onclick="selectPlanAndScroll('operaciones', 'twenty', '29 €/mes')" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#FF4F00] hover:bg-white hover:text-[#0F0F0F] text-white font-display font-bold text-xs transition cursor-pointer">
               Instalar en mi Nube →
             </button>
-            <span class="font-mono text-xs text-stone-400" id="stage-app-import-note">
+            <span class="font-mono text-[11px] sm:text-xs text-stone-400" id="stage-app-import-note">
               Importación 1-clic incluida
             </span>
           </div>
         </div>
 
         <!-- Right 7 Cols: Rich Visual UI Preview Canvas of the Selected Suite -->
-        <div class="lg:col-span-7 bg-[#171717] rounded-3xl border border-stone-800 p-5 sm:p-7 space-y-5">
-          <div class="flex items-center justify-between border-b border-stone-800 pb-3.5 font-mono text-xs">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-              <span class="text-stone-300 ml-2" id="stage-app-fqdn">https://crm.tuempresa.talentup.cloud</span>
+        <div class="lg:col-span-7 bg-[#171717] rounded-2xl sm:rounded-3xl border border-stone-800 p-4 sm:p-7 space-y-4 sm:space-y-5">
+          <div class="flex items-center justify-between border-b border-stone-800 pb-3 font-mono text-xs gap-2">
+            <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+              <span class="text-stone-300 ml-1.5 truncate text-[11px] sm:text-xs" id="stage-app-fqdn">https://crm.tuempresa.talentup.cloud</span>
             </div>
-            <span class="text-emerald-400">● PostgreSQL 16 Dedicado</span>
+            <span class="hidden sm:inline text-emerald-400 shrink-0">● PostgreSQL 16 Dedicado</span>
           </div>
 
           <!-- Dynamic Visual Mockup Area -->
-          <div id="stage-app-visual-canvas" class="min-h-[240px] flex flex-col justify-between gap-4">
+          <div id="stage-app-visual-canvas" class="min-h-[180px] sm:min-h-[240px] flex flex-col justify-between gap-3 sm:gap-4">
             <!-- Populated dynamically with visual UI cards -->
           </div>
         </div>
@@ -447,52 +437,46 @@
   <!-- ===================================================================== -->
   <!-- CHAPTER 4: THE SINGLE-TENANT FERROFLUID CAPSULE (TU-05 MONOLITH)      -->
   <!-- ===================================================================== -->
-  <section id="ferro-stage" class="scroll-mt-24 py-20 px-5 sm:px-8 max-w-7xl mx-auto">
-    <div class="bento-white p-6 sm:p-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+  <section id="ferro-stage" class="scroll-mt-20 py-12 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto">
+    <div class="bento-white p-5 sm:p-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-10 items-center">
         
         <!-- Left 6 Cols: High-Res TU-05 Ferrofluid Sculpture -->
         <div class="lg:col-span-6">
-          <div class="cyclorama-box aspect-4/5 max-h-[560px]">
+          <div class="cyclorama-box aspect-square sm:aspect-4/5 max-h-[340px] sm:max-h-[560px] w-full">
             <img src="assets/card_ferro.jpg" alt="Cápsula Single-Tenant TU-05" class="w-full h-full object-cover" />
-            <div class="absolute top-5 left-5 glass-pill px-4 py-1.5 rounded-full font-mono text-xs font-bold text-[#0F0F0F]">
-              CÁPSULA TU-05 · SINGLE-TENANT
-            </div>
           </div>
         </div>
 
-        <!-- Right 6 Cols: 3 Monumental Pillars (Zero Fluff) -->
-        <div class="lg:col-span-6 space-y-10">
-          <div>
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#FF4F00]">AISLAMIENTO FÍSICO</span>
-            <h2 class="display-title text-4xl sm:text-6xl text-[#0F0F0F] mt-2">
-              Tus datos no se mezclan con los de nadie.
-            </h2>
-          </div>
+        <!-- Right 6 Cols: 3 Monumental Pillars -->
+        <div class="lg:col-span-6 space-y-6 sm:space-y-10">
+          <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]">
+            Tus datos no se mezclan con los de nadie.
+          </h2>
 
-          <div class="space-y-6">
-            <div class="p-6 rounded-2xl bg-[#F4F3EF] flex items-center justify-between gap-4">
+          <div class="space-y-3.5 sm:space-y-5">
+            <div class="p-4 sm:p-6 rounded-2xl bg-[#F4F3EF] flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4">
               <div>
-                <div class="font-display font-bold text-xl text-[#0F0F0F]">Base de Datos Exclusiva</div>
-                <div class="text-sm text-stone-500 mt-0.5">Instancia PostgreSQL 16 dedicada solo a tu empresa.</div>
+                <div class="font-display font-bold text-lg sm:text-xl text-[#0F0F0F]">Base de Datos Exclusiva</div>
+                <div class="text-xs sm:text-sm text-stone-500 mt-0.5">Instancia PostgreSQL 16 dedicada solo a tu empresa.</div>
               </div>
-              <span class="font-mono text-sm font-bold text-[#FF4F00] shrink-0">100% Aislada</span>
+              <span class="font-mono text-xs sm:text-sm font-bold text-[#FF4F00] shrink-0">100% Aislada</span>
             </div>
 
-            <div class="p-6 rounded-2xl bg-[#F4F3EF] flex items-center justify-between gap-4">
+            <div class="p-4 sm:p-6 rounded-2xl bg-[#F4F3EF] flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4">
               <div>
-                <div class="font-display font-bold text-xl text-[#0F0F0F]">Jurisdicción Alemana</div>
-                <div class="text-sm text-stone-500 mt-0.5">Servidores físicos en Frankfurt y Núremberg (ISO-27001).</div>
+                <div class="font-display font-bold text-lg sm:text-xl text-[#0F0F0F]">Jurisdicción Alemana</div>
+                <div class="text-xs sm:text-sm text-stone-500 mt-0.5">Servidores físicos en Frankfurt y Núremberg (ISO-27001).</div>
               </div>
-              <span class="font-mono text-sm font-bold text-[#0F0F0F] shrink-0">RGPD UE</span>
+              <span class="font-mono text-xs sm:text-sm font-bold text-[#0F0F0F] shrink-0">RGPD UE</span>
             </div>
 
-            <div class="p-6 rounded-2xl bg-[#F4F3EF] flex items-center justify-between gap-4">
+            <div class="p-4 sm:p-6 rounded-2xl bg-[#F4F3EF] flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4">
               <div>
-                <div class="font-display font-bold text-xl text-[#0F0F0F]">Propiedad y Salida en 1 Clic</div>
-                <div class="text-sm text-stone-500 mt-0.5">Descarga tu servidor y base de datos completa cuando quieras.</div>
+                <div class="font-display font-bold text-lg sm:text-xl text-[#0F0F0F]">Propiedad y Salida en 1 Clic</div>
+                <div class="text-xs sm:text-sm text-stone-500 mt-0.5">Descarga tu servidor y base de datos completa cuando quieras.</div>
               </div>
-              <span class="font-mono text-sm font-bold text-emerald-700 shrink-0">Sin Lock-in</span>
+              <span class="font-mono text-xs sm:text-sm font-bold text-emerald-700 shrink-0">Sin Lock-in</span>
             </div>
           </div>
         </div>
@@ -502,56 +486,53 @@
   </section>
 
   <!-- ===================================================================== -->
-  <!-- CHAPTER 5: MONUMENTAL SAVINGS SIMULATOR (GIANT NUMBERS, ZERO NOISE)   -->
+  <!-- CHAPTER 5: MONUMENTAL SAVINGS SIMULATOR                               -->
   <!-- ===================================================================== -->
-  <section id="simulador" class="scroll-mt-24 py-20 px-5 sm:px-8 max-w-7xl mx-auto">
-    <div class="bento-white p-8 sm:p-14 space-y-12">
+  <section id="simulador" class="scroll-mt-20 py-12 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto">
+    <div class="bento-white p-5 sm:p-14 space-y-8 sm:space-y-12">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div>
-          <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#FF4F00]">IMPACTO DIRECTO</span>
-          <h2 class="display-title text-4xl sm:text-6xl text-[#0F0F0F] mt-2">
-            ¿Cuántas personas sois en el equipo?
-          </h2>
-        </div>
-        <div class="px-6 py-3 rounded-full bg-[#0F0F0F] text-white font-display font-bold text-2xl sm:text-3xl whitespace-nowrap shrink-0">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6">
+        <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]">
+          ¿Cuántas personas sois en el equipo?
+        </h2>
+        <div class="self-start sm:self-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-[#0F0F0F] text-white font-display font-bold text-xl sm:text-3xl whitespace-nowrap shrink-0">
           <span id="calc-team-count">30</span> personas
         </div>
       </div>
 
       <!-- Giant Interactive Slider -->
-      <div class="space-y-4">
+      <div class="space-y-3 sm:space-y-4">
         <input id="team-slider" type="range" min="5" max="250" value="30" class="mega-slider" oninput="updateMonumentalCalc()" />
-        <div class="flex justify-between font-mono text-xs text-stone-400">
-          <span>5 empleados</span>
-          <span>50 empleados</span>
-          <span>125 empleados</span>
+        <div class="flex justify-between font-mono text-[11px] sm:text-xs text-stone-400">
+          <span>5</span>
+          <span>50</span>
+          <span>125</span>
           <span>250 empleados</span>
         </div>
       </div>
 
       <!-- 3 Monumental Numbers Comparison -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 pt-2">
         
-        <div class="p-7 rounded-3xl bg-[#F4F3EF] flex flex-col justify-between space-y-4">
-          <div class="font-mono text-xs uppercase text-stone-500">SAAS TRADICIONAL (POR USUARIO)</div>
-          <div class="display-mega text-4xl sm:text-5xl text-stone-400 line-through" id="calc-legacy-monthly">
+        <div class="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#F4F3EF] flex flex-col justify-between space-y-3 sm:space-y-4">
+          <div class="font-mono text-[11px] sm:text-xs uppercase text-stone-500">SAAS POR USUARIO</div>
+          <div class="display-mega text-3xl sm:text-5xl text-stone-400 line-through" id="calc-legacy-monthly">
             2.940 € / mes
           </div>
           <div class="text-xs text-stone-500">Salesforce + Jira + Slack + Zendesk + DocuSign</div>
         </div>
 
-        <div class="p-7 rounded-3xl bg-[#0F0F0F] text-white flex flex-col justify-between space-y-4">
-          <div class="font-mono text-xs uppercase text-emerald-400">TARIFA PLANA TALENTUP</div>
-          <div class="display-mega text-5xl sm:text-6xl text-white">
-            29 € <span class="text-lg font-normal text-stone-400">/ mes</span>
+        <div class="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#0F0F0F] text-white flex flex-col justify-between space-y-3 sm:space-y-4">
+          <div class="font-mono text-[11px] sm:text-xs uppercase text-emerald-400">TARIFA PLANA TALENTUP</div>
+          <div class="display-mega text-4xl sm:text-6xl text-white">
+            29 € <span class="text-base sm:text-lg font-normal text-stone-400">/ mes</span>
           </div>
-          <div class="text-xs text-stone-400">Precio total para toda la empresa · ∞ Usuarios</div>
+          <div class="text-xs text-stone-400">Precio fijo para toda la empresa · ∞ Usuarios</div>
         </div>
 
-        <div class="p-7 rounded-3xl bg-[#FF4F00] text-white flex flex-col justify-between space-y-4">
-          <div class="font-mono text-xs uppercase text-white/80">AHORRO ANUAL NETO</div>
-          <div class="display-mega text-5xl sm:text-6xl text-white" id="calc-net-savings">
+        <div class="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#FF4F00] text-white flex flex-col justify-between space-y-3 sm:space-y-4">
+          <div class="font-mono text-[11px] sm:text-xs uppercase text-white/80">AHORRO ANUAL NETO</div>
+          <div class="display-mega text-4xl sm:text-6xl text-white" id="calc-net-savings">
             34.932 €
           </div>
           <div class="text-xs text-white/90 font-medium">Capital que se queda en tu empresa cada año</div>
@@ -565,26 +546,25 @@
   <!-- ===================================================================== -->
   <!-- CHAPTER 6: ULTRA-CLEAN PRICING & 1-LINE INSTANT DEPLOYMENT            -->
   <!-- ===================================================================== -->
-  <section id="planes" class="scroll-mt-24 py-20 px-5 sm:px-8 max-w-7xl mx-auto space-y-16">
+  <section id="planes" class="scroll-mt-20 py-12 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto space-y-10 sm:space-y-16">
     
-    <div class="text-center max-w-3xl mx-auto">
-      <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#FF4F00]">TARIFAS PLANAS</span>
-      <h2 class="display-title text-4xl sm:text-6xl text-[#0F0F0F] mt-2">
+    <div class="text-left sm:text-center max-w-3xl mx-auto">
+      <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]">
         Simple. Fijo. Sin letra pequeña.
       </h2>
     </div>
 
     <!-- 3 Minimalist Sculptural Pricing Cards -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
       
       <!-- 15€ -->
-      <div class="bento-white p-8 sm:p-10 flex flex-col justify-between space-y-10">
-        <div class="space-y-6">
+      <div class="bento-white p-6 sm:p-10 flex flex-col justify-between space-y-7 sm:space-y-10">
+        <div class="space-y-5 sm:space-y-6">
           <div class="flex items-center justify-between">
             <span class="font-mono text-xs font-bold uppercase text-stone-400">INDIVIDUAL</span>
             <span class="px-3 py-1 rounded-full bg-[#F4F3EF] font-mono text-xs font-bold text-[#0F0F0F]">1 Suite</span>
           </div>
-          <div class="display-mega text-6xl text-[#0F0F0F]">
+          <div class="display-mega text-5xl sm:text-6xl text-[#0F0F0F]">
             15 €<span class="text-base font-sans font-normal text-stone-400"> / mes</span>
           </div>
           <div class="space-y-2.5 pt-4 border-t border-[#E2E0D8] text-sm text-stone-700 font-medium">
@@ -599,13 +579,13 @@
       </div>
 
       <!-- 29€ (Featured) -->
-      <div class="bento-obsidian p-8 sm:p-10 flex flex-col justify-between space-y-10 relative">
-        <div class="space-y-6">
+      <div class="bento-obsidian p-6 sm:p-10 flex flex-col justify-between space-y-7 sm:space-y-10 relative">
+        <div class="space-y-5 sm:space-y-6">
           <div class="flex items-center justify-between">
             <span class="font-mono text-xs font-bold uppercase text-[#FF4F00]">OPERACIONES · MÁS ELEGIDO</span>
             <span class="px-3 py-1 rounded-full bg-stone-800 font-mono text-xs font-bold text-white">5 Suites</span>
           </div>
-          <div class="display-mega text-6xl text-white">
+          <div class="display-mega text-5xl sm:text-6xl text-white">
             29 €<span class="text-base font-sans font-normal text-stone-400"> / mes</span>
           </div>
           <div class="space-y-2.5 pt-4 border-t border-stone-800 text-sm text-stone-200 font-medium">
@@ -620,13 +600,13 @@
       </div>
 
       <!-- 49€ -->
-      <div class="bento-white p-8 sm:p-10 flex flex-col justify-between space-y-10">
-        <div class="space-y-6">
+      <div class="bento-white p-6 sm:p-10 flex flex-col justify-between space-y-7 sm:space-y-10">
+        <div class="space-y-5 sm:space-y-6">
           <div class="flex items-center justify-between">
             <span class="font-mono text-xs font-bold uppercase text-stone-400">CORPORATIVO</span>
             <span class="px-3 py-1 rounded-full bg-[#F4F3EF] font-mono text-xs font-bold text-[#0F0F0F]">Las 9 Suites</span>
           </div>
-          <div class="display-mega text-6xl text-[#0F0F0F]">
+          <div class="display-mega text-5xl sm:text-6xl text-[#0F0F0F]">
             49 €<span class="text-base font-sans font-normal text-stone-400"> / mes</span>
           </div>
           <div class="space-y-2.5 pt-4 border-t border-[#E2E0D8] text-sm text-stone-700 font-medium">
@@ -643,27 +623,27 @@
     </div>
 
     <!-- Instant Deployment Command Bar -->
-    <div id="desplegar" class="bento-obsidian p-8 sm:p-12 scroll-mt-24 space-y-8">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div id="desplegar" class="bento-obsidian p-6 sm:p-12 scroll-mt-20 space-y-6 sm:space-y-8">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 sm:gap-4">
         <div>
-          <span class="font-mono text-xs text-[#FF4F00] uppercase font-bold" id="checkout-plan-badge">MODALIDAD ACTIVA: OPERACIONES (29 €/MES)</span>
-          <h3 class="display-title text-3xl sm:text-4xl text-white mt-1">
+          <span class="font-mono text-[11px] sm:text-xs text-[#FF4F00] uppercase font-bold" id="checkout-plan-badge">MODALIDAD ACTIVA: OPERACIONES (29 €/MES)</span>
+          <h3 class="display-title text-2xl sm:text-4xl text-white mt-1">
             Pon en marcha tu servidor privado ahora.
           </h3>
         </div>
         <span class="font-mono text-xs text-emerald-400">● Entrega automática en 45 segundos</span>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <input id="checkout-company" type="text" placeholder="Nombre de tu empresa" oninput="syncSubdomainFromCompany()" class="px-5 py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white focus:outline-none focus:border-[#FF4F00]" />
-        <input id="checkout-subdomain" type="text" placeholder="subdominio.talentup.cloud" class="px-5 py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white font-mono focus:outline-none focus:border-[#FF4F00]" />
-        <select id="checkout-app-select" class="px-5 py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white focus:outline-none focus:border-[#FF4F00]"></select>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <input id="checkout-company" type="text" placeholder="Nombre de tu empresa" oninput="syncSubdomainFromCompany()" class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white focus:outline-none focus:border-[#FF4F00]" />
+        <input id="checkout-subdomain" type="text" placeholder="subdominio.talentup.cloud" class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white font-mono focus:outline-none focus:border-[#FF4F00]" />
+        <select id="checkout-app-select" class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white focus:outline-none focus:border-[#FF4F00]"></select>
         <button onclick="launchCustomerCloud()" id="btn-launch-cloud" class="px-6 py-4 rounded-2xl bg-[#FF4F00] hover:bg-white hover:text-[#0F0F0F] text-white font-display font-bold text-sm transition cursor-pointer">
           Desplegar Nube →
         </button>
       </div>
 
-      <div id="checkout-live-result" class="hidden rounded-2xl bg-stone-900 border border-emerald-500/40 p-5 flex flex-wrap items-center justify-between gap-4">
+      <div id="checkout-live-result" class="hidden rounded-2xl bg-stone-900 border border-emerald-500/40 p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
         <div class="space-y-1">
           <div class="font-mono text-xs text-emerald-400 font-bold">✓ CÁPSULA SINGLE-TENANT ACTIVA</div>
           <p class="text-xs text-stone-300" id="res-capsule-msg"></p>
@@ -679,25 +659,25 @@
   <!-- ===================================================================== -->
   <!-- MINIMAL FOOTER                                                        -->
   <!-- ===================================================================== -->
-  <footer class="py-12 px-5 sm:px-8 max-w-7xl mx-auto border-t border-[#E2E0D8] flex flex-wrap items-center justify-between gap-6 text-xs text-stone-500">
-    <div class="flex items-center gap-3">
+  <footer class="py-10 sm:py-12 px-4 sm:px-8 max-w-7xl mx-auto border-t border-[#E2E0D8] flex flex-wrap items-center justify-between gap-4 sm:gap-6 text-xs text-stone-500">
+    <div class="flex items-center gap-2 sm:gap-3">
       <span class="font-display font-bold text-[#0F0F0F]">TALENT<span class="text-[#FF4F00]">UP</span>®</span>
       <span>·</span>
-      <span>Autonomous Private Cloud Foundry · Frankfurt & Núremberg</span>
+      <span>Frankfurt & Núremberg</span>
     </div>
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-5 sm:gap-6">
       <button onclick="openCustomerPortal()" class="hover:text-[#0F0F0F] cursor-pointer">Consola Cliente</button>
-      <a href="/admin.html" class="font-mono text-[11px] hover:text-[#0F0F0F]">Admin / Hosting</a>
+      <a href="admin.html" class="font-mono text-[11px] hover:text-[#0F0F0F]">Admin / Hosting</a>
     </div>
   </footer>
 
   <!-- ===================================================================== -->
-  <!-- MODAL: CONSOLA DE CLIENTE                                             -->
+  <!-- CUSTOMER PORTAL MODAL                                                 -->
   <!-- ===================================================================== -->
-  <div id="customer-portal-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bento-white max-w-2xl w-full p-6 sm:p-8 space-y-6">
-      <div class="flex items-center justify-between border-b border-[#E2E0D8] pb-4">
-        <h3 class="display-title text-2xl text-[#0F0F0F]">Tus Cápsulas Activas</h3>
+  <div id="customer-portal-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bento-white max-w-2xl w-full p-5 sm:p-8 space-y-5 max-h-[85vh] overflow-y-auto">
+      <div class="flex items-center justify-between">
+        <h3 class="display-title text-xl sm:text-2xl text-[#0F0F0F]">Tus Cápsulas Activas</h3>
         <button onclick="closeCustomerPortal()" class="w-8 h-8 rounded-full bg-[#F4F3EF] font-mono text-xs cursor-pointer">✕</button>
       </div>
       <div id="portal-instances-list" class="space-y-3"></div>
@@ -715,23 +695,22 @@
         { id: 'mattermost', name: 'Mattermost Team', replaces: 'Slack Enterprise', license: 'MIT', tech_stack: 'Go + React + PostgreSQL', description: 'Mensajería corporativa en tiempo real, canales privados, llamadas y playbooks.' },
         { id: 'documenso', name: 'Documenso Sign', replaces: 'DocuSign', license: 'AGPLv3', tech_stack: 'Next.js + Prisma + Certificados X.509', description: 'Firma electrónica legal ilimitada con sellado criptográfico y auditoría europea.' },
         { id: 'chatwoot', name: 'Chatwoot Omni', replaces: 'Zendesk / Intercom', license: 'MIT', tech_stack: 'Ruby on Rails + Vue + PostgreSQL', description: 'Bandeja omnicanal unificada para WhatsApp, Email, Web LiveChat e Instagram.' },
-        { id: 'odoo', name: 'Odoo CE ERP', replaces: 'SAP Business One / Holded', license: 'LGPLv3', tech_stack: 'Python + PostgreSQL 16', description: 'Facturación electrónica, contabilidad, inventario, compras y RRHH en un solo núcleo.' }
+        { id: 'odoo-ce', name: 'Odoo CE ERP', replaces: 'SAP Business One / Holded', license: 'LGPLv3', tech_stack: 'Python + PostgreSQL 16', description: 'Facturación electrónica, contabilidad, inventario, compras y RRHH en un solo núcleo.' }
       ],
       sandbox_radar: [
         { id: 'calcom', name: 'Cal.com Scheduling', replaces: 'Calendly Teams', license: 'AGPLv3', tech_stack: 'Next.js + Prisma + PostgreSQL', description: 'Infraestructura de reservas, agendas de equipo y rutas de asignación.' },
         { id: 'affine', name: 'AFFiNE Workspace', replaces: 'Notion / Miro', license: 'MIT', tech_stack: 'Rust + TypeScript + OctoBase', description: 'Base de conocimiento colaborativa, wikis y pizarras infinitas para toda la plantilla.' },
-        { id: 'posthog', name: 'PostHog Analytics', replaces: 'Mixpanel / Amplitude', license: 'MIT', tech_stack: 'ClickHouse + Python + React', description: 'Analítica de producto, grabación de sesiones y feature flags en tu propio servidor.' }
+        { id: 'posthog-oss', name: 'PostHog Analytics', replaces: 'Mixpanel / Amplitude', license: 'MIT', tech_stack: 'ClickHouse + Python + React', description: 'Analítica de producto, grabación de sesiones y feature flags en tu propio servidor.' }
       ],
       instances: [
         { app_id: 'twenty', app_name: 'Twenty CRM', subdomain: 'grupo-vanguardia.talentup.cloud', provider_node: 'Hetzner · fsn1-dc14 (Alemania)' },
         { app_id: 'plane', app_name: 'Plane Projects', subdomain: 'estudio-kinetica.talentup.cloud', provider_node: 'Hetzner · nbg1-dc3 (Alemania)' },
         { app_id: 'documenso', app_name: 'Documenso Sign', subdomain: 'bufete-albarracin.talentup.cloud', provider_node: 'Hetzner · fsn1-dc14 (Alemania)' },
-        { app_id: 'odoo', app_name: 'Odoo CE ERP', subdomain: 'logistica-mediterranea.talentup.cloud', provider_node: 'Hetzner · hel1-dc2 (UE)' }
+        { app_id: 'odoo-ce', app_name: 'Odoo CE ERP', subdomain: 'logistica-mediterranea.talentup.cloud', provider_node: 'Hetzner · hel1-dc2 (UE)' }
       ]
     };
     let activeSuiteId = 'twenty';
 
-    // 4 Scrollytelling Steps for the 4 Liquid-Solid Sculptures
     const scrollySteps = [
       {
         unit: 'UNIDAD TU-01',
@@ -763,42 +742,41 @@
       }
     ];
 
-    // High-Craft Multi-Layer Brand Logos for the 9 Suites (Rich geometry + depth)
     const highCraftLogos = {
-      'twenty': `<svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+      'twenty': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="10" fill="#111111"/>
         <rect x="8" y="10" width="6" height="20" rx="3" fill="#FFFFFF"/>
         <rect x="17" y="10" width="6" height="14" rx="3" fill="#FF4F00"/>
         <rect x="26" y="10" width="6" height="9" rx="3" fill="#78716C"/>
       </svg>`,
-      'plane': `<svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+      'plane': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="10" fill="#0F172A"/>
         <path d="M9 21L31 10L24 31L18 23L9 21Z" fill="#38BDF8"/>
         <path d="M18 23L31 10L21 26L18 23Z" fill="#FFFFFF"/>
       </svg>`,
-      'mattermost': `<svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+      'mattermost': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="10" fill="#0058CC"/>
         <circle cx="20" cy="20" r="11" stroke="#FFFFFF" stroke-width="3.5"/>
         <path d="M20 12L26 22H14L20 12Z" fill="#FFFFFF"/>
       </svg>`,
-      'chatwoot': `<svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+      'chatwoot': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="10" fill="#1F93FF"/>
         <path d="M10 19C10 13.477 14.477 9 20 9C25.523 9 30 13.477 30 19C30 24.523 25.523 29 20 29H11L10 19Z" fill="#FFFFFF"/>
         <circle cx="16.5" cy="19" r="2" fill="#1F93FF"/>
         <circle cx="23.5" cy="19" r="2" fill="#1F93FF"/>
       </svg>`,
-      'documenso': `<svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+      'documenso': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="10" fill="#10B981"/>
         <rect x="11" y="8" width="18" height="24" rx="3" fill="#FFFFFF"/>
         <path d="M14 23C16 20 18 20 20 23C22 26 24 26 26 22" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
         <rect x="14" y="13" width="12" height="2.5" rx="1" fill="#0F172A"/>
       </svg>`,
-      'odoo-ce': `<svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+      'odoo-ce': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="10" fill="#714B67"/>
         <circle cx="14" cy="20" r="5" stroke="#FFFFFF" stroke-width="3"/>
         <circle cx="26" cy="20" r="5" stroke="#F59E0B" stroke-width="3"/>
       </svg>`,
-      'calcom': `<svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+      'calcom': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="10" fill="#111111"/>
         <rect x="9" y="11" width="22" height="20" rx="4" fill="#FFFFFF"/>
         <rect x="9" y="11" width="22" height="6" rx="2" fill="#FF4F00"/>
@@ -806,12 +784,18 @@
         <circle cx="20" cy="23" r="2" fill="#111111"/>
         <circle cx="25" cy="23" r="2" fill="#FF4F00"/>
       </svg>`,
-      'affine': `<svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+      'affine': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="10" fill="#4F46E5"/>
         <polygon points="20,8 31,28 9,28" fill="#FFFFFF"/>
         <polygon points="20,15 26,28 14,28" fill="#818CF8"/>
       </svg>`,
-      'posthog': `<svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+      'posthog': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="10" fill="#F59E0B"/>
+        <rect x="10" y="22" width="4" height="8" rx="1" fill="#111111"/>
+        <rect x="18" y="16" width="4" height="14" rx="1" fill="#111111"/>
+        <rect x="26" y="10" width="4" height="20" rx="1" fill="#FFFFFF"/>
+      </svg>`,
+      'posthog-oss': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="10" fill="#F59E0B"/>
         <rect x="10" y="22" width="4" height="8" rx="1" fill="#111111"/>
         <rect x="18" y="16" width="4" height="14" rx="1" fill="#111111"/>
@@ -823,23 +807,23 @@
       'twenty': {
         replaces: 'REEMPLAZA A SALESFORCE & HUBSPOT',
         tagline: 'Embudo de ventas visual, automatización comercial e historial completo de clientes con usuarios ilimitados.',
-        metrics: [['∞', 'Vendedores'], ['1-Clic', 'Importar CSV/HubSpot'], ['GraphQL', 'API Abierta']],
+        metrics: [['∞', 'Vendedores'], ['1-Clic', 'Importar CSV'], ['GraphQL', 'API Abierta']],
         canvas: `
-          <div class="grid grid-cols-3 gap-3">
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
               <div class="font-mono text-[10px] text-stone-400">NUEVOS LEADS · 24.000 €</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Grupo Industrial Bética</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Clínicas Norte S.L.</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Grupo Industrial Bética</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Clínicas Norte S.L.</div>
             </div>
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
               <div class="font-mono text-[10px] text-[#FF4F00]">EN NEGOCIACIÓN · 58.900 €</div>
-              <div class="p-3 rounded-xl bg-black/50 border-l-2 border-[#FF4F00] text-xs font-bold text-white">Constructora Velázquez</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Estudio Mercurio</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 border-l-2 border-[#FF4F00] text-xs font-bold text-white">Constructora Velázquez</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Estudio Mercurio</div>
             </div>
-            <div class="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 space-y-2">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 space-y-2">
               <div class="font-mono text-[10px] text-emerald-400">GANADOS · 112.400 €</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs font-bold text-emerald-300">✓ Logística Atlántica</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs font-bold text-emerald-300">✓ Laboratorios Keral</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-emerald-300">✓ Logística Atlántica</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-emerald-300">✓ Laboratorios Keral</div>
             </div>
           </div>
         `
@@ -849,21 +833,21 @@
         tagline: 'Gestión ágil de proyectos, sprints, hojas de ruta y carga de trabajo para toda tu plantilla sin pagar por miembro.',
         metrics: [['∞', 'Miembros'], ['Kanban', 'Sprints y Gantt'], ['Jira Sync', 'Migración 1-clic']],
         canvas: `
-          <div class="grid grid-cols-3 gap-3">
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
               <div class="font-mono text-[10px] text-stone-400">BACKLOG</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs text-white">Arquitectura de marca v2</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs text-white">Integración pasarela SEPA</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Arquitectura de marca v2</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Integración pasarela SEPA</div>
             </div>
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
               <div class="font-mono text-[10px] text-sky-400">EN CURSO · SPRINT 14</div>
-              <div class="p-3 rounded-xl bg-black/50 border-l-2 border-sky-400 text-xs text-white">Lanzamiento Portal Clientes</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs text-white">Auditoría ISO-27001</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 border-l-2 border-sky-400 text-xs text-white">Lanzamiento Portal Clientes</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Auditoría ISO-27001</div>
             </div>
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
               <div class="font-mono text-[10px] text-emerald-400">COMPLETADO</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs text-emerald-300">✓ Migración 45 empleados</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs text-emerald-300">✓ Despliegue Frankfurt</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-emerald-300">✓ Migración 45 empleados</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-emerald-300">✓ Despliegue Frankfurt</div>
             </div>
           </div>
         `
@@ -873,16 +857,15 @@
         tagline: 'Chat corporativo en tiempo real, canales privados y llamadas de voz/vídeo con historial eterno alojado en tu servidor.',
         metrics: [['∞', 'Historial'], ['P2P', 'Audio y Vídeo'], ['100%', 'Privacidad Real']],
         canvas: `
-          <div class="grid grid-cols-12 gap-3">
-            <div class="col-span-4 p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2 font-mono text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 sm:gap-3">
+            <div class="sm:col-span-4 p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-1.5 font-mono text-xs">
               <div class="text-white font-bold"># dirección-general</div>
               <div class="text-[#FF4F00] font-bold"># operaciones-clientes</div>
               <div class="text-stone-400"># ingeniería-ia</div>
-              <div class="text-stone-400"># finanzas-facturas</div>
             </div>
-            <div class="col-span-8 p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-3 text-xs">
-              <div class="p-3 rounded-xl bg-black/50 text-stone-200"><strong class="text-white">Marta (Operaciones):</strong> Acabamos de incorporar a los 18 nuevos técnicos sin coste adicional de licencias.</div>
-              <div class="p-3 rounded-xl bg-black/50 text-stone-200"><strong class="text-[#FF4F00]">Vulcan CTO:</strong> Copia de seguridad cifrada completada en Frankfurt DE-FRA1.</div>
+            <div class="sm:col-span-8 p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2.5 text-xs">
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-stone-200"><strong class="text-white">Marta (Operaciones):</strong> Acabamos de incorporar a los 18 nuevos técnicos sin coste adicional de licencias.</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-stone-200"><strong class="text-[#FF4F00]">Vulcan CTO:</strong> Copia de seguridad cifrada completada en Frankfurt DE-FRA1.</div>
             </div>
           </div>
         `
@@ -890,18 +873,18 @@
       'chatwoot': {
         replaces: 'REEMPLAZA A ZENDESK & INTERCOM',
         tagline: 'Bandeja omnicanal que unifica WhatsApp Business, Instagram, Email y Chat Web para todo tu equipo de soporte.',
-        metrics: [['∞', 'Agentes Soporte'], ['WhatsApp', 'API Oficial'], ['IA', 'Respuestas Rápidas']],
+        metrics: [['∞', 'Agentes Soporte'], ['WhatsApp', 'API Oficial'], ['IA', 'Respuestas']],
         canvas: `
-          <div class="grid grid-cols-2 gap-3">
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
               <div class="font-mono text-[10px] text-emerald-400">WHATSAPP BUSINESS · EN VIVO</div>
-              <div class="p-3 rounded-xl bg-black/50 text-xs text-white">Cliente: "¿Podéis enviarme la factura del pedido #402?"</div>
-              <div class="p-3 rounded-xl bg-[#FF4F00]/20 border border-[#FF4F00]/40 text-xs text-white">Agente: "¡Hola! Te la acabo de enviar firmada desde Odoo."</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Cliente: "¿Podéis enviarme la factura del pedido #402?"</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-[#FF4F00]/20 border border-[#FF4F00]/40 text-xs text-white">Agente: "¡Hola! Te la acabo de enviar firmada desde Odoo."</div>
             </div>
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800 flex flex-col justify-between">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 flex flex-col justify-between gap-2">
               <div class="font-mono text-[10px] text-stone-400">TIEMPO MEDIO DE RESPUESTA</div>
-              <div class="display-mega text-5xl text-white">1m 12s</div>
-              <div class="text-xs text-emerald-400">✓ Sin pagar 29€/mes por cada agente de atención</div>
+              <div class="display-mega text-4xl sm:text-5xl text-white">1m 12s</div>
+              <div class="text-xs text-emerald-400">✓ Sin pagar 29€/mes por agente</div>
             </div>
           </div>
         `
@@ -909,15 +892,15 @@
       'documenso': {
         replaces: 'REEMPLAZA A DOCUSIGN & SIGNATURIT',
         tagline: 'Firma digital criptográfica X.509 con plena validez legal en la Unión Europea y sobres ilimitados.',
-        metrics: [['∞', 'Sobres y Firmas'], ['X.509', 'Validez Legal UE'], ['PDF', 'Plantillas 1-Clic']],
+        metrics: [['∞', 'Sobres y Firmas'], ['X.509', 'Validez UE'], ['PDF', 'Plantillas']],
         canvas: `
-          <div class="p-5 rounded-2xl bg-stone-900 border border-stone-800 flex items-center justify-between gap-6">
-            <div class="space-y-2">
+          <div class="p-4 sm:p-5 rounded-2xl bg-stone-900 border border-stone-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-1.5 min-w-0">
               <div class="font-mono text-[10px] text-emerald-400">CERTIFICADO CRIPTOGRÁFICO X.509 SELLADO</div>
-              <div class="font-display font-bold text-xl text-white">Contrato_Mercantil_2026.pdf</div>
-              <div class="text-xs text-stone-400">Firmado por 3 partes · Hash SHA-256 verificado en tu servidor</div>
+              <div class="font-display font-bold text-base sm:text-xl text-white truncate">Contrato_Mercantil_2026.pdf</div>
+              <div class="text-xs text-stone-400">Firmado por 3 partes · Hash SHA-256 verificado</div>
             </div>
-            <div class="px-5 py-3 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 font-mono text-xs font-bold text-emerald-300 shrink-0">
+            <div class="self-start sm:self-auto px-4 py-2.5 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 font-mono text-xs font-bold text-emerald-300 shrink-0">
               ✓ EIDAS VERIFIED
             </div>
           </div>
@@ -926,23 +909,23 @@
       'odoo-ce': {
         replaces: 'REEMPLAZA A HOLDED, FACTORIAL & SAP',
         tagline: 'ERP integral con facturación electrónica, contabilidad oficial, inventario y control de fichaje horario obligatorio.',
-        metrics: [['∞', 'Empleados RRHH'], ['ERP', 'Facturación e IVA'], ['Legal', 'Control Horario']],
+        metrics: [['∞', 'Empleados RRHH'], ['ERP', 'Facturación'], ['Legal', 'Control Horario']],
         canvas: `
-          <div class="grid grid-cols-3 gap-3">
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800">
               <div class="font-mono text-[10px] text-stone-400">FACTURACIÓN MES</div>
-              <div class="display-title text-3xl text-white mt-2">148.920 €</div>
+              <div class="display-title text-2xl sm:text-3xl text-white mt-1">148.920 €</div>
               <div class="text-xs text-emerald-400 mt-1">+24% vs mes anterior</div>
             </div>
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800">
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800">
               <div class="font-mono text-[10px] text-stone-400">FICHAJE HORARIO HOY</div>
-              <div class="display-title text-3xl text-white mt-2">68 / 68</div>
-              <div class="text-xs text-stone-400 mt-1">Empleados registrados (0€/emp)</div>
+              <div class="display-title text-2xl sm:text-3xl text-white mt-1">68 / 68</div>
+              <div class="text-xs text-stone-400 mt-1">Empleados activos (0€/emp)</div>
             </div>
-            <div class="p-4 rounded-2xl bg-stone-900 border border-stone-800">
-              <div class="font-mono text-[10px] text-stone-400">IMPUESTOS & CONTABILIDAD</div>
-              <div class="display-title text-3xl text-[#FF4F00] mt-2">Al día</div>
-              <div class="text-xs text-stone-400 mt-1">Modelos fiscales automatizados</div>
+            <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800">
+              <div class="font-mono text-[10px] text-stone-400">IMPUESTOS & IVA</div>
+              <div class="display-title text-2xl sm:text-3xl text-[#FF4F00] mt-1">Al día</div>
+              <div class="text-xs text-stone-400 mt-1">Modelos automatizados</div>
             </div>
           </div>
         `
@@ -965,28 +948,24 @@
         }
         if (tab) {
           tab.className = i === idx
-            ? 'text-left p-2.5 rounded-xl bg-[#0F0F0F] text-white transition cursor-pointer'
-            : 'text-left p-2.5 rounded-xl bg-[#F4F3EF] text-stone-600 hover:text-[#0F0F0F] transition cursor-pointer';
+            ? 'text-left p-2 sm:p-2.5 rounded-xl bg-[#0F0F0F] text-white transition cursor-pointer'
+            : 'text-left p-2 sm:p-2.5 rounded-xl bg-[#F4F3EF] text-stone-600 hover:text-[#0F0F0F] transition cursor-pointer';
         }
       }
       const step = scrollySteps[idx] || scrollySteps[0];
-      document.getElementById('scrolly-counter').textContent = '0' + (idx + 1);
-      document.getElementById('scrolly-unit-code').textContent = step.unit;
       document.getElementById('scrolly-role-badge').textContent = step.role;
       document.getElementById('scrolly-mega-stat').textContent = step.stat;
       document.getElementById('scrolly-headline').textContent = step.headline;
       document.getElementById('scrolly-sub').textContent = step.sub;
     }
 
-    // Scroll Listener for Sticky Scrollytelling & Hero Scale
     window.addEventListener('scroll', () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      const bar = document.getElementById('scroll-progress');
-      if (bar) bar.style.width = progress + '%';
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      const prog = document.getElementById('scroll-progress');
+      if (prog) prog.style.width = pct + '%';
 
-      // Scrollytelling Board Track
       const board = document.getElementById('scrolly-board');
       if (board) {
         const rect = board.getBoundingClientRect();
@@ -1013,9 +992,9 @@
         const isActive = app.id === activeSuiteId;
         const logo = highCraftLogos[app.id] || highCraftLogos['twenty'];
         return `
-          <button onclick="selectSuiteInDock('${app.id}')" class="dock-item ${isActive ? 'active' : ''} p-4 flex flex-col items-center text-center gap-2.5 cursor-pointer">
+          <button onclick="selectSuiteInDock('${app.id}')" class="dock-item ${isActive ? 'active' : ''} p-2.5 sm:p-4 flex flex-col items-center text-center gap-1.5 sm:gap-2.5 cursor-pointer">
             ${logo}
-            <div class="font-display font-bold text-xs truncate w-full">${app.name.split(' ')[0]}</div>
+            <div class="font-display font-bold text-[11px] sm:text-xs truncate w-full">${app.name.split(' ')[0]}</div>
           </button>
         `;
       }).join('');
@@ -1033,13 +1012,13 @@
         tagline: app.description,
         metrics: [['∞', 'Usuarios'], ['100%', 'Privado RGPD'], ['Docker', 'Single-Tenant']],
         canvas: `
-          <div class="p-6 rounded-2xl bg-stone-900 border border-stone-800 flex items-center justify-between">
+          <div class="p-4 sm:p-6 rounded-2xl bg-stone-900 border border-stone-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <div class="font-mono text-xs text-[#FF4F00]">CÁPSULA DEDICADA EN FRANKFURT</div>
-              <div class="font-display font-bold text-2xl text-white mt-1">${app.name} (${app.license})</div>
+              <div class="font-mono text-[10px] sm:text-xs text-[#FF4F00]">CÁPSULA DEDICADA EN FRANKFURT</div>
+              <div class="font-display font-bold text-lg sm:text-2xl text-white mt-1">${app.name} (${app.license})</div>
               <div class="text-xs text-stone-400 mt-1">Stack: ${app.tech_stack}</div>
             </div>
-            <span class="px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold">∞ ASIENTOS</span>
+            <span class="self-start sm:self-auto px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold shrink-0">∞ ASIENTOS</span>
           </div>
         `
       };
@@ -1050,9 +1029,9 @@
       document.getElementById('stage-app-tagline').textContent = custom.tagline;
       document.getElementById('stage-app-fqdn').textContent = `https://${app.id}.tuempresa.talentup.cloud`;
       document.getElementById('stage-app-metrics').innerHTML = custom.metrics.map(m => `
-        <div class="p-3.5 rounded-2xl bg-stone-900 border border-stone-800">
-          <div class="font-display font-bold text-xl text-white">${m[0]}</div>
-          <div class="font-mono text-[10px] text-stone-400 uppercase mt-0.5">${m[1]}</div>
+        <div class="p-2.5 sm:p-3.5 rounded-2xl bg-stone-900 border border-stone-800">
+          <div class="font-display font-bold text-base sm:text-xl text-white truncate">${m[0]}</div>
+          <div class="font-mono text-[9px] sm:text-[10px] text-stone-400 uppercase mt-0.5 truncate">${m[1]}</div>
         </div>
       `).join('');
       document.getElementById('stage-app-visual-canvas').innerHTML = custom.canvas;
@@ -1064,7 +1043,7 @@
     function updateMonumentalCalc() {
       const team = parseInt(document.getElementById('team-slider').value || 30, 10);
       document.getElementById('calc-team-count').textContent = team;
-      const legacyMonth = team * 98; // Media de Salesforce + Jira + Slack + Zendesk + DocuSign por empleado
+      const legacyMonth = team * 98;
       const savingsYear = (legacyMonth - 29) * 12;
       document.getElementById('calc-legacy-monthly').textContent = legacyMonth.toLocaleString('es-ES') + ' € / mes';
       document.getElementById('calc-net-savings').textContent = savingsYear.toLocaleString('es-ES') + ' €';
@@ -1115,7 +1094,14 @@
         u.textContent = data.url;
         u.href = data.url;
       } catch (e) {
-        const all = getAllApps(); const found = all.find(a => a.id === appId) || { name: 'Twenty CRM' }; const fqdn = `https://${rawSub}.talentup.cloud`; resBox.classList.remove('hidden'); document.getElementById('res-capsule-msg').innerHTML = `${found.name} desplegado para <strong>${company}</strong> en Hetzner Cloud · fsn1-dc14 (Alemania).`; const u = document.getElementById('res-capsule-url'); u.textContent = fqdn; u.href = fqdn;
+        const all = getAllApps();
+        const found = all.find(a => a.id === appId) || { name: 'Twenty CRM' };
+        const fqdn = `https://${rawSub}.talentup.cloud`;
+        resBox.classList.remove('hidden');
+        document.getElementById('res-capsule-msg').innerHTML = `${found.name} desplegado para <strong>${company}</strong> en Hetzner Cloud · fsn1-dc14 (Alemania).`;
+        const u = document.getElementById('res-capsule-url');
+        u.textContent = fqdn;
+        u.href = fqdn;
       } finally {
         btn.disabled = false;
         btn.textContent = 'Desplegar Nube →';
@@ -1126,12 +1112,12 @@
       const list = document.getElementById('portal-instances-list');
       if (list && appState) {
         list.innerHTML = (appState.instances || []).map(inst => `
-          <div class="p-4 rounded-2xl bg-[#F4F3EF] flex items-center justify-between gap-4">
+          <div class="p-4 rounded-2xl bg-[#F4F3EF] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div class="font-display font-bold text-sm text-[#0F0F0F]">${inst.app_name} · <span class="text-[#FF4F00] font-mono text-xs">https://${inst.subdomain}</span></div>
               <div class="text-xs text-stone-500">${inst.provider_node} · Usuarios ilimitados</div>
             </div>
-            <a href="/api/catalog/${inst.app_id}/compose?subdomain=${encodeURIComponent((inst.subdomain || 'empresa').split('.')[0])}" target="_blank" class="px-3.5 py-2 rounded-full bg-white border border-[#E2E0D8] font-mono text-xs font-bold text-[#0F0F0F]">
+            <a href="/api/catalog/${inst.app_id}/compose?subdomain=${encodeURIComponent((inst.subdomain || 'empresa').split('.')[0])}" target="_blank" class="self-start sm:self-auto px-3.5 py-2 rounded-full bg-white border border-[#E2E0D8] font-mono text-xs font-bold text-[#0F0F0F]">
               Backup Docker ↓
             </a>
           </div>
@@ -1161,10 +1147,13 @@
     }
 
     async function init() {
+      hydratePage();
       try {
-      hydratePage(); const resp = await fetch('/api/state');
-        appState = await resp.json();
-        hydratePage();
+        const resp = await fetch('/api/state');
+        if (resp.ok) {
+          appState = await resp.json();
+          hydratePage();
+        }
       } catch (e) {
         console.error(e);
       }
