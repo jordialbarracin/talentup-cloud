@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>TalentUP® — Escala tu empresa. Jamás tu factura.</title>
+  <title>TalentUP® — Scale your company. Never your bill.</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,6 @@
       line-height: 1.04;
     }
 
-    /* Floating Glass Pill Bar */
     .glass-pill {
       background: rgba(255, 255, 255, 0.86);
       backdrop-filter: blur(20px);
@@ -55,7 +54,6 @@
       border: 1px solid rgba(15, 15, 15, 0.08);
     }
 
-    /* Sculptural Bento Surfaces */
     .bento-white {
       background: #FFFFFF;
       border: 1px solid #E2E0D8;
@@ -80,7 +78,6 @@
       }
     }
 
-    /* Studio Cyclorama Frame for 3D Liquid-Solid Sculptures */
     .cyclorama-box {
       background: radial-gradient(circle at 50% 35%, #FFFFFF 0%, #ECEAE4 100%);
       border-radius: 22px;
@@ -93,7 +90,6 @@
       }
     }
 
-    /* Scrollytelling 3D Image Crossfade & Scale */
     .scroll-sculpture-img {
       position: absolute;
       inset: 0;
@@ -112,7 +108,6 @@
       transform: scale(1);
     }
 
-    /* Interactive App Dock Icon */
     .dock-item {
       background: #FFFFFF;
       border: 1px solid #E2E0D8;
@@ -133,7 +128,6 @@
       box-shadow: 0 14px 28px -8px rgba(15, 15, 15, 0.28);
     }
 
-    /* Custom Range Slider */
     input[type=range].mega-slider {
       -webkit-appearance: none;
       appearance: none;
@@ -156,7 +150,6 @@
       transition: transform 0.15s ease;
     }
 
-    /* Progress Bar on Scroll */
     #scroll-progress {
       position: fixed;
       top: 0;
@@ -171,16 +164,14 @@
 </head>
 <body class="selection:bg-[#FF4F00] selection:text-white">
 
-  <!-- Top Scroll Progress Indicator -->
   <div id="scroll-progress"></div>
 
   <!-- ===================================================================== -->
-  <!-- FLOATING ARCHITECTURAL HEADER (MOBILE + DESKTOP OPTIMIZED)            -->
+  <!-- FLOATING ARCHITECTURAL HEADER (ENGLISH DEFAULT + 1-CLICK EN/ES)       -->
   <!-- ===================================================================== -->
   <header class="fixed top-3 sm:top-5 left-0 right-0 z-50 px-3.5 sm:px-8 pointer-events-none">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
       
-      <!-- Bespoke Industrial Wordmark + Precision Optical Emblem -->
       <a href="#" class="pointer-events-auto glass-pill px-3.5 py-2.5 sm:px-5 sm:py-3 rounded-full flex items-center gap-2.5 sm:gap-3 shadow-xs group shrink-0">
         <svg class="w-5 h-5 sm:w-6 sm:h-6 transition-transform duration-500 group-hover:rotate-90" viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="14" stroke="#0F0F0F" stroke-width="2.5"/>
@@ -195,24 +186,27 @@
         </span>
       </a>
 
-      <!-- Center Floating Pill Nav (Desktop) -->
+      <!-- Center Floating Pill Nav -->
       <nav class="hidden md:flex items-center gap-1 pointer-events-auto glass-pill px-2 py-1.5 rounded-full shadow-xs">
-        <a href="#scrolly-board" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition">El Comité 3D</a>
-        <a href="#suite-stage" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition">Las 9 Suites</a>
-        <a href="#ferro-stage" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition">Cápsula Privada</a>
-        <a href="#simulador" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition">Ahorro</a>
-        <a href="#planes" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition">Tarifas</a>
+        <a href="#scrolly-board" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition" data-i18n="nav_committee">3D Committee</a>
+        <a href="#suite-stage" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition" data-i18n="nav_suites">The 9 Suites</a>
+        <a href="#ferro-stage" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition" data-i18n="nav_capsule">Private Capsule</a>
+        <a href="#simulador" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition" data-i18n="nav_savings">Savings</a>
+        <a href="#planes" class="px-4 py-1.5 rounded-full text-xs font-semibold text-stone-700 hover:text-[#0F0F0F] hover:bg-white/80 transition" data-i18n="nav_pricing">Pricing</a>
       </nav>
 
       <!-- Right Actions -->
-      <div class="flex items-center gap-2 pointer-events-auto shrink-0">
-        <button onclick="openCustomerPortal()" class="glass-pill px-3 py-2.5 sm:px-4 sm:py-3 rounded-full text-xs font-semibold text-[#0F0F0F] hover:bg-white flex items-center gap-1.5 sm:gap-2 cursor-pointer transition">
+      <div class="flex items-center gap-1.5 sm:gap-2 pointer-events-auto shrink-0">
+        <button onclick="toggleLang()" id="lang-switch-btn" class="glass-pill px-2.5 py-2.5 sm:px-3.5 sm:py-3 rounded-full font-mono text-[11px] font-bold text-[#0F0F0F] hover:bg-white cursor-pointer transition">
+          EN · ES
+        </button>
+        <button onclick="openCustomerPortal()" class="hidden sm:flex glass-pill px-4 py-3 rounded-full text-xs font-semibold text-[#0F0F0F] hover:bg-white items-center gap-2 cursor-pointer transition">
           <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span class="hidden sm:inline">Clientes</span>
+          <span data-i18n="nav_tenants">Capsules</span>
           <span class="font-mono text-[11px] text-stone-500" id="nav-active-tenants">4</span>
         </button>
-        <a href="#desplegar" class="px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#0F0F0F] hover:bg-[#FF4F00] text-white text-xs font-display font-bold tracking-tight transition whitespace-nowrap">
-          Crear Nube →
+        <a href="#desplegar" class="px-4 py-2.5 sm:px-5 sm:py-3 rounded-full bg-[#0F0F0F] hover:bg-[#FF4F00] text-white text-xs font-display font-bold tracking-tight transition whitespace-nowrap" data-i18n="nav_cta">
+          Launch Cloud →
         </a>
       </div>
 
@@ -224,59 +218,57 @@
   <!-- ===================================================================== -->
   <section class="pt-24 sm:pt-32 pb-10 sm:pb-16 px-4 sm:px-8 max-w-7xl mx-auto">
     
-    <!-- Direct Monumental Headline (No Pill Above) -->
     <div class="max-w-5xl space-y-5 sm:space-y-6 mb-8 sm:mb-12">
-      <h1 class="display-mega text-[42px] sm:text-7xl lg:text-[92px] text-[#0F0F0F]">
-        Escala tu empresa.<br/>
-        <span class="text-stone-400">Jamás tu factura.</span>
+      <h1 class="display-mega text-[42px] sm:text-7xl lg:text-[92px] text-[#0F0F0F]" id="hero-title">
+        Scale your company.<br/>
+        <span class="text-stone-400">Never your bill.</span>
       </h1>
 
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-6 pt-1">
-        <p class="text-base sm:text-xl text-stone-600 max-w-xl font-normal leading-snug">
-          Las 9 aplicaciones esenciales de tu negocio instaladas en tu propio servidor privado en Alemania. <strong class="text-[#0F0F0F]">Usuarios ilimitados para siempre.</strong>
+        <p class="text-base sm:text-xl text-stone-600 max-w-xl font-normal leading-snug" id="hero-sub">
+          The 9 essential open-source suites for your business, provisioned inside your own isolated single-tenant server in Germany. <strong class="text-[#0F0F0F]">Unlimited users forever.</strong>
         </p>
         <div class="grid grid-cols-2 sm:flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <a href="#desplegar" class="px-5 sm:px-7 py-3.5 sm:py-4 rounded-full bg-[#FF4F00] hover:bg-[#0F0F0F] text-white font-display font-bold text-xs sm:text-sm text-center transition shadow-lg shadow-orange-500/20 whitespace-nowrap">
-            Desplegar en 45s →
+          <a href="#desplegar" class="px-5 sm:px-7 py-3.5 sm:py-4 rounded-full bg-[#FF4F00] hover:bg-[#0F0F0F] text-white font-display font-bold text-xs sm:text-sm text-center transition shadow-lg shadow-orange-500/20 whitespace-nowrap" data-i18n="hero_cta_1">
+            Deploy in 45s →
           </a>
-          <a href="#scrolly-board" class="px-5 sm:px-6 py-3.5 sm:py-4 rounded-full bg-white border border-[#E2E0D8] hover:border-[#0F0F0F] font-display font-bold text-xs sm:text-sm text-[#0F0F0F] text-center transition whitespace-nowrap">
-            Descubrir ↓
+          <a href="#scrolly-board" class="px-5 sm:px-6 py-3.5 sm:py-4 rounded-full bg-white border border-[#E2E0D8] hover:border-[#0F0F0F] font-display font-bold text-xs sm:text-sm text-[#0F0F0F] text-center transition whitespace-nowrap" data-i18n="hero_cta_2">
+            Explore ↓
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Full-Bleed 3D Hero Stage (Unobstructed on Mobile & Desktop) -->
+    <!-- Full-Bleed 3D Hero Stage -->
     <div id="hero-visual-wrapper" class="bento-white p-2 sm:p-4 transition-transform duration-300 ease-out">
       <div class="cyclorama-box aspect-16/10 sm:aspect-16/9 w-full">
         <img src="assets/talentup_concept_1_morph.jpg" alt="TalentUP 3D Liquid-Solid Executive Committee" class="w-full h-full object-contain sm:object-cover object-center" />
         
-        <!-- Desktop Floating Telemetry Strip -->
         <div class="hidden sm:flex absolute bottom-6 left-6 right-6 items-center justify-between gap-4 glass-pill px-6 py-4 rounded-2xl">
-          <span class="font-display font-bold text-xs text-[#0F0F0F]">
-            Comité Ejecutivo Autónomo · 4 sistemas IA operando tu servidor 24/7
+          <span class="font-display font-bold text-xs text-[#0F0F0F]" data-i18n="hero_strip_left">
+            Autonomous Executive Committee · 4 AI systems operating your single-tenant infrastructure 24/7
           </span>
           <div class="flex items-center gap-6 font-mono text-xs">
-            <span><strong class="text-[#0F0F0F]">0 €</strong> / empleado</span>
-            <span><strong class="text-[#0F0F0F]">45s</strong> despliegue</span>
-            <span><strong class="text-[#FF4F00]">99,98%</strong> SLA</span>
+            <span><strong class="text-[#0F0F0F]">€0</strong> / seat</span>
+            <span><strong class="text-[#0F0F0F]">45s</strong> provisioning</span>
+            <span><strong class="text-[#FF4F00]">99.98%</strong> SLA</span>
           </div>
         </div>
       </div>
 
-      <!-- Mobile Clean Stat Strip Below Image (Never covers the 3D art on phone) -->
+      <!-- Mobile Clean Stat Strip Below Image -->
       <div class="grid grid-cols-3 sm:hidden gap-2 pt-2.5 px-1 text-center">
         <div class="p-2.5 rounded-2xl bg-[#F4F3EF]">
-          <div class="font-display font-bold text-sm text-[#0F0F0F]">0 €</div>
-          <div class="font-mono text-[10px] text-stone-500">Por empleado</div>
+          <div class="font-display font-bold text-sm text-[#0F0F0F]">€0</div>
+          <div class="font-mono text-[10px] text-stone-500" data-i18n="mob_stat_1">Per employee</div>
         </div>
         <div class="p-2.5 rounded-2xl bg-[#F4F3EF]">
-          <div class="font-display font-bold text-sm text-[#0F0F0F]">45 seg</div>
-          <div class="font-mono text-[10px] text-stone-500">Despliegue</div>
+          <div class="font-display font-bold text-sm text-[#0F0F0F]">45 sec</div>
+          <div class="font-mono text-[10px] text-stone-500" data-i18n="mob_stat_2">Provisioning</div>
         </div>
         <div class="p-2.5 rounded-2xl bg-[#F4F3EF]">
-          <div class="font-display font-bold text-sm text-[#FF4F00]">Alemania</div>
-          <div class="font-mono text-[10px] text-stone-500">100% Aislado</div>
+          <div class="font-display font-bold text-sm text-[#FF4F00]" data-i18n="mob_stat_3_val">Germany</div>
+          <div class="font-mono text-[10px] text-stone-500" data-i18n="mob_stat_3">100% Isolated</div>
         </div>
       </div>
     </div>
@@ -285,22 +277,18 @@
 
   <!-- ===================================================================== -->
   <!-- CHAPTER 2: STICKY SCROLLYTELLING — THE 4 LIQUID-SOLID EXECUTIVES      -->
-  <!-- Carefullyproportioned for both Mobile viewports & Desktop             -->
   <!-- ===================================================================== -->
   <section id="scrolly-board" class="relative h-[280vh] sm:h-[320vh] px-4 sm:px-8 max-w-7xl mx-auto">
     
-    <!-- Sticky Viewport Stage -->
     <div class="sticky top-16 sm:top-24 h-[calc(100vh-4.5rem)] sm:h-[calc(100vh-7rem)] flex flex-col justify-center">
       <div class="bento-white p-3.5 sm:p-8 h-full max-h-[660px] sm:max-h-[760px] flex flex-col lg:grid lg:grid-cols-12 gap-3.5 sm:gap-6 lg:gap-8 justify-between lg:items-center overflow-hidden">
         
-        <!-- 3D Studio Sculptures (42% height on mobile, full height on desktop) -->
         <div class="lg:col-span-6 h-[42%] sm:h-64 lg:h-full w-full cyclorama-box shrink-0">
           <img id="scrolly-img-0" src="assets/card_atlas.jpg" alt="Atlas CEO" class="scroll-sculpture-img active" />
           <img id="scrolly-img-1" src="assets/card_curator.jpg" alt="Curator CPO" class="scroll-sculpture-img" />
           <img id="scrolly-img-2" src="assets/card_vulcan.jpg" alt="Vulcan CTO" class="scroll-sculpture-img" />
           <img id="scrolly-img-3" src="assets/card_ledger.jpg" alt="Ledger CFO" class="scroll-sculpture-img" />
 
-          <!-- Manual Quick-Jump Dots at Bottom of Image -->
           <div class="absolute bottom-3 left-1/2 -translate-x-1/2 glass-pill px-3 py-1.5 rounded-full flex items-center gap-2">
             <button onclick="activateScrollyStep(0)" id="scrolly-dot-0" class="w-6 h-2 rounded-full bg-[#FF4F00] transition-all cursor-pointer"></button>
             <button onclick="activateScrollyStep(1)" id="scrolly-dot-1" class="w-2 h-2 rounded-full bg-stone-400 transition-all cursor-pointer"></button>
@@ -309,30 +297,27 @@
           </div>
         </div>
 
-        <!-- Right 6 Cols: Monumental Kinetic Typography -->
         <div class="lg:col-span-6 flex flex-col justify-between flex-1 lg:h-full py-1 sm:py-4 px-1.5 sm:px-4 min-h-0">
           
-          <div class="hidden lg:block font-mono text-xs uppercase tracking-widest text-stone-400">
-            01 — 04 · COMITÉ AUTÓNOMO
+          <div class="hidden lg:block font-mono text-xs uppercase tracking-widest text-stone-400" data-i18n="scrolly_kicker">
+            01 — 04 · AUTONOMOUS GOVERNANCE
           </div>
 
-          <!-- Dynamic Display Content -->
           <div class="space-y-1.5 sm:space-y-4 my-auto">
             <div id="scrolly-role-badge" class="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#FF4F00]">
-              ATLAS · DIRECCIÓN EJECUTIVA IA
+              ATLAS · EXECUTIVE AI GOVERNANCE
             </div>
             <div id="scrolly-mega-stat" class="display-mega text-4xl sm:text-6xl lg:text-8xl text-[#0F0F0F]">
-              0 € / asiento.
+              €0 / seat.
             </div>
             <h2 id="scrolly-headline" class="display-title text-lg sm:text-3xl lg:text-4xl text-[#0F0F0F] pt-0.5">
-              Invita a 10 o a 500 empleados. Tu cuota mensual nunca sube.
+              Invite 10 or 500 employees. Your monthly flat fee never increases.
             </h2>
             <p id="scrolly-sub" class="text-xs sm:text-base text-stone-500 max-w-md leading-relaxed">
-              Atlas supervisa por contrato que jamás pagues licencias por usuario ni recargos por crecer.
+              Atlas contractually enforces zero per-user licensing and zero growth penalties across your entire organisation.
             </p>
           </div>
 
-          <!-- Bottom 4-Tab Selector Strip -->
           <div class="grid grid-cols-4 gap-1.5 sm:gap-2 pt-2.5 sm:pt-4 border-t border-[#E2E0D8] shrink-0">
             <button onclick="activateScrollyStep(0)" id="scrolly-tab-0" class="text-left p-2 sm:p-2.5 rounded-xl bg-[#0F0F0F] text-white transition cursor-pointer">
               <div class="font-mono text-[9px] sm:text-[10px] text-[#FF4F00]">01</div>
@@ -365,68 +350,56 @@
   <section id="suite-stage" class="scroll-mt-20 py-14 sm:py-24 px-4 sm:px-8 max-w-7xl mx-auto space-y-6 sm:space-y-10">
     
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 sm:gap-6">
-      <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]">
-        Nueve suites. Un solo servidor.
+      <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]" data-i18n="suites_heading">
+        Nine suites. One sovereign server.
       </h2>
-      <div class="font-mono text-[11px] sm:text-xs text-stone-500">
-        TOCA CUALQUIER ICONO PARA INSPECCIONAR SU INTERFAZ
+      <div class="font-mono text-[11px] sm:text-xs text-stone-500" data-i18n="suites_sub">
+        SELECT ANY ICON TO INSPECT ITS LIVE INTERFACE
       </div>
     </div>
 
-    <!-- 9-Icon Hardware Dock (Compact 3x3 on Mobile, 9-col on Desktop) -->
-    <div id="suites-dock" class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2 sm:gap-3">
-      <!-- Populated dynamically with high-craft multi-layer SVG brand emblems -->
-    </div>
+    <div id="suites-dock" class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2 sm:gap-3"></div>
 
-    <!-- Giant Visual Stage for the Selected Suite -->
     <div class="bento-obsidian p-5 sm:p-10 lg:p-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-10 items-center">
         
-        <!-- Left 5 Cols: Clean Monumental Info of Selected App -->
         <div class="lg:col-span-5 space-y-5 sm:space-y-6">
           <div class="flex items-center gap-3.5 sm:gap-4">
             <div id="stage-app-logo" class="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-white flex items-center justify-center shadow-lg shrink-0"></div>
             <div class="min-w-0">
-              <div class="font-mono text-[10px] sm:text-xs text-[#FF4F00] uppercase font-bold truncate" id="stage-app-replaces">REEMPLAZA A SALESFORCE & HUBSPOT</div>
+              <div class="font-mono text-[10px] sm:text-xs text-[#FF4F00] uppercase font-bold truncate" id="stage-app-replaces">REPLACES SALESFORCE & HUBSPOT</div>
               <h3 class="display-title text-2xl sm:text-4xl text-white truncate" id="stage-app-name">Twenty CRM</h3>
             </div>
           </div>
 
           <p class="text-sm sm:text-base text-stone-300 leading-relaxed" id="stage-app-tagline">
-            Pipeline comercial visual, historial automático de correos y WhatsApp, y API completa sin pagar licencias por cada vendedor.
+            Visual sales pipeline, automated email & WhatsApp timeline, and open GraphQL API with zero per-seat fees.
           </p>
 
-          <!-- 3 Giant Metric Pills -->
-          <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-1" id="stage-app-metrics">
-            <!-- Populated dynamically -->
-          </div>
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 pt-1" id="stage-app-metrics"></div>
 
           <div class="flex flex-wrap items-center gap-3 pt-1">
-            <button id="stage-app-deploy-btn" onclick="selectPlanAndScroll('operaciones', 'twenty', '29 €/mes')" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#FF4F00] hover:bg-white hover:text-[#0F0F0F] text-white font-display font-bold text-xs transition cursor-pointer">
-              Instalar en mi Nube →
+            <button id="stage-app-deploy-btn" onclick="selectPlanAndScroll('operaciones', 'twenty', '€29/mo')" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#FF4F00] hover:bg-white hover:text-[#0F0F0F] text-white font-display font-bold text-xs transition cursor-pointer" data-i18n="stage_btn">
+              Deploy to my Cloud →
             </button>
-            <span class="font-mono text-[11px] sm:text-xs text-stone-400" id="stage-app-import-note">
-              Importación 1-clic incluida
+            <span class="font-mono text-[11px] sm:text-xs text-stone-400" id="stage-app-import-note" data-i18n="stage_import_note">
+              1-click data migration included
             </span>
           </div>
         </div>
 
-        <!-- Right 7 Cols: Rich Visual UI Preview Canvas of the Selected Suite -->
         <div class="lg:col-span-7 bg-[#171717] rounded-2xl sm:rounded-3xl border border-stone-800 p-4 sm:p-7 space-y-4 sm:space-y-5">
           <div class="flex items-center justify-between border-b border-stone-800 pb-3 font-mono text-xs gap-2">
             <div class="flex items-center gap-1.5 sm:gap-2 min-w-0">
               <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
-              <span class="text-stone-300 ml-1.5 truncate text-[11px] sm:text-xs" id="stage-app-fqdn">https://crm.tuempresa.talentup.cloud</span>
+              <span class="text-stone-300 ml-1.5 truncate text-[11px] sm:text-xs" id="stage-app-fqdn">https://twenty.yourcompany.talentup.cloud</span>
             </div>
-            <span class="hidden sm:inline text-emerald-400 shrink-0">● PostgreSQL 16 Dedicado</span>
+            <span class="hidden sm:inline text-emerald-400 shrink-0">● Dedicated PostgreSQL 16</span>
           </div>
 
-          <!-- Dynamic Visual Mockup Area -->
-          <div id="stage-app-visual-canvas" class="min-h-[180px] sm:min-h-[240px] flex flex-col justify-between gap-3 sm:gap-4">
-            <!-- Populated dynamically with visual UI cards -->
-          </div>
+          <div id="stage-app-visual-canvas" class="min-h-[180px] sm:min-h-[240px] flex flex-col justify-between gap-3 sm:gap-4"></div>
         </div>
 
       </div>
@@ -441,42 +414,40 @@
     <div class="bento-white p-5 sm:p-12">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 sm:gap-10 items-center">
         
-        <!-- Left 6 Cols: High-Res TU-05 Ferrofluid Sculpture -->
         <div class="lg:col-span-6">
           <div class="cyclorama-box aspect-square sm:aspect-4/5 max-h-[340px] sm:max-h-[560px] w-full">
-            <img src="assets/card_ferro.jpg" alt="Cápsula Single-Tenant TU-05" class="w-full h-full object-cover" />
+            <img src="assets/card_ferro.jpg" alt="Single-Tenant Capsule TU-05" class="w-full h-full object-cover" />
           </div>
         </div>
 
-        <!-- Right 6 Cols: 3 Monumental Pillars -->
         <div class="lg:col-span-6 space-y-6 sm:space-y-10">
-          <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]">
-            Tus datos no se mezclan con los de nadie.
+          <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]" data-i18n="ferro_heading">
+            Your data never mixes with anyone else's.
           </h2>
 
           <div class="space-y-3.5 sm:space-y-5">
             <div class="p-4 sm:p-6 rounded-2xl bg-[#F4F3EF] flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4">
               <div>
-                <div class="font-display font-bold text-lg sm:text-xl text-[#0F0F0F]">Base de Datos Exclusiva</div>
-                <div class="text-xs sm:text-sm text-stone-500 mt-0.5">Instancia PostgreSQL 16 dedicada solo a tu empresa.</div>
+                <div class="font-display font-bold text-lg sm:text-xl text-[#0F0F0F]" data-i18n="ferro_1_title">Dedicated Database</div>
+                <div class="text-xs sm:text-sm text-stone-500 mt-0.5" data-i18n="ferro_1_desc">Isolated PostgreSQL 16 instance provisioned exclusively for your company.</div>
               </div>
-              <span class="font-mono text-xs sm:text-sm font-bold text-[#FF4F00] shrink-0">100% Aislada</span>
+              <span class="font-mono text-xs sm:text-sm font-bold text-[#FF4F00] shrink-0" data-i18n="ferro_1_tag">100% Isolated</span>
             </div>
 
             <div class="p-4 sm:p-6 rounded-2xl bg-[#F4F3EF] flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4">
               <div>
-                <div class="font-display font-bold text-lg sm:text-xl text-[#0F0F0F]">Jurisdicción Alemana</div>
-                <div class="text-xs sm:text-sm text-stone-500 mt-0.5">Servidores físicos en Frankfurt y Núremberg (ISO-27001).</div>
+                <div class="font-display font-bold text-lg sm:text-xl text-[#0F0F0F]" data-i18n="ferro_2_title">German Jurisdiction</div>
+                <div class="text-xs sm:text-sm text-stone-500 mt-0.5" data-i18n="ferro_2_desc">Physical bare-metal nodes in Frankfurt and Nuremberg (ISO-27001).</div>
               </div>
-              <span class="font-mono text-xs sm:text-sm font-bold text-[#0F0F0F] shrink-0">RGPD UE</span>
+              <span class="font-mono text-xs sm:text-sm font-bold text-[#0F0F0F] shrink-0">EU GDPR</span>
             </div>
 
             <div class="p-4 sm:p-6 rounded-2xl bg-[#F4F3EF] flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4">
               <div>
-                <div class="font-display font-bold text-lg sm:text-xl text-[#0F0F0F]">Propiedad y Salida en 1 Clic</div>
-                <div class="text-xs sm:text-sm text-stone-500 mt-0.5">Descarga tu servidor y base de datos completa cuando quieras.</div>
+                <div class="font-display font-bold text-lg sm:text-xl text-[#0F0F0F]" data-i18n="ferro_3_title">1-Click Sovereign Exit</div>
+                <div class="text-xs sm:text-sm text-stone-500 mt-0.5" data-i18n="ferro_3_desc">Export your runnable Docker Compose and full SQL database dump anytime.</div>
               </div>
-              <span class="font-mono text-xs sm:text-sm font-bold text-emerald-700 shrink-0">Sin Lock-in</span>
+              <span class="font-mono text-xs sm:text-sm font-bold text-emerald-700 shrink-0">Zero Lock-In</span>
             </div>
           </div>
         </div>
@@ -492,50 +463,48 @@
     <div class="bento-white p-5 sm:p-14 space-y-8 sm:space-y-12">
       
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6">
-        <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]">
-          ¿Cuántas personas sois en el equipo?
+        <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]" data-i18n="sim_heading">
+          How many people are on your team?
         </h2>
         <div class="self-start sm:self-auto px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-[#0F0F0F] text-white font-display font-bold text-xl sm:text-3xl whitespace-nowrap shrink-0">
-          <span id="calc-team-count">30</span> personas
+          <span id="calc-team-count">30</span> <span data-i18n="sim_people">people</span>
         </div>
       </div>
 
-      <!-- Giant Interactive Slider -->
       <div class="space-y-3 sm:space-y-4">
         <input id="team-slider" type="range" min="5" max="250" value="30" class="mega-slider" oninput="updateMonumentalCalc()" />
         <div class="flex justify-between font-mono text-[11px] sm:text-xs text-stone-400">
           <span>5</span>
           <span>50</span>
           <span>125</span>
-          <span>250 empleados</span>
+          <span data-i18n="sim_max_label">250 employees</span>
         </div>
       </div>
 
-      <!-- 3 Monumental Numbers Comparison -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 pt-2">
         
         <div class="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#F4F3EF] flex flex-col justify-between space-y-3 sm:space-y-4">
-          <div class="font-mono text-[11px] sm:text-xs uppercase text-stone-500">SAAS POR USUARIO</div>
+          <div class="font-mono text-[11px] sm:text-xs uppercase text-stone-500" data-i18n="sim_card_1_top">PER-SEAT LEGACY SAAS</div>
           <div class="display-mega text-3xl sm:text-5xl text-stone-400 line-through" id="calc-legacy-monthly">
-            2.940 € / mes
+            €2,940 / mo
           </div>
           <div class="text-xs text-stone-500">Salesforce + Jira + Slack + Zendesk + DocuSign</div>
         </div>
 
         <div class="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#0F0F0F] text-white flex flex-col justify-between space-y-3 sm:space-y-4">
-          <div class="font-mono text-[11px] sm:text-xs uppercase text-emerald-400">TARIFA PLANA TALENTUP</div>
+          <div class="font-mono text-[11px] sm:text-xs uppercase text-emerald-400" data-i18n="sim_card_2_top">TALENTUP FLAT RATE</div>
           <div class="display-mega text-4xl sm:text-6xl text-white">
-            29 € <span class="text-base sm:text-lg font-normal text-stone-400">/ mes</span>
+            €29 <span class="text-base sm:text-lg font-normal text-stone-400">/ mo</span>
           </div>
-          <div class="text-xs text-stone-400">Precio fijo para toda la empresa · ∞ Usuarios</div>
+          <div class="text-xs text-stone-400" data-i18n="sim_card_2_sub">Flat rate for the entire company · ∞ Users</div>
         </div>
 
         <div class="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#FF4F00] text-white flex flex-col justify-between space-y-3 sm:space-y-4">
-          <div class="font-mono text-[11px] sm:text-xs uppercase text-white/80">AHORRO ANUAL NETO</div>
+          <div class="font-mono text-[11px] sm:text-xs uppercase text-white/80" data-i18n="sim_card_3_top">NET ANNUAL SAVINGS</div>
           <div class="display-mega text-4xl sm:text-6xl text-white" id="calc-net-savings">
-            34.932 €
+            €34,932
           </div>
-          <div class="text-xs text-white/90 font-medium">Capital que se queda en tu empresa cada año</div>
+          <div class="text-xs text-white/90 font-medium" data-i18n="sim_card_3_sub">Capital retained inside your business every year</div>
         </div>
 
       </div>
@@ -549,32 +518,31 @@
   <section id="planes" class="scroll-mt-20 py-12 sm:py-20 px-4 sm:px-8 max-w-7xl mx-auto space-y-10 sm:space-y-16">
     
     <div class="text-left sm:text-center max-w-3xl mx-auto">
-      <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]">
-        Simple. Fijo. Sin letra pequeña.
+      <h2 class="display-title text-3xl sm:text-6xl text-[#0F0F0F]" data-i18n="price_heading">
+        Simple. Flat. Zero fine print.
       </h2>
     </div>
 
-    <!-- 3 Minimalist Sculptural Pricing Cards -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
       
       <!-- 15€ -->
       <div class="bento-white p-6 sm:p-10 flex flex-col justify-between space-y-7 sm:space-y-10">
         <div class="space-y-5 sm:space-y-6">
           <div class="flex items-center justify-between">
-            <span class="font-mono text-xs font-bold uppercase text-stone-400">INDIVIDUAL</span>
+            <span class="font-mono text-xs font-bold uppercase text-stone-400">SINGLE SUITE</span>
             <span class="px-3 py-1 rounded-full bg-[#F4F3EF] font-mono text-xs font-bold text-[#0F0F0F]">1 Suite</span>
           </div>
           <div class="display-mega text-5xl sm:text-6xl text-[#0F0F0F]">
-            15 €<span class="text-base font-sans font-normal text-stone-400"> / mes</span>
+            €15<span class="text-base font-sans font-normal text-stone-400"> / mo</span>
           </div>
           <div class="space-y-2.5 pt-4 border-t border-[#E2E0D8] text-sm text-stone-700 font-medium">
-            <div>— 1 Suite oficial a elegir</div>
-            <div>— Usuarios y empleados ilimitados</div>
-            <div>— Servidor aislado en Alemania</div>
+            <div data-i18n="p1_1">— Any 1 official FOSS suite</div>
+            <div data-i18n="p1_2">— Unlimited users & employees</div>
+            <div data-i18n="p1_3">— Isolated single-tenant node in Germany</div>
           </div>
         </div>
-        <button onclick="selectPlanAndScroll('individual', 'twenty', '15 €/mes')" class="w-full py-4 rounded-full bg-[#F4F3EF] hover:bg-[#0F0F0F] hover:text-white font-display font-bold text-xs text-[#0F0F0F] transition cursor-pointer">
-          Elegir Individual →
+        <button onclick="selectPlanAndScroll('individual', 'twenty', '€15/mo')" class="w-full py-4 rounded-full bg-[#F4F3EF] hover:bg-[#0F0F0F] hover:text-white font-display font-bold text-xs text-[#0F0F0F] transition cursor-pointer" data-i18n="p1_btn">
+          Select Single Suite →
         </button>
       </div>
 
@@ -582,20 +550,20 @@
       <div class="bento-obsidian p-6 sm:p-10 flex flex-col justify-between space-y-7 sm:space-y-10 relative">
         <div class="space-y-5 sm:space-y-6">
           <div class="flex items-center justify-between">
-            <span class="font-mono text-xs font-bold uppercase text-[#FF4F00]">OPERACIONES · MÁS ELEGIDO</span>
+            <span class="font-mono text-xs font-bold uppercase text-[#FF4F00]" data-i18n="p2_badge">OPERATIONS · MOST POPULAR</span>
             <span class="px-3 py-1 rounded-full bg-stone-800 font-mono text-xs font-bold text-white">5 Suites</span>
           </div>
           <div class="display-mega text-5xl sm:text-6xl text-white">
-            29 €<span class="text-base font-sans font-normal text-stone-400"> / mes</span>
+            €29<span class="text-base font-sans font-normal text-stone-400"> / mo</span>
           </div>
           <div class="space-y-2.5 pt-4 border-t border-stone-800 text-sm text-stone-200 font-medium">
-            <div>— Hasta 5 Suites conectadas</div>
-            <div>— Usuarios ilimitados + Dominio propio</div>
-            <div>— Deflación automática (baja hasta 14€)</div>
+            <div data-i18n="p2_1">— Up to 5 interconnected suites</div>
+            <div data-i18n="p2_2">— Unlimited users + Custom domain</div>
+            <div data-i18n="p2_3">— Autonomous deflation (drops down to €14)</div>
           </div>
         </div>
-        <button onclick="selectPlanAndScroll('operaciones', 'twenty', '29 €/mes')" class="w-full py-4 rounded-full bg-[#FF4F00] hover:bg-white hover:text-[#0F0F0F] font-display font-bold text-xs text-white transition cursor-pointer">
-          Desplegar Operaciones →
+        <button onclick="selectPlanAndScroll('operaciones', 'twenty', '€29/mo')" class="w-full py-4 rounded-full bg-[#FF4F00] hover:bg-white hover:text-[#0F0F0F] font-display font-bold text-xs text-white transition cursor-pointer" data-i18n="p2_btn">
+          Deploy Operations →
         </button>
       </div>
 
@@ -603,20 +571,20 @@
       <div class="bento-white p-6 sm:p-10 flex flex-col justify-between space-y-7 sm:space-y-10">
         <div class="space-y-5 sm:space-y-6">
           <div class="flex items-center justify-between">
-            <span class="font-mono text-xs font-bold uppercase text-stone-400">CORPORATIVO</span>
-            <span class="px-3 py-1 rounded-full bg-[#F4F3EF] font-mono text-xs font-bold text-[#0F0F0F]">Las 9 Suites</span>
+            <span class="font-mono text-xs font-bold uppercase text-stone-400">ENTERPRISE</span>
+            <span class="px-3 py-1 rounded-full bg-[#F4F3EF] font-mono text-xs font-bold text-[#0F0F0F]">All 9 Suites</span>
           </div>
           <div class="display-mega text-5xl sm:text-6xl text-[#0F0F0F]">
-            49 €<span class="text-base font-sans font-normal text-stone-400"> / mes</span>
+            €49<span class="text-base font-sans font-normal text-stone-400"> / mo</span>
           </div>
           <div class="space-y-2.5 pt-4 border-t border-[#E2E0D8] text-sm text-stone-700 font-medium">
-            <div>— Las 9 Suites (incluye Odoo ERP + RRHH)</div>
-            <div>— Usuarios ilimitados en toda la empresa</div>
-            <div>— Nodo NVMe dedicado + SLA 99,98%</div>
+            <div data-i18n="p3_1">— All 9 Suites (includes Odoo ERP & HR)</div>
+            <div data-i18n="p3_2">— Unlimited seats across the organisation</div>
+            <div data-i18n="p3_3">— Dedicated NVMe node + 99.98% SLA</div>
           </div>
         </div>
-        <button onclick="selectPlanAndScroll('corporativo', 'odoo-ce', '49 €/mes')" class="w-full py-4 rounded-full bg-[#F4F3EF] hover:bg-[#0F0F0F] hover:text-white font-display font-bold text-xs text-[#0F0F0F] transition cursor-pointer">
-          Elegir Corporativo →
+        <button onclick="selectPlanAndScroll('corporativo', 'odoo-ce', '€49/mo')" class="w-full py-4 rounded-full bg-[#F4F3EF] hover:bg-[#0F0F0F] hover:text-white font-display font-bold text-xs text-[#0F0F0F] transition cursor-pointer" data-i18n="p3_btn">
+          Select Enterprise →
         </button>
       </div>
 
@@ -626,30 +594,30 @@
     <div id="desplegar" class="bento-obsidian p-6 sm:p-12 scroll-mt-20 space-y-6 sm:space-y-8">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 sm:gap-4">
         <div>
-          <span class="font-mono text-[11px] sm:text-xs text-[#FF4F00] uppercase font-bold" id="checkout-plan-badge">MODALIDAD ACTIVA: OPERACIONES (29 €/MES)</span>
-          <h3 class="display-title text-2xl sm:text-4xl text-white mt-1">
-            Pon en marcha tu servidor privado ahora.
+          <span class="font-mono text-[11px] sm:text-xs text-[#FF4F00] uppercase font-bold" id="checkout-plan-badge">ACTIVE TIER: OPERATIONS (€29/MO)</span>
+          <h3 class="display-title text-2xl sm:text-4xl text-white mt-1" data-i18n="deploy_heading">
+            Provision your private single-tenant server now.
           </h3>
         </div>
-        <span class="font-mono text-xs text-emerald-400">● Entrega automática en 45 segundos</span>
+        <span class="font-mono text-xs text-emerald-400" data-i18n="deploy_sla">● Automated delivery in 45 seconds</span>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-        <input id="checkout-company" type="text" placeholder="Nombre de tu empresa" oninput="syncSubdomainFromCompany()" class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white focus:outline-none focus:border-[#FF4F00]" />
-        <input id="checkout-subdomain" type="text" placeholder="subdominio.talentup.cloud" class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white font-mono focus:outline-none focus:border-[#FF4F00]" />
+        <input id="checkout-company" type="text" placeholder="Your company name" oninput="syncSubdomainFromCompany()" class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white focus:outline-none focus:border-[#FF4F00]" />
+        <input id="checkout-subdomain" type="text" placeholder="subdomain.talentup.cloud" class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white font-mono focus:outline-none focus:border-[#FF4F00]" />
         <select id="checkout-app-select" class="px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl bg-[#181818] border border-stone-800 text-sm text-white focus:outline-none focus:border-[#FF4F00]"></select>
-        <button onclick="launchCustomerCloud()" id="btn-launch-cloud" class="px-6 py-4 rounded-2xl bg-[#FF4F00] hover:bg-white hover:text-[#0F0F0F] text-white font-display font-bold text-sm transition cursor-pointer">
-          Desplegar Nube →
+        <button onclick="launchCustomerCloud()" id="btn-launch-cloud" class="px-6 py-4 rounded-2xl bg-[#FF4F00] hover:bg-white hover:text-[#0F0F0F] text-white font-display font-bold text-sm transition cursor-pointer" data-i18n="deploy_btn">
+          Deploy Cloud →
         </button>
       </div>
 
       <div id="checkout-live-result" class="hidden rounded-2xl bg-stone-900 border border-emerald-500/40 p-4 sm:p-5 flex flex-wrap items-center justify-between gap-4">
         <div class="space-y-1">
-          <div class="font-mono text-xs text-emerald-400 font-bold">✓ CÁPSULA SINGLE-TENANT ACTIVA</div>
+          <div class="font-mono text-xs text-emerald-400 font-bold">✓ SINGLE-TENANT CAPSULE ACTIVE</div>
           <p class="text-xs text-stone-300" id="res-capsule-msg"></p>
         </div>
         <a id="res-capsule-url" href="#" target="_blank" class="px-5 py-2.5 rounded-full bg-white text-[#0F0F0F] font-mono text-xs font-bold">
-          Abrir Servidor →
+          Open Server →
         </a>
       </div>
     </div>
@@ -663,11 +631,12 @@
     <div class="flex items-center gap-2 sm:gap-3">
       <span class="font-display font-bold text-[#0F0F0F]">TALENT<span class="text-[#FF4F00]">UP</span>®</span>
       <span>·</span>
-      <span>Frankfurt & Núremberg</span>
+      <span>Autonomous Single-Tenant Open Source Cloud · Frankfurt & Nuremberg (EU)</span>
     </div>
     <div class="flex items-center gap-5 sm:gap-6">
-      <button onclick="openCustomerPortal()" class="hover:text-[#0F0F0F] cursor-pointer">Consola Cliente</button>
-      <a href="admin.html" class="font-mono text-[11px] hover:text-[#0F0F0F]">Admin / Hosting</a>
+      <a href="https://github.com/jordialbarracin/talentup-cloud" target="_blank" class="font-mono text-[11px] hover:text-[#0F0F0F]">GitHub (AGPLv3)</a>
+      <button onclick="openCustomerPortal()" class="hover:text-[#0F0F0F] cursor-pointer">Sovereign Exit / Backups</button>
+      <a href="admin.html" class="font-mono text-[11px] hover:text-[#0F0F0F]">Admin Console</a>
     </div>
   </footer>
 
@@ -677,7 +646,10 @@
   <div id="customer-portal-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
     <div class="bento-white max-w-2xl w-full p-5 sm:p-8 space-y-5 max-h-[85vh] overflow-y-auto">
       <div class="flex items-center justify-between">
-        <h3 class="display-title text-xl sm:text-2xl text-[#0F0F0F]">Tus Cápsulas Activas</h3>
+        <div>
+          <h3 class="display-title text-xl sm:text-2xl text-[#0F0F0F]">Active Single-Tenant Capsules</h3>
+          <p class="text-xs text-stone-500 mt-0.5">1-Click Sovereign Exit: Export runnable Docker Compose + PostgreSQL 16 snapshot anytime.</p>
+        </div>
         <button onclick="closeCustomerPortal()" class="w-8 h-8 rounded-full bg-[#F4F3EF] font-mono text-xs cursor-pointer">✕</button>
       </div>
       <div id="portal-instances-list" class="space-y-3"></div>
@@ -685,62 +657,212 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- SCROLLYTELLING ENGINE & INTERACTIVE SUITE STAGE                       -->
+  <!-- SCROLLYTELLING ENGINE & BILINGUAL (EN DEFAULT / ES) RUNTIME           -->
   <!-- ===================================================================== -->
   <script>
+    let currentLang = 'en';
+    let activeSuiteId = 'twenty';
+    let currentScrollyIdx = 0;
+
     let appState = {
       catalog: [
-        { id: 'twenty', name: 'Twenty CRM', replaces: 'Salesforce / HubSpot', license: 'AGPLv3', tech_stack: 'TypeScript + PostgreSQL 16', description: 'CRM moderno con pipelines visuales, enriquecimiento de contactos y automatización comercial.' },
-        { id: 'plane', name: 'Plane Projects', replaces: 'Jira / Linear', license: 'AGPLv3', tech_stack: 'Next.js + Python + Redis', description: 'Gestión de proyectos, sprints, roadmaps y ciclos de ingeniería a velocidad nativa.' },
-        { id: 'mattermost', name: 'Mattermost Team', replaces: 'Slack Enterprise', license: 'MIT', tech_stack: 'Go + React + PostgreSQL', description: 'Mensajería corporativa en tiempo real, canales privados, llamadas y playbooks.' },
-        { id: 'documenso', name: 'Documenso Sign', replaces: 'DocuSign', license: 'AGPLv3', tech_stack: 'Next.js + Prisma + Certificados X.509', description: 'Firma electrónica legal ilimitada con sellado criptográfico y auditoría europea.' },
-        { id: 'chatwoot', name: 'Chatwoot Omni', replaces: 'Zendesk / Intercom', license: 'MIT', tech_stack: 'Ruby on Rails + Vue + PostgreSQL', description: 'Bandeja omnicanal unificada para WhatsApp, Email, Web LiveChat e Instagram.' },
-        { id: 'odoo-ce', name: 'Odoo CE ERP', replaces: 'SAP Business One / Holded', license: 'LGPLv3', tech_stack: 'Python + PostgreSQL 16', description: 'Facturación electrónica, contabilidad, inventario, compras y RRHH en un solo núcleo.' }
+        { id: 'twenty', name: 'Twenty CRM', replaces: 'Salesforce / HubSpot', license: 'AGPLv3', tech_stack: 'TypeScript + PostgreSQL 16', description: 'Modern open-source CRM with visual pipelines, contact enrichment, and sales automation.' },
+        { id: 'plane', name: 'Plane Projects', replaces: 'Jira / Linear', license: 'AGPLv3', tech_stack: 'Next.js + Python + Redis', description: 'Agile project management, sprints, roadmaps, and engineering cycles at native speed.' },
+        { id: 'mattermost', name: 'Mattermost Team', replaces: 'Slack Enterprise', license: 'MIT', tech_stack: 'Go + React + PostgreSQL', description: 'Real-time enterprise team messaging, private channels, voice calls, and DevOps playbooks.' },
+        { id: 'documenso', name: 'Documenso Sign', replaces: 'DocuSign', license: 'AGPLv3', tech_stack: 'Next.js + Prisma + X.509 Certs', description: 'Unlimited eIDAS-compliant cryptographic document signing with full audit trails.' },
+        { id: 'chatwoot', name: 'Chatwoot Omni', replaces: 'Zendesk / Intercom', license: 'MIT', tech_stack: 'Ruby on Rails + Vue + PostgreSQL', description: 'Unified omnichannel support inbox for WhatsApp Business, Email, LiveChat, and Instagram.' },
+        { id: 'odoo-ce', name: 'Odoo CE ERP', replaces: 'SAP Business One / Holded', license: 'LGPLv3', tech_stack: 'Python + PostgreSQL 16', description: 'Complete ERP with e-invoicing, accounting, inventory, procurement, and HR time-tracking.' }
       ],
       sandbox_radar: [
-        { id: 'calcom', name: 'Cal.com Scheduling', replaces: 'Calendly Teams', license: 'AGPLv3', tech_stack: 'Next.js + Prisma + PostgreSQL', description: 'Infraestructura de reservas, agendas de equipo y rutas de asignación.' },
-        { id: 'affine', name: 'AFFiNE Workspace', replaces: 'Notion / Miro', license: 'MIT', tech_stack: 'Rust + TypeScript + OctoBase', description: 'Base de conocimiento colaborativa, wikis y pizarras infinitas para toda la plantilla.' },
-        { id: 'posthog-oss', name: 'PostHog Analytics', replaces: 'Mixpanel / Amplitude', license: 'MIT', tech_stack: 'ClickHouse + Python + React', description: 'Analítica de producto, grabación de sesiones y feature flags en tu propio servidor.' }
+        { id: 'calcom', name: 'Cal.com Scheduling', replaces: 'Calendly Teams', license: 'AGPLv3', tech_stack: 'Next.js + Prisma + PostgreSQL', description: 'Scheduling infrastructure, team calendars, and automated round-robin routing.' },
+        { id: 'affine', name: 'AFFiNE Workspace', replaces: 'Notion / Miro', license: 'MIT', tech_stack: 'Rust + TypeScript + OctoBase', description: 'Collaborative knowledge base, docs, wikis, and infinite whiteboard canvas.' },
+        { id: 'posthog-oss', name: 'PostHog Analytics', replaces: 'Mixpanel / Amplitude', license: 'MIT', tech_stack: 'ClickHouse + Python + React', description: 'Product analytics, session replay, and feature flags hosted on your own server.' }
       ],
       instances: [
-        { app_id: 'twenty', app_name: 'Twenty CRM', subdomain: 'grupo-vanguardia.talentup.cloud', provider_node: 'Hetzner · fsn1-dc14 (Alemania)' },
-        { app_id: 'plane', app_name: 'Plane Projects', subdomain: 'estudio-kinetica.talentup.cloud', provider_node: 'Hetzner · nbg1-dc3 (Alemania)' },
-        { app_id: 'documenso', app_name: 'Documenso Sign', subdomain: 'bufete-albarracin.talentup.cloud', provider_node: 'Hetzner · fsn1-dc14 (Alemania)' },
-        { app_id: 'odoo-ce', app_name: 'Odoo CE ERP', subdomain: 'logistica-mediterranea.talentup.cloud', provider_node: 'Hetzner · hel1-dc2 (UE)' }
+        { app_id: 'twenty', app_name: 'Twenty CRM', subdomain: 'vanguard-group.talentup.cloud', provider_node: 'Hetzner · fsn1-dc14 (Germany)' },
+        { app_id: 'plane', app_name: 'Plane Projects', subdomain: 'kinetica-studio.talentup.cloud', provider_node: 'Hetzner · nbg1-dc3 (Germany)' },
+        { app_id: 'documenso', app_name: 'Documenso Sign', subdomain: 'albarracin-legal.talentup.cloud', provider_node: 'Hetzner · fsn1-dc14 (Germany)' },
+        { app_id: 'odoo-ce', app_name: 'Odoo CE ERP', subdomain: 'mediterranean-logistics.talentup.cloud', provider_node: 'Hetzner · hel1-dc2 (EU)' }
       ]
     };
-    let activeSuiteId = 'twenty';
 
-    const scrollySteps = [
-      {
-        unit: 'UNIDAD TU-01',
-        role: 'ATLAS · DIRECCIÓN EJECUTIVA IA',
-        stat: '0 € / asiento.',
-        headline: 'Invita a 10 o a 500 empleados. Tu cuota mensual nunca sube.',
-        sub: 'Atlas supervisa por contrato que jamás pagues licencias por usuario ni recargos por crecer.'
+    const scrollyStepsByLang = {
+      en: [
+        {
+          unit: 'UNIT TU-01',
+          role: 'ATLAS · EXECUTIVE AI GOVERNANCE',
+          stat: '€0 / seat.',
+          headline: 'Invite 10 or 500 employees. Your monthly flat fee never increases.',
+          sub: 'Atlas contractually enforces zero per-user licensing and zero growth penalties across your entire organisation.'
+        },
+        {
+          unit: 'UNIT TU-02',
+          role: 'CURATOR · PRODUCT & FOSS SUITES AI',
+          stat: '9 Suites. 1 Cloud.',
+          headline: 'Replaces Salesforce, Jira, Slack, Zendesk, DocuSign & SAP.',
+          sub: 'Curator vets, hardens, and updates the 9 best open-source business suites inside your dedicated server.'
+        },
+        {
+          unit: 'UNIT TU-03',
+          role: 'VULCAN · INFRASTRUCTURE & SECURITY AI',
+          stat: '45 Seconds.',
+          headline: 'Your own dedicated PostgreSQL 16 database isolated in Germany.',
+          sub: 'Vulcan provisions your Single-Tenant capsule in Frankfurt and executes encrypted snapshots every 6 hours.'
+        },
+        {
+          unit: 'UNIT TU-04',
+          role: 'LEDGER · AUTONOMOUS DEFLATION AI',
+          stat: '-40% Deflation.',
+          headline: 'The only cloud provider where your monthly bill drops on its own.',
+          sub: 'As our European bare-metal cluster scales, Ledger passes wholesale hardware savings directly back to your invoice.'
+        }
+      ],
+      es: [
+        {
+          unit: 'UNIDAD TU-01',
+          role: 'ATLAS · DIRECCIÓN EJECUTIVA IA',
+          stat: '0 € / asiento.',
+          headline: 'Invita a 10 o a 500 empleados. Tu cuota mensual nunca sube.',
+          sub: 'Atlas supervisa por contrato que jamás pagues licencias por usuario ni recargos por crecer.'
+        },
+        {
+          unit: 'UNIDAD TU-02',
+          role: 'CURATOR · PRODUCTO & SUITES IA',
+          stat: '9 Suites. 1 Nube.',
+          headline: 'Sustituye Salesforce, Jira, Slack, Zendesk, DocuSign y Holded.',
+          sub: 'Curator homologa y actualiza las 9 mejores suites Open Source del mundo dentro de tu propio servidor.'
+        },
+        {
+          unit: 'UNIDAD TU-03',
+          role: 'VULCAN · INFRAESTRUCTURA & SEGURIDAD IA',
+          stat: '45 Segundos.',
+          headline: 'Tu propia base de datos PostgreSQL 16 aislada en Alemania.',
+          sub: 'Vulcan despliega tu cápsula Single-Tenant en Frankfurt y ejecuta copias de seguridad cifradas cada 6 horas.'
+        },
+        {
+          unit: 'UNIDAD TU-04',
+          role: 'LEDGER · DEFLACIÓN AUTOMÁTICA IA',
+          stat: '-40% Deflación.',
+          headline: 'El único proveedor del mundo donde tu factura baja sola.',
+          sub: 'A medida que nuestra red en Alemania escala, Ledger traslada el ahorro mayorista reduciendo tu recibo cada trimestre.'
+        }
+      ]
+    };
+
+    const i18nDict = {
+      en: {
+        nav_committee: '3D Committee',
+        nav_suites: 'The 9 Suites',
+        nav_capsule: 'Private Capsule',
+        nav_savings: 'Savings',
+        nav_pricing: 'Pricing',
+        nav_tenants: 'Capsules',
+        nav_cta: 'Launch Cloud →',
+        hero_title: 'Scale your company.<br/><span class="text-stone-400">Never your bill.</span>',
+        hero_sub: 'The 9 essential open-source suites for your business, provisioned inside your own isolated single-tenant server in Germany. <strong class="text-[#0F0F0F]">Unlimited users forever.</strong>',
+        hero_cta_1: 'Deploy in 45s →',
+        hero_cta_2: 'Explore ↓',
+        hero_strip_left: 'Autonomous Executive Committee · 4 AI systems operating your single-tenant infrastructure 24/7',
+        mob_stat_1: 'Per employee',
+        mob_stat_2: 'Provisioning',
+        mob_stat_3_val: 'Germany',
+        mob_stat_3: '100% Isolated',
+        scrolly_kicker: '01 — 04 · AUTONOMOUS GOVERNANCE',
+        suites_heading: 'Nine suites. One sovereign server.',
+        suites_sub: 'SELECT ANY ICON TO INSPECT ITS LIVE INTERFACE',
+        stage_btn: 'Deploy to my Cloud →',
+        stage_import_note: '1-click data migration included',
+        ferro_heading: "Your data never mixes with anyone else's.",
+        ferro_1_title: 'Dedicated Database',
+        ferro_1_desc: 'Isolated PostgreSQL 16 instance provisioned exclusively for your company.',
+        ferro_1_tag: '100% Isolated',
+        ferro_2_title: 'German Jurisdiction',
+        ferro_2_desc: 'Physical bare-metal nodes in Frankfurt and Nuremberg (ISO-27001).',
+        ferro_3_title: '1-Click Sovereign Exit',
+        ferro_3_desc: 'Export your runnable Docker Compose and full SQL database dump anytime.',
+        sim_heading: 'How many people are on your team?',
+        sim_people: 'people',
+        sim_max_label: '250 employees',
+        sim_card_1_top: 'PER-SEAT LEGACY SAAS',
+        sim_card_2_top: 'TALENTUP FLAT RATE',
+        sim_card_2_sub: 'Flat rate for the entire company · ∞ Users',
+        sim_card_3_top: 'NET ANNUAL SAVINGS',
+        sim_card_3_sub: 'Capital retained inside your business every year',
+        price_heading: 'Simple. Flat. Zero fine print.',
+        p1_1: '— Any 1 official FOSS suite',
+        p1_2: '— Unlimited users & employees',
+        p1_3: '— Isolated single-tenant node in Germany',
+        p1_btn: 'Select Single Suite →',
+        p2_badge: 'OPERATIONS · MOST POPULAR',
+        p2_1: '— Up to 5 interconnected suites',
+        p2_2: '— Unlimited users + Custom domain',
+        p2_3: '— Autonomous deflation (drops down to €14)',
+        p2_btn: 'Deploy Operations →',
+        p3_1: '— All 9 Suites (includes Odoo ERP & HR)',
+        p3_2: '— Unlimited seats across the organisation',
+        p3_3: '— Dedicated NVMe node + 99.98% SLA',
+        p3_btn: 'Select Enterprise →',
+        deploy_heading: 'Provision your private single-tenant server now.',
+        deploy_sla: '● Automated delivery in 45 seconds',
+        deploy_btn: 'Deploy Cloud →'
       },
-      {
-        unit: 'UNIDAD TU-02',
-        role: 'CURATOR · PRODUCTO & SUITES IA',
-        stat: '9 Suites. 1 Nube.',
-        headline: 'Sustituye Salesforce, Jira, Slack, Zendesk, DocuSign y Holded.',
-        sub: 'Curator homologa y actualiza las 9 mejores suites Open Source del mundo dentro de tu propio servidor.'
-      },
-      {
-        unit: 'UNIDAD TU-03',
-        role: 'VULCAN · INFRAESTRUCTURA & SEGURIDAD IA',
-        stat: '45 Segundos.',
-        headline: 'Tu propia base de datos PostgreSQL 16 aislada en Alemania.',
-        sub: 'Vulcan despliega tu cápsula Single-Tenant en Frankfurt y ejecuta copias de seguridad cifradas cada 6 horas.'
-      },
-      {
-        unit: 'UNIDAD TU-04',
-        role: 'LEDGER · DEFLACIÓN AUTOMÁTICA IA',
-        stat: '-40% Deflación.',
-        headline: 'El único proveedor del mundo donde tu factura baja sola.',
-        sub: 'A medida que nuestra red en Alemania escala, Ledger traslada el ahorro mayorista reduciendo tu recibo cada trimestre.'
+      es: {
+        nav_committee: 'El Comité 3D',
+        nav_suites: 'Las 9 Suites',
+        nav_capsule: 'Cápsula Privada',
+        nav_savings: 'Ahorro',
+        nav_pricing: 'Tarifas',
+        nav_tenants: 'Clientes',
+        nav_cta: 'Crear Nube →',
+        hero_title: 'Escala tu empresa.<br/><span class="text-stone-400">Jamás tu factura.</span>',
+        hero_sub: 'Las 9 aplicaciones esenciales de tu negocio instaladas en tu propio servidor privado en Alemania. <strong class="text-[#0F0F0F]">Usuarios ilimitados para siempre.</strong>',
+        hero_cta_1: 'Desplegar en 45s →',
+        hero_cta_2: 'Descubrir ↓',
+        hero_strip_left: 'Comité Ejecutivo Autónomo · 4 sistemas IA operando tu servidor 24/7',
+        mob_stat_1: 'Por empleado',
+        mob_stat_2: 'Despliegue',
+        mob_stat_3_val: 'Alemania',
+        mob_stat_3: '100% Aislado',
+        scrolly_kicker: '01 — 04 · COMITÉ AUTÓNOMO',
+        suites_heading: 'Nueve suites. Un solo servidor.',
+        suites_sub: 'TOCA CUALQUIER ICONO PARA INSPECCIONAR SU INTERFAZ',
+        stage_btn: 'Instalar en mi Nube →',
+        stage_import_note: 'Importación 1-clic incluida',
+        ferro_heading: 'Tus datos no se mezclan con los de nadie.',
+        ferro_1_title: 'Base de Datos Exclusiva',
+        ferro_1_desc: 'Instancia PostgreSQL 16 dedicada solo a tu empresa.',
+        ferro_1_tag: '100% Aislada',
+        ferro_2_title: 'Jurisdicción Alemana',
+        ferro_2_desc: 'Servidores físicos en Frankfurt y Núremberg (ISO-27001).',
+        ferro_3_title: 'Propiedad y Salida en 1 Clic',
+        ferro_3_desc: 'Descarga tu servidor y base de datos completa cuando quieras.',
+        sim_heading: '¿Cuántas personas sois en el equipo?',
+        sim_people: 'personas',
+        sim_max_label: '250 empleados',
+        sim_card_1_top: 'SAAS POR USUARIO',
+        sim_card_2_top: 'TARIFA PLANA TALENTUP',
+        sim_card_2_sub: 'Precio fijo para toda la empresa · ∞ Usuarios',
+        sim_card_3_top: 'AHORRO ANUAL NETO',
+        sim_card_3_sub: 'Capital que se queda en tu empresa cada año',
+        price_heading: 'Simple. Fijo. Sin letra pequeña.',
+        p1_1: '— 1 Suite oficial a elegir',
+        p1_2: '— Usuarios y empleados ilimitados',
+        p1_3: '— Servidor aislado en Alemania',
+        p1_btn: 'Elegir Individual →',
+        p2_badge: 'OPERACIONES · MÁS ELEGIDO',
+        p2_1: '— Hasta 5 Suites conectadas',
+        p2_2: '— Usuarios ilimitados + Dominio propio',
+        p2_3: '— Deflación automática (baja hasta 14€)',
+        p2_btn: 'Desplegar Operaciones →',
+        p3_1: '— Las 9 Suites (incluye Odoo ERP + RRHH)',
+        p3_2: '— Usuarios ilimitados en toda la empresa',
+        p3_3: '— Nodo NVMe dedicado + SLA 99,98%',
+        p3_btn: 'Elegir Corporativo →',
+        deploy_heading: 'Pon en marcha tu servidor privado ahora.',
+        deploy_sla: '● Entrega automática en 45 segundos',
+        deploy_btn: 'Desplegar Nube →'
       }
-    ];
+    };
 
     const highCraftLogos = {
       'twenty': `<svg class="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 40 40" fill="none">
@@ -805,100 +927,100 @@
 
     const suiteVisualData = {
       'twenty': {
-        replaces: 'REEMPLAZA A SALESFORCE & HUBSPOT',
-        tagline: 'Embudo de ventas visual, automatización comercial e historial completo de clientes con usuarios ilimitados.',
-        metrics: [['∞', 'Vendedores'], ['1-Clic', 'Importar CSV'], ['GraphQL', 'API Abierta']],
+        replaces: 'REPLACES SALESFORCE & HUBSPOT',
+        tagline: 'Visual sales pipeline, automated customer timeline, and open GraphQL API with unlimited seats.',
+        metrics: [['∞', 'Sales Reps'], ['1-Click', 'CSV/HubSpot Import'], ['GraphQL', 'Open API']],
         canvas: `
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
-              <div class="font-mono text-[10px] text-stone-400">NUEVOS LEADS · 24.000 €</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Grupo Industrial Bética</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Clínicas Norte S.L.</div>
+              <div class="font-mono text-[10px] text-stone-400">NEW LEADS · €24,000</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Nordic Industrial Group</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Aether Clinics GmbH</div>
             </div>
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
-              <div class="font-mono text-[10px] text-[#FF4F00]">EN NEGOCIACIÓN · 58.900 €</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 border-l-2 border-[#FF4F00] text-xs font-bold text-white">Constructora Velázquez</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Estudio Mercurio</div>
+              <div class="font-mono text-[10px] text-[#FF4F00]">IN NEGOTIATION · €58,900</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 border-l-2 border-[#FF4F00] text-xs font-bold text-white">Velazquez Engineering</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-white">Studio Mercurio EU</div>
             </div>
             <div class="p-3.5 sm:p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 space-y-2">
-              <div class="font-mono text-[10px] text-emerald-400">GANADOS · 112.400 €</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-emerald-300">✓ Logística Atlántica</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-emerald-300">✓ Laboratorios Keral</div>
+              <div class="font-mono text-[10px] text-emerald-400">CLOSED WON · €112,400</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-emerald-300">✓ Atlantic Logistics</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs font-bold text-emerald-300">✓ Keral Labs Berlin</div>
             </div>
           </div>
         `
       },
       'plane': {
-        replaces: 'REEMPLAZA A JIRA, LINEAR & MONDAY',
-        tagline: 'Gestión ágil de proyectos, sprints, hojas de ruta y carga de trabajo para toda tu plantilla sin pagar por miembro.',
-        metrics: [['∞', 'Miembros'], ['Kanban', 'Sprints y Gantt'], ['Jira Sync', 'Migración 1-clic']],
+        replaces: 'REPLACES JIRA, LINEAR & MONDAY',
+        tagline: 'Agile project management, sprints, product roadmaps, and workload tracking for your entire team with zero per-seat fees.',
+        metrics: [['∞', 'Members'], ['Kanban', 'Sprints & Gantt'], ['Jira Sync', '1-Click Import']],
         canvas: `
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
               <div class="font-mono text-[10px] text-stone-400">BACKLOG</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Arquitectura de marca v2</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Integración pasarela SEPA</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Single-Tenant Network Mesh</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">SEPA Direct Debit Bridge</div>
             </div>
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
-              <div class="font-mono text-[10px] text-sky-400">EN CURSO · SPRINT 14</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 border-l-2 border-sky-400 text-xs text-white">Lanzamiento Portal Clientes</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Auditoría ISO-27001</div>
+              <div class="font-mono text-[10px] text-sky-400">IN PROGRESS · SPRINT 14</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 border-l-2 border-sky-400 text-xs text-white">Sovereign Exit CLI Bundle</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">ISO-27001 Security Gate</div>
             </div>
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
-              <div class="font-mono text-[10px] text-emerald-400">COMPLETADO</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-emerald-300">✓ Migración 45 empleados</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-emerald-300">✓ Despliegue Frankfurt</div>
+              <div class="font-mono text-[10px] text-emerald-400">COMPLETED</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-emerald-300">✓ 45-Seat Jira Migration</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-emerald-300">✓ Frankfurt Node Provision</div>
             </div>
           </div>
         `
       },
       'mattermost': {
-        replaces: 'REEMPLAZA A SLACK PRO & TEAMS',
-        tagline: 'Chat corporativo en tiempo real, canales privados y llamadas de voz/vídeo con historial eterno alojado en tu servidor.',
-        metrics: [['∞', 'Historial'], ['P2P', 'Audio y Vídeo'], ['100%', 'Privacidad Real']],
+        replaces: 'REPLACES SLACK PRO & MICROSOFT TEAMS',
+        tagline: 'Real-time team messaging, private channels, and voice/video calls with unlimited message history hosted on your own server.',
+        metrics: [['∞', 'Message History'], ['P2P', 'Voice & Video'], ['100%', 'Data Sovereignty']],
         canvas: `
           <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 sm:gap-3">
             <div class="sm:col-span-4 p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-1.5 font-mono text-xs">
-              <div class="text-white font-bold"># dirección-general</div>
-              <div class="text-[#FF4F00] font-bold"># operaciones-clientes</div>
-              <div class="text-stone-400"># ingeniería-ia</div>
+              <div class="text-white font-bold"># executive-board</div>
+              <div class="text-[#FF4F00] font-bold"># client-operations</div>
+              <div class="text-stone-400"># core-engineering</div>
             </div>
             <div class="sm:col-span-8 p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2.5 text-xs">
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-stone-200"><strong class="text-white">Marta (Operaciones):</strong> Acabamos de incorporar a los 18 nuevos técnicos sin coste adicional de licencias.</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-stone-200"><strong class="text-[#FF4F00]">Vulcan CTO:</strong> Copia de seguridad cifrada completada en Frankfurt DE-FRA1.</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-stone-200"><strong class="text-white">Marta (Ops):</strong> Onboarded 18 new field engineers today with €0 extra licensing cost.</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-stone-200"><strong class="text-[#FF4F00]">Vulcan CTO:</strong> Encrypted 6h snapshot verified in Frankfurt DE-FRA1.</div>
             </div>
           </div>
         `
       },
       'chatwoot': {
-        replaces: 'REEMPLAZA A ZENDESK & INTERCOM',
-        tagline: 'Bandeja omnicanal que unifica WhatsApp Business, Instagram, Email y Chat Web para todo tu equipo de soporte.',
-        metrics: [['∞', 'Agentes Soporte'], ['WhatsApp', 'API Oficial'], ['IA', 'Respuestas']],
+        replaces: 'REPLACES ZENDESK & INTERCOM',
+        tagline: 'Unified omnichannel inbox connecting WhatsApp Business, Instagram, Email, and LiveChat for your entire support team.',
+        metrics: [['∞', 'Support Agents'], ['WhatsApp', 'Official API'], ['AI', 'Smart Replies']],
         canvas: `
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 space-y-2">
-              <div class="font-mono text-[10px] text-emerald-400">WHATSAPP BUSINESS · EN VIVO</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Cliente: "¿Podéis enviarme la factura del pedido #402?"</div>
-              <div class="p-2.5 sm:p-3 rounded-xl bg-[#FF4F00]/20 border border-[#FF4F00]/40 text-xs text-white">Agente: "¡Hola! Te la acabo de enviar firmada desde Odoo."</div>
+              <div class="font-mono text-[10px] text-emerald-400">WHATSAPP BUSINESS · LIVE</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-black/50 text-xs text-white">Client: "Could you send the signed invoice for order #402?"</div>
+              <div class="p-2.5 sm:p-3 rounded-xl bg-[#FF4F00]/20 border border-[#FF4F00]/40 text-xs text-white">Agent: "Just sent it directly from our Odoo capsule!"</div>
             </div>
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800 flex flex-col justify-between gap-2">
-              <div class="font-mono text-[10px] text-stone-400">TIEMPO MEDIO DE RESPUESTA</div>
+              <div class="font-mono text-[10px] text-stone-400">AVG RESPONSE TIME</div>
               <div class="display-mega text-4xl sm:text-5xl text-white">1m 12s</div>
-              <div class="text-xs text-emerald-400">✓ Sin pagar 29€/mes por agente</div>
+              <div class="text-xs text-emerald-400">✓ Zero per-agent monthly seat charges</div>
             </div>
           </div>
         `
       },
       'documenso': {
-        replaces: 'REEMPLAZA A DOCUSIGN & SIGNATURIT',
-        tagline: 'Firma digital criptográfica X.509 con plena validez legal en la Unión Europea y sobres ilimitados.',
-        metrics: [['∞', 'Sobres y Firmas'], ['X.509', 'Validez UE'], ['PDF', 'Plantillas']],
+        replaces: 'REPLACES DOCUSIGN & ADOBE SIGN',
+        tagline: 'Cryptographic X.509 digital signatures with full legal validity across the European Union and unlimited envelopes.',
+        metrics: [['∞', 'Envelopes'], ['X.509', 'EU eIDAS Legal'], ['PDF', '1-Click Templates']],
         canvas: `
           <div class="p-4 sm:p-5 rounded-2xl bg-stone-900 border border-stone-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div class="space-y-1.5 min-w-0">
-              <div class="font-mono text-[10px] text-emerald-400">CERTIFICADO CRIPTOGRÁFICO X.509 SELLADO</div>
-              <div class="font-display font-bold text-base sm:text-xl text-white truncate">Contrato_Mercantil_2026.pdf</div>
-              <div class="text-xs text-stone-400">Firmado por 3 partes · Hash SHA-256 verificado</div>
+              <div class="font-mono text-[10px] text-emerald-400">CRYPTOGRAPHIC X.509 CERTIFICATE SEALED</div>
+              <div class="font-display font-bold text-base sm:text-xl text-white truncate">Master_Service_Agreement_2026.pdf</div>
+              <div class="text-xs text-stone-400">Signed by 3 parties · SHA-256 hash verified on your private node</div>
             </div>
             <div class="self-start sm:self-auto px-4 py-2.5 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 font-mono text-xs font-bold text-emerald-300 shrink-0">
               ✓ EIDAS VERIFIED
@@ -907,32 +1029,46 @@
         `
       },
       'odoo-ce': {
-        replaces: 'REEMPLAZA A HOLDED, FACTORIAL & SAP',
-        tagline: 'ERP integral con facturación electrónica, contabilidad oficial, inventario y control de fichaje horario obligatorio.',
-        metrics: [['∞', 'Empleados RRHH'], ['ERP', 'Facturación'], ['Legal', 'Control Horario']],
+        replaces: 'REPLACES SAP BUSINESS ONE & HOLDED',
+        tagline: 'Complete ERP with e-invoicing, official accounting, inventory, procurement, and mandatory employee time-tracking.',
+        metrics: [['∞', 'Employees'], ['ERP', 'Invoicing & VAT'], ['HR', 'Time Tracking']],
         canvas: `
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800">
-              <div class="font-mono text-[10px] text-stone-400">FACTURACIÓN MES</div>
-              <div class="display-title text-2xl sm:text-3xl text-white mt-1">148.920 €</div>
-              <div class="text-xs text-emerald-400 mt-1">+24% vs mes anterior</div>
+              <div class="font-mono text-[10px] text-stone-400">MONTHLY BILLING</div>
+              <div class="display-title text-2xl sm:text-3xl text-white mt-1">€148,920</div>
+              <div class="text-xs text-emerald-400 mt-1">+24% vs previous month</div>
             </div>
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800">
-              <div class="font-mono text-[10px] text-stone-400">FICHAJE HORARIO HOY</div>
+              <div class="font-mono text-[10px] text-stone-400">ACTIVE HR CHECK-INS</div>
               <div class="display-title text-2xl sm:text-3xl text-white mt-1">68 / 68</div>
-              <div class="text-xs text-stone-400 mt-1">Empleados activos (0€/emp)</div>
+              <div class="text-xs text-stone-400 mt-1">Registered staff (€0/seat)</div>
             </div>
             <div class="p-3.5 sm:p-4 rounded-2xl bg-stone-900 border border-stone-800">
-              <div class="font-mono text-[10px] text-stone-400">IMPUESTOS & IVA</div>
-              <div class="display-title text-2xl sm:text-3xl text-[#FF4F00] mt-1">Al día</div>
-              <div class="text-xs text-stone-400 mt-1">Modelos automatizados</div>
+              <div class="font-mono text-[10px] text-stone-400">EU VAT & LEDGER</div>
+              <div class="display-title text-2xl sm:text-3xl text-[#FF4F00] mt-1">Synced</div>
+              <div class="text-xs text-stone-400 mt-1">Automated fiscal reporting</div>
             </div>
           </div>
         `
       }
     };
 
+    function toggleLang() {
+      currentLang = currentLang === 'en' ? 'es' : 'en';
+      const dict = i18nDict[currentLang];
+      document.getElementById('hero-title').innerHTML = dict.hero_title;
+      document.getElementById('hero-sub').innerHTML = dict.hero_sub;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      activateScrollyStep(currentScrollyIdx);
+      updateMonumentalCalc();
+    }
+
     function activateScrollyStep(idx) {
+      currentScrollyIdx = idx;
       for (let i = 0; i < 4; i++) {
         const img = document.getElementById('scrolly-img-' + i);
         const dot = document.getElementById('scrolly-dot-' + i);
@@ -952,7 +1088,8 @@
             : 'text-left p-2 sm:p-2.5 rounded-xl bg-[#F4F3EF] text-stone-600 hover:text-[#0F0F0F] transition cursor-pointer';
         }
       }
-      const step = scrollySteps[idx] || scrollySteps[0];
+      const steps = scrollyStepsByLang[currentLang] || scrollyStepsByLang.en;
+      const step = steps[idx] || steps[0];
       document.getElementById('scrolly-role-badge').textContent = step.role;
       document.getElementById('scrolly-mega-stat').textContent = step.stat;
       document.getElementById('scrolly-headline').textContent = step.headline;
@@ -1008,17 +1145,17 @@
       if (!app) return;
 
       const custom = suiteVisualData[app.id] || {
-        replaces: `REEMPLAZA A ${(app.replaces || 'SAAS').toUpperCase()}`,
+        replaces: `REPLACES ${(app.replaces || 'PROPRIETARY SAAS').toUpperCase()}`,
         tagline: app.description,
-        metrics: [['∞', 'Usuarios'], ['100%', 'Privado RGPD'], ['Docker', 'Single-Tenant']],
+        metrics: [['∞', 'Users'], ['100%', 'GDPR Isolated'], ['Docker', 'Single-Tenant']],
         canvas: `
           <div class="p-4 sm:p-6 rounded-2xl bg-stone-900 border border-stone-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <div class="font-mono text-[10px] sm:text-xs text-[#FF4F00]">CÁPSULA DEDICADA EN FRANKFURT</div>
+              <div class="font-mono text-[10px] sm:text-xs text-[#FF4F00]">DEDICATED CAPSULE IN FRANKFURT</div>
               <div class="font-display font-bold text-lg sm:text-2xl text-white mt-1">${app.name} (${app.license})</div>
               <div class="text-xs text-stone-400 mt-1">Stack: ${app.tech_stack}</div>
             </div>
-            <span class="self-start sm:self-auto px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold shrink-0">∞ ASIENTOS</span>
+            <span class="self-start sm:self-auto px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold shrink-0">∞ SEATS</span>
           </div>
         `
       };
@@ -1027,7 +1164,7 @@
       document.getElementById('stage-app-replaces').textContent = custom.replaces;
       document.getElementById('stage-app-name').textContent = app.name;
       document.getElementById('stage-app-tagline').textContent = custom.tagline;
-      document.getElementById('stage-app-fqdn').textContent = `https://${app.id}.tuempresa.talentup.cloud`;
+      document.getElementById('stage-app-fqdn').textContent = `https://${app.id}.yourcompany.talentup.cloud`;
       document.getElementById('stage-app-metrics').innerHTML = custom.metrics.map(m => `
         <div class="p-2.5 sm:p-3.5 rounded-2xl bg-stone-900 border border-stone-800">
           <div class="font-display font-bold text-base sm:text-xl text-white truncate">${m[0]}</div>
@@ -1037,7 +1174,7 @@
       document.getElementById('stage-app-visual-canvas').innerHTML = custom.canvas;
 
       const btn = document.getElementById('stage-app-deploy-btn');
-      btn.onclick = () => selectPlanAndScroll('operaciones', app.id, '29 €/mes');
+      btn.onclick = () => selectPlanAndScroll('operaciones', app.id, '€29/mo');
     }
 
     function updateMonumentalCalc() {
@@ -1045,15 +1182,20 @@
       document.getElementById('calc-team-count').textContent = team;
       const legacyMonth = team * 98;
       const savingsYear = (legacyMonth - 29) * 12;
-      document.getElementById('calc-legacy-monthly').textContent = legacyMonth.toLocaleString('es-ES') + ' € / mes';
-      document.getElementById('calc-net-savings').textContent = savingsYear.toLocaleString('es-ES') + ' €';
+      if (currentLang === 'es') {
+        document.getElementById('calc-legacy-monthly').textContent = legacyMonth.toLocaleString('es-ES') + ' € / mes';
+        document.getElementById('calc-net-savings').textContent = savingsYear.toLocaleString('es-ES') + ' €';
+      } else {
+        document.getElementById('calc-legacy-monthly').textContent = '€' + legacyMonth.toLocaleString('en-US') + ' / mo';
+        document.getElementById('calc-net-savings').textContent = '€' + savingsYear.toLocaleString('en-US');
+      }
     }
 
     function selectPlanAndScroll(planType, appId, priceLabel) {
       const labels = {
-        individual: `MODALIDAD ACTIVA: INDIVIDUAL (${priceLabel})`,
-        operaciones: `MODALIDAD ACTIVA: OPERACIONES (${priceLabel})`,
-        corporativo: `MODALIDAD ACTIVA: CORPORATIVO 9/9 (${priceLabel})`
+        individual: `ACTIVE TIER: SINGLE SUITE (${priceLabel})`,
+        operaciones: `ACTIVE TIER: OPERATIONS (${priceLabel})`,
+        corporativo: `ACTIVE TIER: ENTERPRISE 9/9 (${priceLabel})`
       };
       document.getElementById('checkout-plan-badge').textContent = labels[planType] || priceLabel;
       const sel = document.getElementById('checkout-app-select');
@@ -1068,14 +1210,14 @@
     }
 
     async function launchCustomerCloud() {
-      const company = (document.getElementById('checkout-company').value || '').trim() || 'Mi Empresa';
-      const rawSub = (document.getElementById('checkout-subdomain').value || '').replace('.talentup.cloud', '').trim() || 'mi-empresa';
+      const company = (document.getElementById('checkout-company').value || '').trim() || 'Acme Europe';
+      const rawSub = (document.getElementById('checkout-subdomain').value || '').replace('.talentup.cloud', '').trim() || 'acme-eu';
       const appId = document.getElementById('checkout-app-select').value || 'twenty';
       const btn = document.getElementById('btn-launch-cloud');
       const resBox = document.getElementById('checkout-live-result');
 
       btn.disabled = true;
-      btn.textContent = 'Aprovisionando...';
+      btn.textContent = 'Provisioning...';
 
       try {
         const resp = await fetch('/api/deploy', {
@@ -1089,7 +1231,7 @@
           hydratePage();
         }
         resBox.classList.remove('hidden');
-        document.getElementById('res-capsule-msg').innerHTML = `${data.app} desplegado para <strong>${company}</strong> en ${data.provider_node}.`;
+        document.getElementById('res-capsule-msg').innerHTML = `${data.app} provisioned for <strong>${company}</strong> on ${data.provider_node}.`;
         const u = document.getElementById('res-capsule-url');
         u.textContent = data.url;
         u.href = data.url;
@@ -1098,13 +1240,13 @@
         const found = all.find(a => a.id === appId) || { name: 'Twenty CRM' };
         const fqdn = `https://${rawSub}.talentup.cloud`;
         resBox.classList.remove('hidden');
-        document.getElementById('res-capsule-msg').innerHTML = `${found.name} desplegado para <strong>${company}</strong> en Hetzner Cloud · fsn1-dc14 (Alemania).`;
+        document.getElementById('res-capsule-msg').innerHTML = `${found.name} provisioned for <strong>${company}</strong> on Hetzner Cloud · fsn1-dc14 (Germany).`;
         const u = document.getElementById('res-capsule-url');
         u.textContent = fqdn;
         u.href = fqdn;
       } finally {
         btn.disabled = false;
-        btn.textContent = 'Desplegar Nube →';
+        btn.textContent = currentLang === 'es' ? 'Desplegar Nube →' : 'Deploy Cloud →';
       }
     }
 
@@ -1115,10 +1257,10 @@
           <div class="p-4 rounded-2xl bg-[#F4F3EF] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div class="font-display font-bold text-sm text-[#0F0F0F]">${inst.app_name} · <span class="text-[#FF4F00] font-mono text-xs">https://${inst.subdomain}</span></div>
-              <div class="text-xs text-stone-500">${inst.provider_node} · Usuarios ilimitados</div>
+              <div class="text-xs text-stone-500">${inst.provider_node} · Unlimited seats</div>
             </div>
-            <a href="/api/catalog/${inst.app_id}/compose?subdomain=${encodeURIComponent((inst.subdomain || 'empresa').split('.')[0])}" target="_blank" class="self-start sm:self-auto px-3.5 py-2 rounded-full bg-white border border-[#E2E0D8] font-mono text-xs font-bold text-[#0F0F0F]">
-              Backup Docker ↓
+            <a href="/api/catalog/${inst.app_id}/compose?subdomain=${encodeURIComponent((inst.subdomain || 'company').split('.')[0])}" target="_blank" class="self-start sm:self-auto px-3.5 py-2 rounded-full bg-white border border-[#E2E0D8] font-mono text-xs font-bold text-[#0F0F0F]">
+              Docker Compose Exit ↓
             </a>
           </div>
         `).join('');
@@ -1138,7 +1280,7 @@
       const sel = document.getElementById('checkout-app-select');
       if (sel) {
         const all = getAllApps();
-        sel.innerHTML = all.map(a => `<option value="${a.id}">${a.name} (Reemplaza a ${a.replaces})</option>`).join('');
+        sel.innerHTML = all.map(a => `<option value="${a.id}">${a.name} (Replaces ${a.replaces})</option>`).join('');
       }
 
       renderSuitesDock();
@@ -1151,7 +1293,8 @@
       try {
         const resp = await fetch('/api/state');
         if (resp.ok) {
-          appState = await resp.json();
+          const remote = await resp.json();
+          if (remote && remote.instances) appState.instances = remote.instances;
           hydratePage();
         }
       } catch (e) {
